@@ -3,13 +3,13 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target; 
-    public float smoothing = 5f;
+    public float smoothing = 2f;
 
     Vector3 offset;
 
     void Start()
     {
-        offset = transform.position - target.position;
+        offset = new Vector3(0,0,0);
         CenterCameraOnTarget();
     }
 
@@ -21,6 +21,8 @@ public class CameraFollow : MonoBehaviour
     
     void CenterCameraOnTarget()
     {
+        // Vector3 desiredPosition = target.position + offset;
+        // transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothing * Time.deltaTime);
         transform.position = target.position + offset;
     }
 }
