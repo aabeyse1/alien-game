@@ -17,6 +17,8 @@ public class Movement : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); 
+
+        rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     void Update()
