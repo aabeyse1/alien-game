@@ -1,3 +1,5 @@
+// Author(s): Lucy Rubin
+// Code for the Quest System is based off of quest-system by shapedbyrainstudios: https://github.com/shapedbyrainstudios/quest-system
 using System;
 
 public class PlayerEvents

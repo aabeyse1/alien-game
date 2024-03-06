@@ -1,3 +1,6 @@
+// Author(s): Lucy Rubin
+// This Quest System is based off of quest-system by shapedbyrainstudios: https://github.com/shapedbyrainstudios/quest-system
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

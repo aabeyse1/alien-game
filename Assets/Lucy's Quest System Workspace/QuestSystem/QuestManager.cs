@@ -1,3 +1,6 @@
+// Author(s): Lucy Rubin
+// This Quest System is based off of quest-system by shapedbyrainstudios: https://github.com/shapedbyrainstudios/quest-system
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -134,7 +137,6 @@ public class QuestManager : MonoBehaviour
     }
 
     private void ClaimRewards(Quest quest) {
-        GameEventsManager.instance.goldEvents.GoldGained(quest.info.goldReward);
         GameEventsManager.instance.playerEvents.ExperienceGained(quest.info.experienceReward);
     }
 
@@ -163,7 +165,7 @@ public class QuestManager : MonoBehaviour
     }
 
     // catch errors if we try to access a quest id that doesn't exist
-    private Quest GetQuestById(string id)
+    public Quest GetQuestById(string id)
     {
         Quest quest = questMap[id];
         if (quest == null)

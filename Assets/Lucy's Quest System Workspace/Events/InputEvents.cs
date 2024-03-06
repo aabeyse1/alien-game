@@ -1,3 +1,4 @@
+// Author(s): Lucy Rubin
 using UnityEngine;
 using System;
 

@@ -1,0 +1,34 @@
+{
+    "name": "Debug",
+    "maps": [
+        {
+            "name": "Debug",
+            "id": "4802d81f-da24-40db-beb1-bd3ed10d6164",
+            "actions": [
+                {
+                    "name": "ToggleDebugUI",
+                    "type": "Button",
+                    "id": "25b4620e-1750-45c1-99ee-5c66d3d68074",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a0927791-c07a-4f2c-9f9f-4940882de973",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleDebugUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

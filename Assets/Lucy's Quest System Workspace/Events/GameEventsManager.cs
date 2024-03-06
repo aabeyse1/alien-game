@@ -1,3 +1,5 @@
+// Author(s): Lucy Rubin
+// This Quest System is based off of quest-system by shapedbyrainstudios: https://github.com/shapedbyrainstudios/quest-system
 using System;
 using UnityEngine;
 
@@ -7,8 +9,7 @@ public class GameEventsManager : MonoBehaviour
 
     public InputEvents inputEvents;
     public PlayerEvents playerEvents;
-    public GoldEvents goldEvents;
-    public MiscEvents miscEvents;
+    public PickUpEvents pickUpEvents;
 
     public QuestEvents questEvents;
 
@@ -23,8 +24,7 @@ public class GameEventsManager : MonoBehaviour
         // initialize all events
         inputEvents = new InputEvents();
         playerEvents = new PlayerEvents();
-        goldEvents = new GoldEvents();
-        miscEvents = new MiscEvents();
+        pickUpEvents = new PickUpEvents();
         questEvents = new QuestEvents();
     }
 }

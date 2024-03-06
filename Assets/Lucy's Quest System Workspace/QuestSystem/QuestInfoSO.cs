@@ -1,9 +1,11 @@
+// Author(s): Lucy Rubin
+// This Quest System is based off of quest-system by shapedbyrainstudios: https://github.com/shapedbyrainstudios/quest-system
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-// This code is from Shaped by Rain Studios Quest System tutorial on YouTube
 
 [CreateAssetMenu(fileName = "QuestInfoSO", menuName = "ScriptableObjects/QuestInfoSO", order = 1)]
 public class QuestInfoSO : ScriptableObject

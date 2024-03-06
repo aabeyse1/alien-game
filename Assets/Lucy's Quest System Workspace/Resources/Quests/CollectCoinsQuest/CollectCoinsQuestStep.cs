@@ -7,13 +7,13 @@ public class CollectCoinsQuestStep : QuestStep // inherit from QuestStep
     private int coinsCollected = 0;
     private int coinsToComplete = 5; 
 
-    private void OnEnable() { // this built in method is called when an object becomes enabled and active
-        GameEventsManager.instance.miscEvents.onCoinCollected += CoinCollected; // when the event goes off, call that method
-    }
+    // private void OnEnable() { // this built in method is called when an object becomes enabled and active
+    //     GameEventsManager.instance.miscEvents.onCoinCollected += CoinCollected; // when the event goes off, call that method
+    // }
 
-    private void OnDisable() {
-        GameEventsManager.instance.miscEvents.onCoinCollected -= CoinCollected;
-    }
+    // private void OnDisable() {
+    //     GameEventsManager.instance.miscEvents.onCoinCollected -= CoinCollected;
+    // }
 
     private void CoinCollected() {
         if (coinsCollected < coinsToComplete) {
