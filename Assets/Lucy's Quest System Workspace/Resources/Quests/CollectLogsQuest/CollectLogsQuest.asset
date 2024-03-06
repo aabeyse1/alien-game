@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfd6688f42454142b1a62eb2fea5dac, type: 3}
   m_Name: CollectLogsQuest
   m_EditorClassIdentifier: 
-  <id>k__BackingField: CollectCoinsQuest
-  displayName: Collect the Coins!
+  <id>k__BackingField: CollectLogsQuest
+  displayName: Collect the Logs!
   levelRequirement: 1
   questPrerequisites: []
   questStepPrefabs:
-  - {fileID: 3606608556287247524, guid: dfa52377bfc01436c93126684acb07c4, type: 3}
+  - {fileID: 3606608556287247524, guid: 42eb9c1645d4a4745a16b372bdad3189, type: 3}
   goldReward: 50
   experienceReward: 250
