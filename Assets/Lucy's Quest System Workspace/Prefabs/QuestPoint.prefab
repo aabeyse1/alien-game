@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8389577444288623534}
   - component: {fileID: 160962197672052696}
   - component: {fileID: 924413373581574567}
+  - component: {fileID: 795128449261472144}
   m_Layer: 0
   m_Name: QuestPoint
   m_TagString: Untagged
@@ -169,6 +170,33 @@ MonoBehaviour:
   questInfoForPoint: {fileID: 0}
   startPoint: 1
   finishPoint: 1
+--- !u!50 &795128449261472144
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314160596882192507}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &8564029024633700094
 PrefabInstance:
   m_ObjectHideFlags: 0

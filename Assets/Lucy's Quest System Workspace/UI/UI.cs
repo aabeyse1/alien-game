@@ -7,10 +7,16 @@ using TMPro;
 public class Objective : MonoBehaviour
 {
 
+    [Header("Quest Dropdown")]
     public GameObject subObjectiveUI;
     public GameObject subObjectiveDropDownButton;
-
+    
+    [Header("Quest Text")]
     public TMP_Text objectiveDisplayText;
+
+    public TMP_Text objectiveDescriptionText;
+    public TMP_Text progressText;
+
     
     private void Awake() {
         objectiveDisplayText.SetText("No active quests");
@@ -18,11 +24,14 @@ public class Objective : MonoBehaviour
     // Listen to events
     private void OnEnable() {
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
+        GameEventsManager.instance.questEvents.onQuestStepStateChange += QuestStepStateChange;        
     }
 
     // Stop listening to events
     private void OnDisable() {
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
+        GameEventsManager.instance.questEvents.onQuestStepStateChange -= QuestStepStateChange;
+
 
     }
 
@@ -31,11 +40,24 @@ public class Objective : MonoBehaviour
         // show this quest name as current quest
         if (currentQuestState == QuestState.IN_PROGRESS || currentQuestState == QuestState.CAN_FINISH) {
             objectiveDisplayText.SetText(quest.info.displayName);
+            objectiveDescriptionText.SetText(quest.info.description);        
         } else {
-             objectiveDisplayText.SetText("No active quests");
+            objectiveDisplayText.SetText("No active quests");
+            objectiveDescriptionText.SetText("Information about this objective");
+            progressText.SetText("Progress: N/A");    
         }
         
     }
+
+    private void QuestStepStateChange(string questId, int stepIndex, QuestStepState questStepState) {
+        try {
+             int numCollected = System.Int32.Parse(questStepState.state);
+             progressText.SetText("Progress: " + numCollected + " collected");
+            } catch {
+            Debug.Log("Error in converting questStepState to int"); // TODO: handle different types of quest step states
+            }
+    }
+
     public void ToggleObjectiveUI()
     {
         subObjectiveUI.SetActive(!subObjectiveUI.activeSelf);

@@ -15,6 +15,8 @@ public class QuestInfoSO : ScriptableObject
     [Header("General")]
     public string displayName; // the name that will appear in the game
 
+    public string description; // description that will show in the dropDown objective UI
+
     [Header("Requirements")]
     public int levelRequirement; // player level required to start this quest
     public QuestInfoSO[] questPrerequisites; // quests that need to be completed before this one can be started

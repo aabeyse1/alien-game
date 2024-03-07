@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: CollectLogsQuest
   displayName: Collect the Logs!
+  description: Please collect five logs hehehe
   levelRequirement: 1
   questPrerequisites: []
   questStepPrefabs:

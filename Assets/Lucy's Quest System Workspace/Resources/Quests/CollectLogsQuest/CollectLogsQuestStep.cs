@@ -11,6 +11,7 @@ public class CollectLogsQuestStep : QuestStep // inherit from QuestStep
 
     private void OnEnable() { // this built in method is called when an object becomes enabled and active
         GameEventsManager.instance.pickUpEvents.onLogCollected += LogCollected; // when the event goes off, call that method
+        UpdateState();
     }
 
     private void OnDisable() {
