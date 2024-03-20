@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public GameObject[] inventorySlots;
-    public Sprite stickSprite; 
+    public GameObject[] inventorySlots; // Your inventory slots
 
     public bool AddItem(Item item)
     {
@@ -16,11 +15,14 @@ public class InventoryManager : MonoBehaviour
             if (!itemIconTransform.gameObject.activeInHierarchy)
             {
                 itemIconTransform.gameObject.SetActive(true);
-                itemImage.sprite = item.itemSprite; 
-                return true;
+                itemImage.sprite = item.itemSprite;
+
+                // Scale the image to be 50% of its size
+                itemIconTransform.localScale = new Vector3(0.7f, 0.7f, 1);
+
+                return true; // Item was successfully added to the first available slot
             }
         }
-        return false;
+        return false; // If no slot was available (all were active), return false
     }
-
 }
