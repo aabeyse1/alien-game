@@ -43,7 +43,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         else
         {
             // Reset scale or other properties as needed when successfully dropped into a new slot
-            transform.localScale = Vector3.one;
+            // transform.localScale = Vector3.one;
         }
     }
 

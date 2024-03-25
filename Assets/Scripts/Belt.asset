@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Belt
   itemSprite: {fileID: 21300000, guid: b2a99943419624de1bc18ab82be925b8, type: 3}
+  itemPrefab: {fileID: 6918419419771477342, guid: 0241ad397e2b1435a99a473a4c1cbc42, type: 3}

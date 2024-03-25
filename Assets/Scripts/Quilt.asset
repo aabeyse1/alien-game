@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Quilt
   itemSprite: {fileID: 21300000, guid: 03949899dddc14e169d64c6ebcd6201b, type: 3}
+  itemPrefab: {fileID: 4534700439484737800, guid: 97bdefe2c23f44a5b8c052a5c8da1cc8, type: 3}

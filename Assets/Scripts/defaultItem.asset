@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fd8d97eebac64b8dbee9902ce07f83d, type: 3}
-  m_Name: Backpack
+  m_Name: defaultItem
   m_EditorClassIdentifier: 
-  itemName: Backpack
-  itemSprite: {fileID: 21300000, guid: b569b1db0472b4be085f3eb6ee9c92ab, type: 3}
-  itemPrefab: {fileID: 3429455147112376923, guid: 265741a4e89fe4207a3dfbcd597d3591, type: 3}
+  itemName: 
+  itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 0}
