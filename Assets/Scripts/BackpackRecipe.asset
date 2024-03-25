@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2195a8b832fd4de39b86b814c0346f3, type: 3}
+  m_Name: BackpackRecipe
+  m_EditorClassIdentifier: 
+  requiredItems:
+  - {fileID: 11400000, guid: 0fd987a570c1c4515bb4fb5928551a14, type: 2}
+  - {fileID: 11400000, guid: 86d5618617488479f8d8959b1a7524c2, type: 2}
+  resultItem: {fileID: 11400000, guid: 29a87f84c3d8b4e46a54001d98be4dbb, type: 2}

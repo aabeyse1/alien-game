@@ -3,26 +3,62 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public GameObject[] inventorySlots; // Your inventory slots
+    public GameObject[] inventorySlots; 
 
     public bool AddItem(Item item)
     {
         foreach (GameObject slot in inventorySlots)
         {
             Transform itemIconTransform = slot.transform.GetChild(0);
-            Image itemImage = itemIconTransform.GetComponent<Image>();
-
             if (!itemIconTransform.gameObject.activeInHierarchy)
             {
                 itemIconTransform.gameObject.SetActive(true);
+                Image itemImage = itemIconTransform.GetComponent<Image>();
                 itemImage.sprite = item.itemSprite;
-
-                // Scale the image to be 50% of its size
                 itemIconTransform.localScale = new Vector3(0.7f, 0.7f, 1);
 
-                return true; // Item was successfully added to the first available slot
+                // Check for an existing ItemRepresentation component or add one
+                ItemRepresentation itemRep = itemIconTransform.GetComponent<ItemRepresentation>();
+                if (itemRep == null)
+                {
+                    itemRep = itemIconTransform.gameObject.AddComponent<ItemRepresentation>();
+                }
+                itemRep.item = item;
+
+                return true; // Item successfully added
             }
         }
-        return false; // If no slot was available (all were active), return false
+        return false; // Inventory is full
     }
+
+public bool AddItem(Item item, GameObject itemGameObject)
+{
+    foreach (GameObject slot in inventorySlots)
+    {
+        if (slot.transform.childCount == 0)
+        {
+            itemGameObject.transform.SetParent(slot.transform, false);
+            itemGameObject.transform.localPosition = Vector3.zero;
+
+            DraggableItem draggableItem = itemGameObject.GetComponent<DraggableItem>();
+            if (draggableItem == null)
+            {
+                draggableItem = itemGameObject.AddComponent<DraggableItem>();
+            }
+            draggableItem.originalSlot = slot; // Set original slot
+
+            ItemRepresentation itemRep = itemGameObject.GetComponent<ItemRepresentation>();
+            if (itemRep == null)
+            {
+                itemRep = itemGameObject.AddComponent<ItemRepresentation>();
+            }
+            itemRep.item = item;
+
+            return true;
+        }
+    }
+    return false;
+}
+
+
 }
