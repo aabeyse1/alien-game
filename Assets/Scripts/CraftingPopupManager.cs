@@ -11,6 +11,9 @@ public class CraftingPopupManager : MonoBehaviour
     public Button mainButton;
     public Button hideButton;
 
+    public Button extendedInventoryButton;
+
+
     private Item[] itemsInSlots = new Item[2]; // To store items in slots
     public InventoryManager inventoryManager; // Reference to manage inventory
     public CraftingRecipe[] recipes; 
@@ -102,56 +105,71 @@ public class CraftingPopupManager : MonoBehaviour
         }
     }
 
-    public void OnCraftButtonClick()
+public void OnCraftButtonClick()
+{
+    foreach (var recipe in recipes)
     {
-        foreach (var recipe in recipes)
+        if (RecipeMatches(recipe))
         {
-            if (RecipeMatches(recipe))
+            // Special case for crafting a backpack
+            if (recipe.resultItem.itemName == "Backpack") // Replace with your actual item name check
             {
-                // Instantiate the resulting item GameObject using the prefab reference
-                GameObject resultItemPrefab = Instantiate(recipe.resultItem.itemPrefab);
-                resultItemPrefab.transform.localScale = new Vector3(20f, 20f, 1f);
-                // Add the resulting item to the first available inventory slot
-                bool wasAdded = inventoryManager.AddItem(recipe.resultItem, resultItemPrefab);
-
-                if (wasAdded)
-                {
-                    // If the item was added successfully, clear the crafting inputs
-                    foreach (Image slot in craftingSlots)
-                    {
-                        if (slot.transform.childCount > 0)
-                        {
-                            Destroy(slot.transform.GetChild(0).gameObject); // Destroy the input items' GameObjects
-                        }
-                    }
-
-                    // Reset stored items in slots after crafting
-                    ClearCraftingSlots();
-
-                    foreach (GameObject slot in inventoryManager.inventorySlots)
-                    {
-                        Debug.Log(slot.transform.childCount);
-                        if (slot.transform.childCount == 0)
-                        {
-                            Debug.Log("Made it inside defsult");
-                            inventoryManager.AddDefaultItemToSlot(slot);
-                        
-                        }
-                    }
-                }
-                else
-                {
-                    // If the inventory was full and the item couldn't be added
-                    Debug.LogError("No space in inventory for crafted item.");
-                    Destroy(resultItemPrefab); // Destroy the newly instantiated prefab
-                }
-                return;
+                extendedInventoryButton.gameObject.SetActive(true);
+                // No need to add to inventory since it's an extension
             }
-        }
+            else
+            {
+                // For all other items, instantiate and add to the inventory
+                GameObject resultItemPrefab = Instantiate(recipe.resultItem.itemPrefab);
+                resultItemPrefab.transform.localScale = new Vector3(1f, 1f, 1f); // Adjust scale as needed
 
-        Debug.LogWarning("No matching recipe found.");
+                // Attempt to add the item to inventory
+                bool wasAdded = inventoryManager.AddItem(recipe.resultItem, resultItemPrefab);
+                if (!wasAdded)
+                {
+                    Debug.LogError("No space in inventory for crafted item.");
+                    Destroy(resultItemPrefab); // Cleanup
+                }
+            }
+
+            // Clear used items from crafting slots
+            ClearUsedItemsInCraftingSlots();
+
+            // Add default items to any empty slots left in the inventory
+            AddDefaultItemsToEmptySlots();
+
+            return; // Exit the loop as we've handled the crafting
+        }
     }
 
+    Debug.LogWarning("No matching recipe found.");
+}
 
+private void ClearUsedItemsInCraftingSlots()
+{
+    // Clear the items used in crafting
+    foreach (Image slot in craftingSlots)
+    {
+        if (slot.transform.childCount > 0)
+        {
+            Destroy(slot.transform.GetChild(0).gameObject); // Destroy the input items' GameObjects
+        }
+    }
+
+    // Reset stored items in slots after crafting
+    ClearCraftingSlots();
+}
+
+private void AddDefaultItemsToEmptySlots()
+{
+    // Check each inventory slot and add default item if empty
+    foreach (GameObject slot in inventoryManager.inventorySlots)
+    {
+        if (slot.transform.childCount == 0)
+        {
+            inventoryManager.AddDefaultItemToSlot(slot);
+        }
+    }
+}
 
 }
