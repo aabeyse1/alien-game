@@ -90,59 +90,6 @@ public class CraftingPopupManager : MonoBehaviour
 
     public GameObject itemPrefab; // Assign the default item prefab in the inspector
 
-    public void CraftItem()
-    {
-        foreach (var recipe in recipes)
-        {
-            if (RecipeMatches(recipe))
-            {
-                // Instantiate the resulting item GameObject using the prefab reference
-                GameObject resultItemPrefab = Instantiate(recipe.resultItem.itemPrefab);
-                resultItemPrefab.transform.localScale = new Vector3(20f, 20f, 1f); // Set the crafted item scale
-
-                // Add the resulting item to the first available inventory slot
-                bool wasAdded = inventoryManager.AddItem(recipe.resultItem, resultItemPrefab);
-
-                if (wasAdded)
-                {
-                    // If the item was added successfully, clear the crafting inputs
-                    foreach (Image slot in craftingSlots)
-                    {
-                        if (slot.transform.childCount > 0)
-                        {
-                            Destroy(slot.transform.GetChild(0).gameObject); // Destroy the input items' GameObjects
-                        }
-                    }
-
-                    // Reset stored items in slots after crafting
-                    ClearCraftingSlots();
-
-                    // After crafting, check for empty inventory slots and add the default itemPrefab to them
-                    foreach (GameObject slot in inventoryManager.inventorySlots)
-                    {
-                        if (slot.transform.childCount == 0)
-                        {
-                            // Add the default itemPrefab to the empty slot
-                            inventoryManager.AddDefaultItemToSlot(slot);
-                            break; // Only fill one empty slot at a time
-                        }
-                    }
-                }
-                else
-                {
-                    // If the inventory was full and the item couldn't be added
-                    Debug.LogError("No space in inventory for crafted item.");
-                    Destroy(resultItemPrefab); // Destroy the newly instantiated prefab
-                }
-                return;
-            }
-        }
-
-        Debug.LogWarning("No matching recipe found.");
-    }
-
-
-
     public void ItemRemovedFromSlot(CraftingSlot slot, Item item)
     {
         // Find the slot index and clear the corresponding item
@@ -166,7 +113,7 @@ public class CraftingPopupManager : MonoBehaviour
                 resultItemPrefab.transform.localScale = new Vector3(20f, 20f, 1f);
                 // Add the resulting item to the first available inventory slot
                 bool wasAdded = inventoryManager.AddItem(recipe.resultItem, resultItemPrefab);
-                
+
                 if (wasAdded)
                 {
                     // If the item was added successfully, clear the crafting inputs
@@ -180,6 +127,17 @@ public class CraftingPopupManager : MonoBehaviour
 
                     // Reset stored items in slots after crafting
                     ClearCraftingSlots();
+
+                    foreach (GameObject slot in inventoryManager.inventorySlots)
+                    {
+                        Debug.Log(slot.transform.childCount);
+                        if (slot.transform.childCount == 0)
+                        {
+                            Debug.Log("Made it inside defsult");
+                            inventoryManager.AddDefaultItemToSlot(slot);
+                        
+                        }
+                    }
                 }
                 else
                 {

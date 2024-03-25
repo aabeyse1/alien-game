@@ -57,11 +57,11 @@ public bool AddItem(Item item, GameObject itemGameObject = null)
     return false;
 }
 
-    public bool AddDefaultItemToSlot(GameObject slot)
+    public void AddDefaultItemToSlot(GameObject slot)
     {
         if (slot.transform.childCount == 0)
         {
-            // Instantiate the default item prefab and assign the item data
+            // Instantiate the default item prefab as a child of the slot
             GameObject newItem = Instantiate(defaultItemPrefab, slot.transform);
             newItem.transform.localPosition = Vector3.zero;
             newItem.transform.localRotation = Quaternion.identity;
@@ -75,28 +75,30 @@ public bool AddItem(Item item, GameObject itemGameObject = null)
             }
             else
             {
-                image = newItem.AddComponent<Image>();
-                image.sprite = defaultItem.itemSprite;
+                Debug.LogError("Item prefab does not have an Image component.");
             }
 
             // Configure the ItemRepresentation component with the default item data
             ItemRepresentation itemRep = newItem.GetComponent<ItemRepresentation>();
-            if (itemRep == null)
+            if (itemRep != null)
             {
-                itemRep = newItem.AddComponent<ItemRepresentation>();
+                itemRep.item = defaultItem;
             }
-            itemRep.item = defaultItem;
+            else
+            {
+                Debug.LogError("Item prefab does not have an ItemRepresentation component.");
+            }
 
-            // Optional: Configure the DraggableItem component
+            // Configure the DraggableItem component (if your item is draggable)
             DraggableItem draggableItem = newItem.GetComponent<DraggableItem>();
-            if (draggableItem == null)
+            if (draggableItem != null)
             {
-                draggableItem = newItem.AddComponent<DraggableItem>();
+                draggableItem.originalSlot = slot; // Assuming you have this field defined in your DraggableItem script
             }
-            draggableItem.originalSlot = slot;
-
-            return true;
+            else
+            {
+                Debug.LogError("Item prefab does not have a DraggableItem component.");
+            }
         }
-        return false;
     }
 }
