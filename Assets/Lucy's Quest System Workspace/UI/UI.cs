@@ -62,6 +62,7 @@ public class Objective : MonoBehaviour
 
     private void QuestStateChange(Quest quest)
     {
+        Debug.Log("quest state change = " + quest.info.id);
         if (fuelIntroQuestCompleted)
         {
             Debug.Log("UI quest id = " + quest.info.id + " state = " + quest.state);
@@ -103,6 +104,8 @@ public class Objective : MonoBehaviour
     private void StartQuest(string id) {
         if (id == collectLogsQuestId) {
             fuelIntroQuestCompleted = true;
+            Quest logQuest = QuestManager.instance.GetQuestById(id);
+            QuestStateChange(logQuest);
         }
     }
 

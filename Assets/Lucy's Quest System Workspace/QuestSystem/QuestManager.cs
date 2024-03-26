@@ -114,6 +114,7 @@ public class QuestManager : MonoBehaviour
     }
     private void StartQuest(string id)
     {
+       Debug.Log("Start quest " + id);
        Quest quest = GetQuestById(id);
        quest.InstantiateCurrentQuestStep(this.transform); // instantiate the quest step under the quest manager game object
        ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
