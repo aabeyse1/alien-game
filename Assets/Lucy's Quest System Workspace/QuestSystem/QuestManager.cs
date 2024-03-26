@@ -11,14 +11,17 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private bool loadQuestState = true;
     private Dictionary<string, Quest> questMap;
 
+    public Quest currentQuest {get; private set;} 
+
+    public static QuestManager instance { get; private set; }
+
     // quest start requirements
     private int currentPlayerLevel = 1;  // TODO: get rid of this being hard coded
 
     private void Awake()
     {
+        instance = this;
         questMap = CreateQuestMap();
-
-        Quest quest = GetQuestById("CollectCoinsQuest");
 
     }
 
@@ -32,6 +35,7 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.instance.questEvents.onQuestStepStateChange += QuestStepStateChange;
 
         GameEventsManager.instance.playerEvents.onPlayerLevelChange += PlayerLevelChange;
+
     }
 
     private void OnDisable()
@@ -60,13 +64,18 @@ public class QuestManager : MonoBehaviour
             // broadcast the initial state of all quests on startup
             GameEventsManager.instance.questEvents.QuestStateChange(quest);
         }
+        
+        // // Let everyone know that all of the quests have been loaded in 
+        // Debug.Log("Done loading quests");
+        // GameEventsManager.instance.questEvents.DoneLoadingQuests();
     }
 
 
     private void ChangeQuestState(string id, QuestState state)
-    {
+    {   
         Quest quest = GetQuestById(id);
         quest.state = state;
+        
         GameEventsManager.instance.questEvents.QuestStateChange(quest); // let everyone else know that the state changed
     }
 
@@ -84,7 +93,6 @@ public class QuestManager : MonoBehaviour
         if (currentPlayerLevel < quest.info.levelRequirement) {
             meetsRequirements = false;
         }
-
         // check quest prerequisites for completion
         foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites) {
             if (GetQuestById(prerequisiteQuestInfo.id).state != QuestState.FINISHED) {
@@ -106,9 +114,12 @@ public class QuestManager : MonoBehaviour
     }
     private void StartQuest(string id)
     {
+       Debug.Log("Start quest " + id);
        Quest quest = GetQuestById(id);
        quest.InstantiateCurrentQuestStep(this.transform); // instantiate the quest step under the quest manager game object
        ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
+       currentQuest = quest; 
+       Debug.Log("Started quest. Current quest = " + currentQuest.info.id);
     }
 
     private void AdvanceQuest(string id)
@@ -130,9 +141,10 @@ public class QuestManager : MonoBehaviour
 
     private void FinishQuest(string id)
     {
-       Quest quest = GetQuestById(id);
-       ClaimRewards(quest);
-       ChangeQuestState(quest.info.id, QuestState.FINISHED);
+
+        Quest quest = GetQuestById(id);
+        ClaimRewards(quest);
+        ChangeQuestState(quest.info.id, QuestState.FINISHED);
 
     }
 
@@ -141,7 +153,9 @@ public class QuestManager : MonoBehaviour
     }
 
     private void QuestStepStateChange(string id, int stepIndex, QuestStepState questStepState) {
+
         Quest quest = GetQuestById(id);
+        
         quest.StoreQuestStepState(questStepState, stepIndex);
         ChangeQuestState(id, quest.state);
     }
@@ -160,6 +174,7 @@ public class QuestManager : MonoBehaviour
             }
             idToQuestMap.Add(questInfo.id, LoadQuest(questInfo));
         }
+
         return idToQuestMap;
 
     }
@@ -167,6 +182,7 @@ public class QuestManager : MonoBehaviour
     // catch errors if we try to access a quest id that doesn't exist
     public Quest GetQuestById(string id)
     {
+        
         Quest quest = questMap[id];
         if (quest == null)
         {

@@ -11,11 +11,27 @@ public class CollectLogsQuestStep : QuestStep // inherit from QuestStep
 
     private void OnEnable() { // this built in method is called when an object becomes enabled and active
         GameEventsManager.instance.pickUpEvents.onLogCollected += LogCollected; // when the event goes off, call that method
+        GameEventsManager.instance.playerEvents.onPlayerAreaChange += PlayerAreaChanged;
+
         UpdateState();
     }
 
     private void OnDisable() {
         GameEventsManager.instance.pickUpEvents.onLogCollected -= LogCollected;
+        GameEventsManager.instance.playerEvents.onPlayerAreaChange -= PlayerAreaChanged;
+
+    }
+
+    private void PlayerAreaChanged(string newArea) {
+        // Handles ending this log quest when the house has been exited after talking to the southern guy
+        if (newArea == "ExitHouse") {
+            Quest currentQuest = QuestManager.instance.currentQuest;
+            if (currentQuest.info.id == "CollectLogsQuest") {
+                FinishQuestStep();
+                GameEventsManager.instance.questEvents.FinishQuest(currentQuest.info.id);
+                GameEventsManager.instance.questEvents.StartQuest("CraftBagQuest");
+            }
+        }
     }
 
     private void LogCollected() {
@@ -32,7 +48,7 @@ public class CollectLogsQuestStep : QuestStep // inherit from QuestStep
 
     private void UpdateState() {
         string state = logsCollected.ToString();
-        ChangeState(state);
+        // ChangeState(state); // TODO: uncomment this
     }
 
     protected override void SetQuestStepState(string state) {

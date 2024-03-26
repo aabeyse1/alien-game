@@ -32,6 +32,7 @@ public abstract class QuestStep : MonoBehaviour // the class is abstract because
 
     protected void ChangeState(string newState) {
         GameEventsManager.instance.questEvents.QuestStepStateChange(questId, stepIndex, new QuestStepState(newState));
+        
     }
 
     protected abstract void SetQuestStepState(string state);
