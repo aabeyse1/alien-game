@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
@@ -7,20 +8,49 @@ public class CraftingPopupManager : MonoBehaviour
     public GameObject craftingPopup;
     public Image[] craftingSlots; 
     public Button craftButton;
-
     public Button mainButton;
     public Button hideButton;
-
     public Button extendedInventoryButton;
-
-
     private Item[] itemsInSlots = new Item[2]; // To store items in slots
     public InventoryManager inventoryManager; // Reference to manage inventory
     public CraftingRecipe[] recipes; 
+    private CraftingRecipe currentRecipe;
+
+    public AnimationHandler animationHandler;
+
+    public GameObject EatingAnimation;
+    public GameObject Character;
+
+    private bool isAnimationPlaying = false;
 
     void Start()
     {
         craftButton.interactable = false;
+    }
+
+    public void ExecuteCrafting(CraftingRecipe recipe)
+    {
+        if (recipe.resultItem.itemName == "Backpack")
+        {
+            // Special logic for backpack
+            extendedInventoryButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            // Proceed with crafting for non-special items
+            GameObject resultItemPrefab = Instantiate(recipe.resultItem.itemPrefab);
+            resultItemPrefab.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            bool wasAdded = inventoryManager.AddItem(recipe.resultItem, resultItemPrefab);
+            if (!wasAdded)
+            {
+                Debug.LogError("No space in inventory for crafted item.");
+                Destroy(resultItemPrefab);
+            }
+        }
+
+        ClearUsedItemsInCraftingSlots();
+        AddDefaultItemsToEmptySlots();
     }
 
     public void ShowCraftingPopup()
@@ -111,65 +141,52 @@ public void OnCraftButtonClick()
     {
         if (RecipeMatches(recipe))
         {
-            // Special case for crafting a backpack
-            if (recipe.resultItem.itemName == "Backpack") // Replace with your actual item name check
-            {
-                extendedInventoryButton.gameObject.SetActive(true);
-                // No need to add to inventory since it's an extension
-            }
-            else
-            {
-                // For all other items, instantiate and add to the inventory
-                GameObject resultItemPrefab = Instantiate(recipe.resultItem.itemPrefab);
-                resultItemPrefab.transform.localScale = new Vector3(1f, 1f, 1f); // Adjust scale as needed
+            currentRecipe = recipe; // Store the current recipe
+            
+            // Activate the EatingAnimation GameObject and hide the character
+            // It's crucial to ensure these lines are executed before starting the coroutine
+            EatingAnimation.transform.position = Character.transform.position;
+            Character.SetActive(false);
+            EatingAnimation.SetActive(true);
 
-                // Attempt to add the item to inventory
-                bool wasAdded = inventoryManager.AddItem(recipe.resultItem, resultItemPrefab);
-                if (!wasAdded)
-                {
-                    Debug.LogError("No space in inventory for crafted item.");
-                    Destroy(resultItemPrefab); // Cleanup
-                }
-            }
+            // Assuming AnimationHandler is correctly referenced and always active
+            // Start the animation using the instance of AnimationHandler
+            animationHandler.StartCraftingAnimation(recipe);
 
-            // Clear used items from crafting slots
-            ClearUsedItemsInCraftingSlots();
-
-            // Add default items to any empty slots left in the inventory
-            AddDefaultItemsToEmptySlots();
-
-            return; // Exit the loop as we've handled the crafting
+            HideCraftingPopup(); // Hide crafting popup if necessary
+            return; // Exit the loop as crafting is handled
         }
     }
-
     Debug.LogWarning("No matching recipe found.");
 }
 
-private void ClearUsedItemsInCraftingSlots()
-{
-    // Clear the items used in crafting
-    foreach (Image slot in craftingSlots)
+
+
+
+    private void ClearUsedItemsInCraftingSlots()
     {
-        if (slot.transform.childCount > 0)
+        // Clear the items used in crafting
+        foreach (Image slot in craftingSlots)
         {
-            Destroy(slot.transform.GetChild(0).gameObject); // Destroy the input items' GameObjects
+            if (slot.transform.childCount > 0)
+            {
+                Destroy(slot.transform.GetChild(0).gameObject); // Destroy the input items' GameObjects
+            }
         }
+
+        // Reset stored items in slots after crafting
+        ClearCraftingSlots();
     }
 
-    // Reset stored items in slots after crafting
-    ClearCraftingSlots();
-}
-
-private void AddDefaultItemsToEmptySlots()
-{
-    // Check each inventory slot and add default item if empty
-    foreach (GameObject slot in inventoryManager.inventorySlots)
+    private void AddDefaultItemsToEmptySlots()
     {
-        if (slot.transform.childCount == 0)
+        // Check each inventory slot and add default item if empty
+        foreach (GameObject slot in inventoryManager.inventorySlots)
         {
-            inventoryManager.AddDefaultItemToSlot(slot);
+            if (slot.transform.childCount == 0)
+            {
+                inventoryManager.AddDefaultItemToSlot(slot);
+            }
         }
     }
-}
-
 }
