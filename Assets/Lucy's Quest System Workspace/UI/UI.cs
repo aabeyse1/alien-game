@@ -10,7 +10,7 @@ public class Objective : MonoBehaviour
     [Header("Quest Dropdown")]
     public GameObject subObjectiveUI;
     public GameObject subObjectiveDropDownButton;
-    
+
     [Header("Quest Text")]
     public TMP_Text objectiveDisplayText;
 
@@ -18,44 +18,92 @@ public class Objective : MonoBehaviour
     public TMP_Text progressText;
 
     
-    private void Awake() {
+    [Header("Fuel Intro Quest")]
+    private bool fuelIntroQuestCompleted = false; // true after the log quest in the first chunk has been started
+    public string collectLogsQuestId = "CollectLogsQuest";
+    public string fuelQuestDisplayText = "Collect Fuel";
+    public string fuelQuestDescriptionText = "Collect fuel so you can continue your mission";
+
+
+
+
+
+
+    private void Awake()
+    {
         objectiveDisplayText.SetText("No active quests");
+
+        if (!fuelIntroQuestCompleted)
+        {
+            objectiveDisplayText.SetText(fuelQuestDisplayText);
+            objectiveDescriptionText.SetText(fuelQuestDescriptionText);
+        }
     }
     // Listen to events
-    private void OnEnable() {
+    private void OnEnable()
+    {
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
-        GameEventsManager.instance.questEvents.onQuestStepStateChange += QuestStepStateChange;        
+        GameEventsManager.instance.questEvents.onQuestStepStateChange += QuestStepStateChange;
+        GameEventsManager.instance.questEvents.onStartQuest += StartQuest;
+
+    
     }
 
     // Stop listening to events
-    private void OnDisable() {
+    private void OnDisable()
+    {
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
         GameEventsManager.instance.questEvents.onQuestStepStateChange -= QuestStepStateChange;
 
+        GameEventsManager.instance.questEvents.onStartQuest -= StartQuest;
+
 
     }
 
-    private void QuestStateChange(Quest quest) {
-        QuestState currentQuestState = quest.state;
-        // show this quest name as current quest
-        if (currentQuestState == QuestState.IN_PROGRESS || currentQuestState == QuestState.CAN_FINISH) {
-            objectiveDisplayText.SetText(quest.info.displayName);
-            objectiveDescriptionText.SetText(quest.info.description);        
-        } else {
-            objectiveDisplayText.SetText("No active quests");
-            objectiveDescriptionText.SetText("Information about this objective");
-            progressText.SetText("Progress: N/A");    
-        }
-        
-    }
-
-    private void QuestStepStateChange(string questId, int stepIndex, QuestStepState questStepState) {
-        try {
-             int numCollected = System.Int32.Parse(questStepState.state);
-             progressText.SetText("Progress: " + numCollected + " collected");
-            } catch {
-            Debug.Log("Error in converting questStepState to int"); // TODO: handle different types of quest step states
+    private void QuestStateChange(Quest quest)
+    {
+        if (fuelIntroQuestCompleted)
+        {
+            Debug.Log("UI quest id = " + quest.info.id + " state = " + quest.state);
+            QuestState currentQuestState = quest.state;
+            // show this quest name as current quest
+            if (currentQuestState == QuestState.IN_PROGRESS || currentQuestState == QuestState.CAN_FINISH)
+            {
+                objectiveDisplayText.SetText(quest.info.displayName);
+                objectiveDescriptionText.SetText(quest.info.description);
             }
+            else
+            {
+                objectiveDisplayText.SetText("No active quests");
+                objectiveDescriptionText.SetText("Information about this objective");
+                progressText.SetText("Progress: N/A");
+            }
+        }
+
+
+    }
+
+    private void QuestStepStateChange(string questId, int stepIndex, QuestStepState questStepState)
+    {
+        if (fuelIntroQuestCompleted)
+        {
+            try
+            {
+                int numCollected = System.Int32.Parse(questStepState.state);
+                progressText.SetText("Progress: " + numCollected + " collected");
+            }
+            catch
+            {
+                Debug.Log("Error in converting questStepState to int"); // TODO: handle different types of quest step states
+            }
+        }
+
+    }
+
+    private void StartQuest(string id) {
+        if (id == collectLogsQuestId) {
+            fuelIntroQuestCompleted = true;
+        }
     }
 
     public void ToggleObjectiveUI()

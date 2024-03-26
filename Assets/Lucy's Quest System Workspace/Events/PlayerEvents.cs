@@ -48,4 +48,13 @@ public class PlayerEvents
             onPlayerExperienceChange(experience);
         }
     }
+
+    public event Action<string> onPlayerAreaChange;
+    public void PlayerAreaChange(string newArea) 
+    {
+        if (onPlayerAreaChange != null) 
+        {
+            onPlayerAreaChange(newArea);
+        }
+    }
 }

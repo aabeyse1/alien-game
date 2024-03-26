@@ -29,6 +29,7 @@ public class QuestPoint : MonoBehaviour
     private void OnEnable() {
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
         GameEventsManager.instance.inputEvents.onSubmitPressed += SubmitPressed;
+
     }
 
      private void OnDisable() {
@@ -43,16 +44,12 @@ public class QuestPoint : MonoBehaviour
             Debug.Log("not near");
             return;
         }
-        Debug.Log("near enough");
         // start or finish a quest
         if (currentQuestState.Equals(QuestState.CAN_START) && startPoint) {
             GameEventsManager.instance.questEvents.StartQuest(questId);
-            Debug.Log("Start");
         } else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint) {
             GameEventsManager.instance.questEvents.FinishQuest(questId);
-            Debug.Log("Finish");
         }
-        Debug.Log(currentQuestState);
     }
 
     private void QuestStateChange(Quest quest) {

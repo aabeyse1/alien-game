@@ -44,6 +44,14 @@ public class QuestEvents
         }
     }
 
+    // public event Action onDoneLoadingQuests;
+
+    // public void DoneLoadingQuests() {
+    //     if (onDoneLoadingQuests != null) {
+    //         onDoneLoadingQuests();
+    //     }
+    // }
+
 
 
 }
