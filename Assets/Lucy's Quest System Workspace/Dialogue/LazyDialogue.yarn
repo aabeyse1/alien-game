@@ -13,9 +13,7 @@ Lazy Alien: And why would I do that?
             -> Up for a trade?
                 <<jump Trade>>
     -> Up for a trade?
-    <<<jump Trade>>>
-         
-           
+    <<<jump Trade>>> 
 ===
 
 title: Problem
