@@ -7,6 +7,9 @@ public class InventoryManager : MonoBehaviour
     public Item defaultItem;
     public GameObject defaultItemPrefab;
 
+    public GameObject extendedInventoryPanel; // Drag your extended inventory panel here
+    public ExtendedInventoryManager extendedInventoryManager; 
+
     public bool AddItem(Item item)
     {
         foreach (GameObject slot in inventorySlots)
@@ -33,29 +36,67 @@ public class InventoryManager : MonoBehaviour
         return false; // Inventory is full
     }
 
-public bool AddItem(Item item, GameObject itemGameObject = null)
-{
-    foreach (GameObject slot in inventorySlots)
+    public bool AddItem(Item item, GameObject itemGameObject = null)
     {
-        if (slot.transform.childCount == 0)
+        // First, try adding to the main inventory
+        if (TryAddItemToSlots(inventorySlots, item, itemGameObject))
         {
-            GameObject newItem;
-            
-            if (itemGameObject == null)
-            {
-                newItem = Instantiate(item.itemPrefab, slot.transform);
-            }
-            else
-            {
-                newItem = itemGameObject;
-                newItem.transform.SetParent(slot.transform, false);
-                newItem.transform.localPosition = Vector3.zero;
-            }
             return true;
         }
+
+        // If main is full, try the extended inventory if it's active
+        if (extendedInventoryPanel.activeSelf)
+        {
+            return TryAddItemToSlots(extendedInventoryManager.extendedInventorySlots, item, itemGameObject);
+        }
+
+        // Couldn't add to either inventory
+        return false;
     }
-    return false;
-}
+
+    private bool TryAddItemToSlots(GameObject[] slots, Item item, GameObject itemGameObject)
+    {
+        foreach (GameObject slot in slots)
+        {
+            // Adapt this logic based on your existing AddItem logic
+            if (slot.transform.childCount == 0) // Simplified check for empty slot
+            {
+                // Instantiate or reparent itemGameObject here, similar to your existing logic
+                // For simplicity:
+                GameObject newItem = itemGameObject ? itemGameObject : Instantiate(item.itemPrefab, slot.transform);
+                newItem.transform.SetParent(slot.transform, false);
+                newItem.transform.localPosition = Vector3.zero;
+                // Additional setup as needed...
+
+                return true; // Successfully added item
+            }
+        }
+        return false; // No empty slots found
+    }
+
+// public bool AddItem(Item item, GameObject itemGameObject = null)
+// {
+//     foreach (GameObject slot in inventorySlots)
+//     {
+//         if (slot.transform.childCount == 0)
+//         {
+//             GameObject newItem;
+            
+//             if (itemGameObject == null)
+//             {
+//                 newItem = Instantiate(item.itemPrefab, slot.transform);
+//             }
+//             else
+//             {
+//                 newItem = itemGameObject;
+//                 newItem.transform.SetParent(slot.transform, false);
+//                 newItem.transform.localPosition = Vector3.zero;
+//             }
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
     public void AddDefaultItemToSlot(GameObject slot)
     {
