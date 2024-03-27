@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: CraftBagQuest
   m_EditorClassIdentifier: 
   <id>k__BackingField: CraftBagQuest
-  displayName: 'Craft a bag '
-  description: u need it
+  displayName: Craft a bag
+  description: Make a bag so you can carry the wood for Buck
   levelRequirement: 1
   questPrerequisites:
-  - {fileID: 11400000, guid: b762893133a1645c5b21cc7e43f25492, type: 2}
+  - {fileID: 11400000, guid: 399b107571cf143d8ab5ea453de28c68, type: 2}
   questStepPrefabs:
   - {fileID: 3606608556287247524, guid: 86fb325342a624b5c8db4b734223aea6, type: 3}
   goldReward: 50

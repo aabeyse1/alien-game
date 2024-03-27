@@ -12,5 +12,14 @@ public class PickUpEvents
         }
     }
 
+    public event Action<string> onItemCrafted;
+    public void ItemCrafted(string itemName) 
+    {
+        if (onItemCrafted != null) 
+        {
+            onItemCrafted(itemName);
+        }
+    }
+
     
 }

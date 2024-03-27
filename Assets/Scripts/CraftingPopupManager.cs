@@ -49,6 +49,8 @@ public class CraftingPopupManager : MonoBehaviour
             }
         }
 
+        GameEventsManager.instance.pickUpEvents.ItemCrafted(recipe.resultItem.itemName);
+
         ClearUsedItemsInCraftingSlots();
         AddDefaultItemsToEmptySlots();
     }

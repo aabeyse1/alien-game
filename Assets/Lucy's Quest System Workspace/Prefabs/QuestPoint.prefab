@@ -167,7 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72122fa31796415ba4b87a126f15ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <id>k__BackingField: QuestPoint
   questInfoForPoint: {fileID: 0}
+  dialogueRunnerForPoint: {fileID: 0}
+  dialogueNodeForPoint: 
+  runDialogueBeforeQuest: 1
   startPoint: 1
   finishPoint: 1
 --- !u!50 &795128449261472144

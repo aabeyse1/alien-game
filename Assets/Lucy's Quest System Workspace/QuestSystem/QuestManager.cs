@@ -66,8 +66,8 @@ public class QuestManager : MonoBehaviour
         }
         
         // // Let everyone know that all of the quests have been loaded in 
-        // Debug.Log("Done loading quests");
-        // GameEventsManager.instance.questEvents.DoneLoadingQuests();
+        Debug.Log("Done loading quests");
+        GameEventsManager.instance.questEvents.DoneLoadingQuests();
     }
 
 
@@ -112,6 +112,8 @@ public class QuestManager : MonoBehaviour
             }
         }
     }
+
+    
     private void StartQuest(string id)
     {
        Debug.Log("Start quest " + id);

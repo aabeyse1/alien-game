@@ -18,11 +18,13 @@ public class Objective : MonoBehaviour
     public TMP_Text progressText;
 
     
-    [Header("Fuel Intro Quest")]
-    private bool fuelIntroQuestCompleted = false; // true after the log quest in the first chunk has been started
-    public string collectLogsQuestId = "CollectLogsQuest";
-    public string fuelQuestDisplayText = "Collect Fuel";
-    public string fuelQuestDescriptionText = "Collect fuel so you can continue your mission";
+    // [Header("Fuel Intro Quest")]
+    // // private bool fuelIntroQuestCompleted = false; // true after the log quest in the first chunk has been started
+    // public string collectLogsQuestId = "CollectLogsQuest";
+    // public string craftBagQuestId = "CraftBagQuest";
+
+    // public string fuelQuestDisplayText = "Collect Fuel";
+    // public string fuelQuestDescriptionText = "Collect fuel so you can continue your mission";
 
 
 
@@ -33,11 +35,11 @@ public class Objective : MonoBehaviour
     {
         objectiveDisplayText.SetText("No active quests");
 
-        if (!fuelIntroQuestCompleted)
-        {
-            objectiveDisplayText.SetText(fuelQuestDisplayText);
-            objectiveDescriptionText.SetText(fuelQuestDescriptionText);
-        }
+        // if (!fuelIntroQuestCompleted)
+        // {
+        //     objectiveDisplayText.SetText(fuelQuestDisplayText);
+        //     objectiveDescriptionText.SetText(fuelQuestDescriptionText);
+        // }
     }
     // Listen to events
     private void OnEnable()
@@ -63,8 +65,7 @@ public class Objective : MonoBehaviour
     private void QuestStateChange(Quest quest)
     {
         Debug.Log("quest state change = " + quest.info.id);
-        if (fuelIntroQuestCompleted)
-        {
+        
             Debug.Log("UI quest id = " + quest.info.id + " state = " + quest.state);
             QuestState currentQuestState = quest.state;
             // show this quest name as current quest
@@ -79,15 +80,14 @@ public class Objective : MonoBehaviour
                 objectiveDescriptionText.SetText("Information about this objective");
                 progressText.SetText("Progress: N/A");
             }
-        }
+        
 
 
     }
 
     private void QuestStepStateChange(string questId, int stepIndex, QuestStepState questStepState)
     {
-        if (fuelIntroQuestCompleted)
-        {
+        
             try
             {
                 int numCollected = System.Int32.Parse(questStepState.state);
@@ -97,16 +97,15 @@ public class Objective : MonoBehaviour
             {
                 Debug.Log("Error in converting questStepState to int"); // TODO: handle different types of quest step states
             }
-        }
+        
 
     }
 
     private void StartQuest(string id) {
-        if (id == collectLogsQuestId) {
-            fuelIntroQuestCompleted = true;
-            Quest logQuest = QuestManager.instance.GetQuestById(id);
-            QuestStateChange(logQuest);
-        }
+        
+            Quest quest = QuestManager.instance.GetQuestById(id);
+            QuestStateChange(quest);
+        
     }
 
     public void ToggleObjectiveUI()

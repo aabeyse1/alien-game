@@ -5,37 +5,28 @@ using UnityEngine;
 
 public class CraftBagQuestStep : QuestStep // inherit from QuestStep
 {
-    private int logsCollected = 0;
-    private int logsToComplete = 5; 
 
-    private void OnEnable() { // this built in method is called when an object becomes enabled and active
-        GameEventsManager.instance.pickUpEvents.onLogCollected += LogCollected; // when the event goes off, call that method
-        UpdateState();
+    [SerializeField] private string backpackItemName = "Backpack";
+
+    private void OnEnable() { 
+        GameEventsManager.instance.pickUpEvents.onItemCrafted += ItemCrafted;
+       
     }
 
     private void OnDisable() {
-        GameEventsManager.instance.pickUpEvents.onLogCollected -= LogCollected;
+        GameEventsManager.instance.pickUpEvents.onItemCrafted -= ItemCrafted;
+
     }
 
-    private void LogCollected() {
-        
-        if (logsCollected < logsToComplete) {
-            logsCollected++;
-            UpdateState();
-        }
-        if (logsCollected >= logsToComplete) {
+
+    private void ItemCrafted(string itemName) {
+        if (itemName == backpackItemName) {
             FinishQuestStep();
         }
-        Debug.Log(logsCollected + "/" + logsToComplete + " logs collected");
     }
 
-    private void UpdateState() {
-        string state = logsCollected.ToString();
-        // ChangeState(state); // TODO: uncomment this
-    }
-
-    protected override void SetQuestStepState(string state) {
-        this.logsCollected = System.Int32.Parse(state); // TODO - could wrap this in a try-catch block
-        UpdateState();
+    protected override void SetQuestStepState(string state)
+    {
+        
     }
 }

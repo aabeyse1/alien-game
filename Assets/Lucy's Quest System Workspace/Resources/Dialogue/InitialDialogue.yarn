@@ -18,4 +18,5 @@ Alien Officer: Yeah, we. If you fail, I fail.
 Ua: Doesn't sound too bad!
 Alien Officer: ...
 Alien Officer: I knew I should've taken off today.
+<<StartQuest DialogueManager CollectFuelQuest>>
 ===

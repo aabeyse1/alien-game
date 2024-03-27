@@ -24,14 +24,14 @@ public class CollectLogsQuestStep : QuestStep // inherit from QuestStep
 
     private void PlayerAreaChanged(string newArea) {
         // Handles ending this log quest when the house has been exited after talking to the southern guy
-        if (newArea == "ExitHouse") {
-            Quest currentQuest = QuestManager.instance.currentQuest;
-            if (currentQuest.info.id == "CollectLogsQuest") {
-                FinishQuestStep();
-                GameEventsManager.instance.questEvents.FinishQuest(currentQuest.info.id);
-                GameEventsManager.instance.questEvents.StartQuest("CraftBagQuest");
-            }
-        }
+        // if (newArea == "ExitHouse") {
+        //     Quest currentQuest = QuestManager.instance.currentQuest;
+        //     if (currentQuest.info.id == "CollectLogsQuest") {
+        //         FinishQuestStep();
+        //         GameEventsManager.instance.questEvents.FinishQuest(currentQuest.info.id);
+        //         GameEventsManager.instance.questEvents.StartQuest("CraftBagQuest");
+        //     }
+        // }
     }
 
     private void LogCollected() {

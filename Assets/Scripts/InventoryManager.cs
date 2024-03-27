@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -141,5 +142,29 @@ public class InventoryManager : MonoBehaviour
                 Debug.LogError("Item prefab does not have a DraggableItem component.");
             }
         }
+    }
+
+
+    [YarnFunction("isItemInInventory")]
+    public static bool isItemInInventory(string itemName) {
+        
+        // given a string with the name of an item, return true if at least one of that item is in the player's inventory
+        return true;
+    }
+
+    [YarnCommand("addToInventory")]
+    public void addToInventory(string itemName) {
+        
+        // given a string with the name of an item, add that item to the player's inventory
+    }
+
+    [YarnCommand("removeFromInventory")]
+    public void removeFromInventory(string itemName) {
+        if (isItemInInventory(itemName)) {
+             // given a string with the name of an item, remove that item from the player's inventory
+        } else {
+            Debug.LogError("Unable to remove item " + itemName + " from player inventory.");
+        }
+       
     }
 }

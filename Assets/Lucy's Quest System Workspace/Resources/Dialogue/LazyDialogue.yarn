@@ -9,11 +9,11 @@ Lazy Alien: And why would I do that?
         Lazy Alien: Are you trying to intimidate me?
         Lazy Alien: You Faction 1s have no right ordered us around. Scram.
             -> What's your problem?
-            <<<jump Problem>>>
+            <<jump Problem>>
             -> Up for a trade?
                 <<jump Trade>>
     -> Up for a trade?
-    <<<jump Trade>>> 
+    <<jump Trade>> 
 ===
 
 title: Problem
@@ -24,6 +24,7 @@ Ua: *Dejected, yet imploring alien noises*
 Lazy Alien: …Damn, alright, fine.
 Lazy Alien: If you bring me a nice sock - one for my horn here - I’ll give you what you damn near threatened me for.
 Lazy Alien: Anything to get rid of you.
+<<setDialogueNode DialogueManager SleepyQuestPoint Lazy_During>>
 ===
 
 title: Trade
@@ -40,6 +41,15 @@ title: Lazy_Repeat
 Lazy Alien: You deaf or something? I said get the sock!
 ===
 
+title: Lazy_During
+---
+<<if isItemInInventory("Sock") == true>>
+    <<jump Lazy_Correct>>
+<<else>>
+    <<jump Lazy_Repeat>>
+<<endif>>
+===
+
 title: Lazy_Incorrect
 ---
 Lazy Alien: I knew Faction 1’s were slow but damn.
@@ -53,4 +63,11 @@ Ua: Why's that?
 Lazy Alien: …Our chief is hellbent on finding that honey reservoir everyone’s after.
 Lazy Alien: He’s got me all caught up in the mess. So do yourself a favor and get as far away from this nonsense as possible, yeah? 
 Lazy Alien: That includes here.
+<<removeFromInventory InventoryManager Sock>>
+<<addToInventory InventoryManager Belt>>
+===
+
+title: Lazy_Before
+---
+Lazy Alien: Leave me alone.
 ===
