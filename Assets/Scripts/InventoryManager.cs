@@ -80,6 +80,7 @@ public class InventoryManager : MonoBehaviour
             {
                 // Create a new item if there's no child
                 CreateNewItemInSlot(slot, item, itemGameObject);
+                itemsInInventory.Add(item.itemName);
                 return true;
             }
         }
