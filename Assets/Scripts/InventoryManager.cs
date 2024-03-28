@@ -74,6 +74,7 @@ public class InventoryManager : MonoBehaviour
                 itemRep.item = item;
                 itemRep.gameObject.SetActive(true);
                 UpdateItemVisuals(itemRep.gameObject, item);
+                itemsInInventory.Add(item.itemName);
                 return true; // Item successfully reactivated
             }
             else if (slot.transform.childCount == 0)
