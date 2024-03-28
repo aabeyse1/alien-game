@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: CollectFuelQuest
   displayName: Collect Fuel
-  description: Collect fuel so you can continue your mission
+  description: See if you can find someone that has fuel so you can complete your
+    mission.
   levelRequirement: 1
   questPrerequisites: []
   questStepPrefabs:
