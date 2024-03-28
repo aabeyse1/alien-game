@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2871742930330511001}
   - component: {fileID: 6450852195528438906}
   - component: {fileID: 4142408455330287890}
+  - component: {fileID: 2362945014109071}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -219,3 +220,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 613b6fd9bef0c479a922bb5efad835ba, type: 2}
+--- !u!225 &2362945014109071
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7056948275355669066}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

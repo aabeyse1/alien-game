@@ -8,8 +8,9 @@ public class InventoryManager : MonoBehaviour
     public Item defaultItem;
     public GameObject defaultItemPrefab;
 
-    public GameObject extendedInventoryPanel; // Drag your extended inventory panel here
+    public GameObject extendedInventoryPanel;
     public ExtendedInventoryManager extendedInventoryManager; 
+    public Button backpackButton;
 
     public bool AddItem(Item item)
     {
@@ -46,7 +47,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         // If main is full, try the extended inventory if it's active
-        if (extendedInventoryPanel.activeSelf)
+        if (backpackButton.gameObject.activeSelf)
         {
             return TryAddItemToSlots(extendedInventoryManager.extendedInventorySlots, item, itemGameObject);
         }
@@ -55,49 +56,73 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    private bool TryAddItemToSlots(GameObject[] slots, Item item, GameObject itemGameObject)
+
+   private bool TryAddItemToSlots(GameObject[] slots, Item item, GameObject itemGameObject)
     {
         foreach (GameObject slot in slots)
         {
-            // Adapt this logic based on your existing AddItem logic
-            if (slot.transform.childCount == 0) // Simplified check for empty slot
+            ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
+            if (itemRep != null && !itemRep.gameObject.activeSelf)
             {
-                // Instantiate or reparent itemGameObject here, similar to your existing logic
-                // For simplicity:
-                GameObject newItem = itemGameObject ? itemGameObject : Instantiate(item.itemPrefab, slot.transform);
-                newItem.transform.SetParent(slot.transform, false);
-                newItem.transform.localPosition = Vector3.zero;
-                // Additional setup as needed...
-
-                return true; // Successfully added item
+                // Reactivate and update an existing but inactive ItemRepresentation
+                itemRep.item = item;
+                itemRep.gameObject.SetActive(true);
+                UpdateItemVisuals(itemRep.gameObject, item);
+                return true; // Item successfully reactivated
+            }
+            else if (slot.transform.childCount == 0)
+            {
+                // Create a new item if there's no child
+                CreateNewItemInSlot(slot, item, itemGameObject);
+                return true;
             }
         }
-        return false; // No empty slots found
+        return false; // No suitable slot found
     }
 
-// public bool AddItem(Item item, GameObject itemGameObject = null)
-// {
-//     foreach (GameObject slot in inventorySlots)
-//     {
-//         if (slot.transform.childCount == 0)
-//         {
-//             GameObject newItem;
-            
-//             if (itemGameObject == null)
-//             {
-//                 newItem = Instantiate(item.itemPrefab, slot.transform);
-//             }
-//             else
-//             {
-//                 newItem = itemGameObject;
-//                 newItem.transform.SetParent(slot.transform, false);
-//                 newItem.transform.localPosition = Vector3.zero;
-//             }
-//             return true;
-//         }
-//     }
-//     return false;
-// }
+    private void CreateNewItemInSlot(GameObject slot, Item item, GameObject itemGameObject)
+    {
+        GameObject newItem = itemGameObject ?? Instantiate(item.itemPrefab, slot.transform);
+        newItem.transform.SetAsFirstSibling(); // Ensure it's the first child for consistency
+        newItem.transform.localPosition = Vector3.zero;
+        newItem.transform.localRotation = Quaternion.identity;
+        newItem.transform.localScale = Vector3.one;
+
+        SetupNewItem(newItem, item);
+    }
+
+
+    private void SetupNewItem(GameObject newItem, Item item)
+    {
+        Image itemImage = newItem.GetComponent<Image>();
+        if (itemImage == null) itemImage = newItem.AddComponent<Image>();
+        itemImage.sprite = item.itemSprite;
+
+        ItemRepresentation itemRep = newItem.GetComponent<ItemRepresentation>();
+        if (itemRep == null) itemRep = newItem.AddComponent<ItemRepresentation>();
+        itemRep.item = item;
+
+        // Setup for DraggableItem, if applicable
+        DraggableItem draggableItem = newItem.GetComponent<DraggableItem>();
+        if (draggableItem == null) draggableItem = newItem.AddComponent<DraggableItem>();
+        // Set draggableItem's originalSlot or other properties as needed
+    }
+
+    private void UpdateItemVisuals(GameObject itemObject, Item item)
+    {
+        // This method updates the visuals of an existing item representation
+        Image itemImage = itemObject.GetComponent<Image>();
+        if (itemImage != null)
+        {
+            itemImage.sprite = item.itemSprite;
+        }
+        else
+        {
+            Debug.LogError("Item representation does not have an Image component.");
+        }
+    }
+
+
 
     public void AddDefaultItemToSlot(GameObject slot)
     {

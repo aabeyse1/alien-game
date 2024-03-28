@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
+
 
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -9,16 +11,18 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private CanvasGroup canvasGroup;
 
     public GameObject originalSlot;
+    private Vector3 originalScale;
 
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
+        originalScale = transform.localScale;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         itemBeingDragged = gameObject;
-        startPosition = transform.localPosition; // Use localPosition for more accurate reset within parent
+        startPosition = transform.localPosition; 
         startParent = transform.parent;
         canvasGroup.blocksRaycasts = false;
     }
@@ -30,22 +34,39 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.localPosition = newPos;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        itemBeingDragged = null;
-        canvasGroup.blocksRaycasts = true;
+public void OnEndDrag(PointerEventData eventData)
+{
+    itemBeingDragged = null;
+    canvasGroup.blocksRaycasts = true;
 
-        // Check if the item has been dropped into a new slot or needs to return to its start position
-        if (transform.parent == startParent)
+    // Use a Raycast to determine if we're over an inventory slot
+    if (EventSystem.current.IsPointerOverGameObject(eventData.pointerId))
+    {
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        RaycastResult result = results.Find(r => r.gameObject.CompareTag("InventorySlot"));
+
+        if (result.gameObject != null)
         {
-            transform.localPosition = startPosition; // Snap back if not dropped into a new slot
+            // Dropped on a new inventory slot
+            Transform inventorySlot = result.gameObject.transform;
+            transform.SetParent(inventorySlot);
+            transform.localPosition = Vector3.zero; 
         }
-        else
+        else if (transform.parent == startParent || transform.parent.GetComponent<InventorySlot>() == null) // Assuming you have an InventorySlot component
         {
-            // Reset scale or other properties as needed when successfully dropped into a new slot
-            // transform.localScale = Vector3.one;
+            // Not dropped on a new slot, or not an inventory slot; revert to original position
+            transform.localPosition = startPosition;
         }
+        transform.localScale = originalScale;
     }
+    else
+    {
+        // Dropped outside any slot; revert to original position
+        transform.localPosition = startPosition;
+    }
+}
+
 
     public void ResetDraggable()
     {
@@ -53,6 +74,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         gameObject.SetActive(true);
         transform.SetParent(startParent);
         transform.localPosition = startPosition;
-        transform.localScale = Vector3.one; // Reset scale if it was altered during dragging
+        transform.localScale = originalScale;
     }
 }

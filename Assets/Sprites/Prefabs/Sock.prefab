@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2871742930330511001}
   - component: {fileID: 6450852195528438906}
   - component: {fileID: 4142408455330287890}
+  - component: {fileID: 8044209736757356145}
   m_Layer: 0
   m_Name: Sock
   m_TagString: Untagged
@@ -217,3 +218,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: a2d0c81c4c8124850baa6c16c2e175e2, type: 2}
+--- !u!225 &8044209736757356145
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7056948275355669066}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

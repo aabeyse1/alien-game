@@ -33,7 +33,7 @@ public class ItemPickup : MonoBehaviour
     void Pickup()
     {
         InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
-        bool wasAdded = inventoryManager.AddItem(item);
+        bool wasAdded = inventoryManager.AddItem(item, null);
         if (wasAdded)
         {
             gameObject.SetActive(false);

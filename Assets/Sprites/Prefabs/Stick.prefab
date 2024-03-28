@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4329216887003994414}
   - component: {fileID: 326964907857129367}
   - component: {fileID: 7918169240357760963}
+  - component: {fileID: -7395994702806460349}
   m_Layer: 0
   m_Name: Stick
   m_TagString: Item
@@ -217,3 +218,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 13.189598, y: 6.8679485}
   m_EdgeRadius: 0
+--- !u!225 &-7395994702806460349
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875275513914938607}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
