@@ -105,15 +105,15 @@ public class CraftingPopupManager : MonoBehaviour
         int slotIndex = System.Array.IndexOf(craftingSlots, slot.GetComponent<Image>());
         if (slotIndex != -1)
         {
-            itemsInSlots[slotIndex] = item; // Store the dropped item
-            UpdateCraftability(); // Re-evaluate crafting availability
+            itemsInSlots[slotIndex] = item;
+            UpdateCraftability();
         }
     }
 
- public void UpdateCraftability()
-{
-    craftButton.interactable = recipes.Any(recipe => RecipeMatches(recipe));
-}
+    public void UpdateCraftability()
+    {
+        craftButton.interactable = recipes.Any(recipe => RecipeMatches(recipe));
+    }
 
 
     private bool RecipeMatches(CraftingRecipe recipe)
@@ -137,30 +137,29 @@ public class CraftingPopupManager : MonoBehaviour
         }
     }
 
-public void OnCraftButtonClick()
-{
-    foreach (var recipe in recipes)
+    public void OnCraftButtonClick()
     {
-        if (RecipeMatches(recipe))
+        foreach (var recipe in recipes)
         {
-            currentRecipe = recipe; // Store the current recipe
-            
-            // Activate the EatingAnimation GameObject and hide the character
-            // It's crucial to ensure these lines are executed before starting the coroutine
-            EatingAnimation.transform.position = Character.transform.position;
-            Character.SetActive(false);
-            EatingAnimation.SetActive(true);
+            if (RecipeMatches(recipe))
+            {
+                currentRecipe = recipe; // Store the current recipe
+                
+                // Activate the EatingAnimation GameObject and hide the character
+                // It's crucial to ensure these lines are executed before starting the coroutine
+                EatingAnimation.transform.position = Character.transform.position;
+                Character.SetActive(false);
+                EatingAnimation.SetActive(true);
 
-            // Assuming AnimationHandler is correctly referenced and always active
-            // Start the animation using the instance of AnimationHandler
-            animationHandler.StartCraftingAnimation(recipe);
 
-            HideCraftingPopup(); // Hide crafting popup if necessary
-            return; // Exit the loop as crafting is handled
+                animationHandler.StartCraftingAnimation(recipe);
+
+                HideCraftingPopup(); // Hide crafting popup if necessary
+                return; // Exit the loop as crafting is handled
+            }
         }
+        Debug.LogWarning("No matching recipe found.");
     }
-    Debug.LogWarning("No matching recipe found.");
-}
 
 
 

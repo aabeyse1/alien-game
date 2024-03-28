@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
+using System.Collections.Generic;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class InventoryManager : MonoBehaviour
     public GameObject extendedInventoryPanel;
     public ExtendedInventoryManager extendedInventoryManager; 
     public Button backpackButton;
+
+    public ItemDatabase itemDatabase;
+
+    public static List<string> itemsInInventory = new List<string>();
 
     public bool AddItem(Item item)
     {
@@ -32,7 +37,8 @@ public class InventoryManager : MonoBehaviour
                 }
                 itemRep.item = item;
 
-                return true; // Item successfully added
+                itemsInInventory.Add(item.itemName);
+                return true;
             }
         }
         return false; // Inventory is full
@@ -171,25 +177,74 @@ public class InventoryManager : MonoBehaviour
 
 
     [YarnFunction("isItemInInventory")]
-    public static bool isItemInInventory(string itemName) {
-        
-        // given a string with the name of an item, return true if at least one of that item is in the player's inventory
-        return true;
+    public static bool isItemInInventory(string itemName)
+    {
+        return itemsInInventory.Contains(itemName);
     }
+
 
     [YarnCommand("addToInventory")]
-    public void addToInventory(string itemName) {
-        
-        // given a string with the name of an item, add that item to the player's inventory
+    public void AddToInventoryCommand(string itemName)
+    {
+        Item item = itemDatabase.GetItemByName(itemName);
+        if (item != null)
+        {
+            bool added = AddItem(item);
+            if (!added)
+            {
+                Debug.LogError("Failed to add item to inventory: " + itemName);
+            }
+        }
+        else
+        {
+            Debug.LogError("Item not found in database: " + itemName);
+        }
     }
 
+
     [YarnCommand("removeFromInventory")]
-    public void removeFromInventory(string itemName) {
-        if (isItemInInventory(itemName)) {
-             // given a string with the name of an item, remove that item from the player's inventory
-        } else {
-            Debug.LogError("Unable to remove item " + itemName + " from player inventory.");
+    public void RemoveFromInventoryCommand(string itemName)
+    {
+        // Check if the item is in the inventory
+        if (itemsInInventory.Contains(itemName))
+        {
+            // Remove the item name from the tracking list
+            itemsInInventory.Remove(itemName);
+
+            // Find the slot that contains this item and remove it
+            foreach (GameObject slot in inventorySlots)
+            {
+                ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>();
+                if (itemRep != null && itemRep.item.itemName == itemName)
+                {
+                    // Deactivate the current item representation
+                    itemRep.gameObject.SetActive(false);
+
+                    // Add a default item to this slot
+                    AddDefaultItemToSlot(slot);
+                    return; // Exit after dealing with the first occurrence
+                }
+            }
+
+            // If the item wasn't found in the main inventory, check the extended inventory
+            foreach (GameObject slot in extendedInventoryManager.extendedInventorySlots)
+            {
+                ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>();
+                if (itemRep != null && itemRep.item.itemName == itemName)
+                {
+                    // Deactivate the current item representation
+                    itemRep.gameObject.SetActive(false);
+
+                    // Add a default item to this slot
+                    AddDefaultItemToSlot(slot);
+                    return; // Exit after dealing with the first occurrence
+                }
+            }
         }
-       
+        else
+        {
+            Debug.LogError("Item not in inventory: " + itemName);
+        }
     }
+
 }

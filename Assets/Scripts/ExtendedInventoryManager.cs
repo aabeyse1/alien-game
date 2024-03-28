@@ -21,7 +21,7 @@ public class ExtendedInventoryManager : MonoBehaviour
 
         for (int i = 0; i < slotCount; i++)
         {
-            GameObject slot = Instantiate(inventorySlotPrefab, slotsParent); // Instantiate under the assigned parent.
+            GameObject slot = Instantiate(inventorySlotPrefab, slotsParent);
             slot.name = "InventorySlot " + i;
             extendedInventorySlots[i] = slot;
         }

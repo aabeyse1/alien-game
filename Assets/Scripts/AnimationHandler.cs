@@ -30,23 +30,22 @@ public static AnimationHandler Instance { get; private set; }
         animator = eatingAnimation.GetComponent<Animator>(); // Cache the Animator component.
     }
 
-// In AnimationHandler.cs
-public void StartCraftingAnimation(CraftingRecipe recipe)
-{
-    currentRecipe = recipe;
-    SetupAnimationSprites(recipe);
-    StartCoroutine(CraftingAnimationCoroutine());
-}
+    public void StartCraftingAnimation(CraftingRecipe recipe)
+    {
+        currentRecipe = recipe;
+        SetupAnimationSprites(recipe);
+        StartCoroutine(CraftingAnimationCoroutine());
+    }
 
-private IEnumerator CraftingAnimationCoroutine()
-{
-    animator.Play("Eating", -1, 0f);
-    
-    // Wait for the animation to reach its end
-    yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
-    
-    OnAnimationComplete();
-}
+    private IEnumerator CraftingAnimationCoroutine()
+    {
+        animator.Play("Eating", -1, 0f);
+        
+        // Wait for the animation to reach its end
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        
+        OnAnimationComplete();
+    }
 
 
     private void OnAnimationComplete()
