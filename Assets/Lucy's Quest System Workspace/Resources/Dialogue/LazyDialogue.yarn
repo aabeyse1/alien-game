@@ -63,11 +63,13 @@ Ua: Why's that?
 Lazy Alien: …Our chief is hellbent on finding that honey reservoir everyone’s after.
 Lazy Alien: He’s got me all caught up in the mess. So do yourself a favor and get as far away from this nonsense as possible, yeah? 
 Lazy Alien: That includes here.
-<<removeFromInventory InventoryManager Sock>>
-<<addToInventory InventoryManager Belt>>
+
+<<removeFromInventory InventoryCanvas Sock>>
+<<addToInventory InventoryCanvas Belt>>
 ===
 
 title: Lazy_Before
 ---
 Lazy Alien: Leave me alone.
+
 ===

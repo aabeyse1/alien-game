@@ -61,12 +61,13 @@ public class QuestPoint : MonoBehaviour
     private void SubmitPressed()
     {
 
+        Debug.Log("submit pressed!");
         if (!playerIsNear)
         {
             // Debug.Log("not near and submit pressed");
             return;
         }
-        Debug.Log("near and submit pressed");
+        
         if (runDialogueBeforeQuest)
         {
             

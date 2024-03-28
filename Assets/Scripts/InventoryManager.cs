@@ -184,9 +184,15 @@ public class InventoryManager : MonoBehaviour
         return itemsInInventory.Contains(itemName);
     }
 
+    [YarnCommand("testMethod")]
+
+    public void testMethod() {
+        Debug.Log("TESY METHOD CALLED");
+    }
+
 
     [YarnCommand("addToInventory")]
-    public void AddToInventoryCommand(string itemName)
+    public void addToInventory(string itemName)
     {
         Item item = itemDatabase.GetItemByName(itemName);
         if (item != null)
