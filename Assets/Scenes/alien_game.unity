@@ -2490,8 +2490,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 26.5}
-  m_SizeDelta: {x: 567.208, y: 367.44922}
+  m_AnchoredPosition: {x: -192.64929, y: 97.369156}
+  m_SizeDelta: {x: 366.6634, y: 225.7116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &399297263
 MonoBehaviour:
@@ -6040,6 +6040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284f492fcc381400fa746c4499a6b897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  craftingPopup: {fileID: 399297261}
   extendedInventoryPanel: {fileID: 1425290303}
 --- !u!1 &1008836577
 GameObject:
@@ -9556,8 +9557,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.854187, y: -17.476318}
-  m_SizeDelta: {x: -306.5721, y: -260.8966}
+  m_AnchoredPosition: {x: 140.14583, y: 70.981705}
+  m_SizeDelta: {x: -317.1271, y: -261.9034}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1430155336
 GameObject:
