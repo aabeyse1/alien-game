@@ -39,33 +39,65 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         itemBeingDragged = null;
         canvasGroup.blocksRaycasts = true;
 
-        // Use a Raycast to determine if we're over an inventory slot
+        InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+        if (inventoryManager == null)
+        {
+            Debug.LogError("InventoryManager not found.");
+            return;
+        }
+
         if (EventSystem.current.IsPointerOverGameObject(eventData.pointerId))
         {
-            List<RaycastResult> results = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventData, results);
-            RaycastResult result = results.Find(r => r.gameObject.CompareTag("InventorySlot"));
+            ResetItemPosition();
+        }
+        else if (!inventoryManager.extendedInventoryPanel.activeSelf)
+        {
+            Vector3 dropPosition = Camera.main.ScreenToWorldPoint(eventData.position);
+            dropPosition.z = 1;
 
-            if (result.gameObject != null)
+            ItemRepresentation itemRep = GetComponent<ItemRepresentation>();
+            if (itemRep != null)
             {
-                // Dropped on a new inventory slot
-                Transform inventorySlot = result.gameObject.transform;
-                transform.SetParent(inventorySlot);
-                transform.localPosition = Vector3.zero; 
+                inventoryManager.PlaceItemInWorld(itemRep.item.itemName, dropPosition);
+
+                inventoryManager.AddDefaultItemToSlot(startParent.gameObject);
+
             }
-            else if (transform.parent == startParent || transform.parent.GetComponent<InventorySlot>() == null) // Assuming you have an InventorySlot component
+            else
             {
-                // Not dropped on a new slot, or not an inventory slot; revert to original position
-                transform.localPosition = startPosition;
+                Debug.LogError("ItemRepresentation not found on the dragged item.");
             }
-            transform.localScale = originalScale;
         }
         else
         {
-            // Dropped outside any slot; revert to original position
-            transform.localPosition = startPosition;
+            ResetItemPosition();
         }
     }
+
+
+    private void SetItemParentAndPosition(Transform newParent)
+    {
+        transform.SetParent(newParent, false);
+        transform.localPosition = Vector3.zero;
+        transform.localScale = originalScale; // Reset any scale changes
+    }
+
+    private void ResetItemPosition()
+    {
+        transform.localPosition = startPosition;
+        transform.SetParent(startParent, false);
+        transform.localScale = originalScale; // Reset scale to original
+    }
+
+    private void PlaceItemOnMap(PointerEventData eventData)
+    {
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
+        worldPosition.z = 1;
+
+        Debug.Log($"Placing item at {worldPosition}");
+    }
+
+
 
 
     public void ResetDraggable()

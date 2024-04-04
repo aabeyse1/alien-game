@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
 using System.Collections.Generic;
+using System.Linq;
+using System.Collections;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -16,6 +18,83 @@ public class InventoryManager : MonoBehaviour
     public ItemDatabase itemDatabase;
 
     public static List<string> itemsInInventory = new List<string>();
+
+    public GameObject beltPrefab;
+    public GameObject hammerPrefab;
+    public GameObject sockPrefab;
+    public GameObject stickPrefab;
+    public GameObject quiltPrefab;
+
+    private GameObject GetItemGameObjectByName(string itemName)
+    {
+        switch (itemName.ToLower())
+        {
+            case "belt":
+                return beltPrefab;
+            case "hammer":
+                return hammerPrefab;
+            case "sock":
+                return sockPrefab;
+            case "stick":
+                return stickPrefab;
+            case "quilt":
+                return quiltPrefab;
+            default:
+                Debug.LogError("GameObject not found for item: " + itemName);
+                return null;
+        }
+    }
+
+
+    public void PlaceItemInWorld(string itemName, Vector3 worldPosition)
+    {
+        GameObject itemGameObject = GetItemGameObjectByName(itemName);
+        if (itemGameObject != null)
+        {
+            itemGameObject.SetActive(true);
+            itemGameObject.transform.position = worldPosition;
+
+            RemoveFromInventory(itemName);
+        }
+        else
+        {
+            Debug.LogError($"GameObject for item '{itemName}' not found.");
+        }
+    }
+
+public void RemoveFromInventory(string itemName)
+{
+    if (itemsInInventory.Contains(itemName))
+    {
+        itemsInInventory.Remove(itemName);
+
+        IEnumerable<GameObject> allSlots = inventorySlots.Concat(extendedInventoryManager.extendedInventorySlots);
+
+        foreach (GameObject slot in allSlots)
+        {
+            ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
+            if (itemRep != null && itemRep.item.itemName == itemName)
+            {
+                Destroy(itemRep.gameObject); // Destroy the item representation GameObject
+                StartCoroutine(AddDefaultItemAfterFrame(slot));
+                break; // Exit after handling the item
+            }
+        }
+    }
+    else
+    {
+        Debug.LogError("Item not in inventory: " + itemName);
+    }
+}
+
+private IEnumerator AddDefaultItemAfterFrame(GameObject slot)
+{
+    yield return null; 
+    AddDefaultItemToSlot(slot);
+}
+
+
+
 
     public bool AddItem(Item item)
     {
@@ -136,6 +215,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (slot.transform.childCount == 0)
         {
+            Debug.Log("amde it inside childcount if");
             // Instantiate the default item prefab as a child of the slot
             GameObject newItem = Instantiate(defaultItemPrefab, slot.transform);
             newItem.transform.localPosition = Vector3.zero;
