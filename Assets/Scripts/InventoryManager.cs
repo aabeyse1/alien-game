@@ -62,36 +62,36 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-public void RemoveFromInventory(string itemName)
-{
-    if (itemsInInventory.Contains(itemName))
+    public void RemoveFromInventory(string itemName)
     {
-        itemsInInventory.Remove(itemName);
-
-        IEnumerable<GameObject> allSlots = inventorySlots.Concat(extendedInventoryManager.extendedInventorySlots);
-
-        foreach (GameObject slot in allSlots)
+        if (itemsInInventory.Contains(itemName))
         {
-            ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
-            if (itemRep != null && itemRep.item.itemName == itemName)
+            itemsInInventory.Remove(itemName);
+
+            IEnumerable<GameObject> allSlots = inventorySlots.Concat(extendedInventoryManager.extendedInventorySlots);
+
+            foreach (GameObject slot in allSlots)
             {
-                Destroy(itemRep.gameObject); // Destroy the item representation GameObject
-                StartCoroutine(AddDefaultItemAfterFrame(slot));
-                break; // Exit after handling the item
+                ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
+                if (itemRep != null && itemRep.item.itemName == itemName)
+                {
+                    Destroy(itemRep.gameObject); // Destroy the item representation GameObject
+                    StartCoroutine(AddDefaultItemAfterFrame(slot));
+                    break; // Exit after handling the item
+                }
             }
         }
+        else
+        {
+            Debug.LogError("Item not in inventory: " + itemName);
+        }
     }
-    else
-    {
-        Debug.LogError("Item not in inventory: " + itemName);
-    }
-}
 
-private IEnumerator AddDefaultItemAfterFrame(GameObject slot)
-{
-    yield return null; 
-    AddDefaultItemToSlot(slot);
-}
+    private IEnumerator AddDefaultItemAfterFrame(GameObject slot)
+    {
+        yield return null; 
+        AddDefaultItemToSlot(slot);
+    }
 
 
 
@@ -248,7 +248,7 @@ private IEnumerator AddDefaultItemAfterFrame(GameObject slot)
             DraggableItem draggableItem = newItem.GetComponent<DraggableItem>();
             if (draggableItem != null)
             {
-                draggableItem.originalSlot = slot; // Assuming you have this field defined in your DraggableItem script
+                // draggableItem.originalSlot = slot;
             }
             else
             {

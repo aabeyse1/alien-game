@@ -48,7 +48,29 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if (EventSystem.current.IsPointerOverGameObject(eventData.pointerId))
         {
-            ResetItemPosition();
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, results);
+            RaycastResult result = results.Find(r => r.gameObject.CompareTag("CraftingSlot") || r.gameObject.CompareTag("InventorySlot"));
+
+            if (result.gameObject != null)
+            {
+                if (result.gameObject.CompareTag("CraftingSlot"))
+                {
+                    Debug.Log("Dropped on Crafting Slot");
+                }
+                else if (result.gameObject.CompareTag("InventorySlot"))
+                {
+                    ResetItemPositionToSlot(result.gameObject.transform);
+                }
+                else
+                {
+                    ResetItemPosition();
+                }
+            }
+            else
+            {
+                ResetItemPosition();
+            }
         }
         else if (!inventoryManager.extendedInventoryPanel.activeSelf)
         {
@@ -59,9 +81,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             if (itemRep != null)
             {
                 inventoryManager.PlaceItemInWorld(itemRep.item.itemName, dropPosition);
-
-                inventoryManager.AddDefaultItemToSlot(startParent.gameObject);
-
             }
             else
             {
@@ -73,6 +92,14 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             ResetItemPosition();
         }
     }
+
+    private void ResetItemPositionToSlot(Transform slotTransform)
+    {
+        transform.SetParent(slotTransform, false);
+        transform.localPosition = Vector3.zero;
+        transform.localScale = originalScale; // Reset any scale changes
+    }
+
 
 
     private void SetItemParentAndPosition(Transform newParent)
