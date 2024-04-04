@@ -189,10 +189,8 @@ public class InventoryManager : MonoBehaviour
         if (itemRep == null) itemRep = newItem.AddComponent<ItemRepresentation>();
         itemRep.item = item;
 
-        // Setup for DraggableItem, if applicable
         DraggableItem draggableItem = newItem.GetComponent<DraggableItem>();
         if (draggableItem == null) draggableItem = newItem.AddComponent<DraggableItem>();
-        // Set draggableItem's originalSlot or other properties as needed
     }
 
     private void UpdateItemVisuals(GameObject itemObject, Item item)
