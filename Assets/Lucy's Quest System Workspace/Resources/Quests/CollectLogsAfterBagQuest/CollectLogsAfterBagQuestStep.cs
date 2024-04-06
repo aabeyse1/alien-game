@@ -38,7 +38,7 @@ public class CollectLogsAfterBagQuestStep : QuestStep // inherit from QuestStep
     private void UpdateState() {
         
         string state = logsCollected.ToString();
-        Debug.Log("Collect Logs After Bag Change state = " + state);
+       
         ChangeState(state);
         
     }

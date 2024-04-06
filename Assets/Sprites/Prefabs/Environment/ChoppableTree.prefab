@@ -383,9 +383,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8218631435617461955}
-  - component: {fileID: 5728632066709288833}
   - component: {fileID: 4789282596419928710}
   - component: {fileID: 2896827013300196994}
+  - component: {fileID: 3601529209957409402}
   m_Layer: 0
   m_Name: ChoppableTree
   m_TagString: Untagged
@@ -410,19 +410,6 @@ Transform:
   - {fileID: 4423119109281350138}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5728632066709288833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5754272422652024742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4932319f20c44bebc3d30bb13f39f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logPrefab: {fileID: 7056948275355669066, guid: af01645f8f6614dfc973605aacec4a17, type: 3}
 --- !u!58 &4789282596419928710
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -493,6 +480,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &3601529209957409402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754272422652024742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4932319f20c44bebc3d30bb13f39f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logPrefab: {fileID: 7056948275355669066, guid: af01645f8f6614dfc973605aacec4a17, type: 3}
 --- !u!1 &6508113230015066798
 GameObject:
   m_ObjectHideFlags: 0

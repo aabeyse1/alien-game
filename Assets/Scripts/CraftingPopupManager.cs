@@ -21,7 +21,7 @@ public class CraftingPopupManager : MonoBehaviour
     public GameObject EatingAnimation;
     public GameObject Character;
 
-    private bool isAnimationPlaying = false;
+    // private bool isAnimationPlaying = false;
 
     void Start()
     {

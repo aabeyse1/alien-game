@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class ChoppableTree : MonoBehaviour
 {
     private InteractIcon interactIcon;
     private bool playerIsNear = false; 
@@ -25,12 +25,20 @@ public class Tree : MonoBehaviour
     private void SubmitPressed() {
        
         if (playerIsNear) {
-            // chop down tree
-           
-            GameObject log = Instantiate(logPrefab);
-            log.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
+            bool playerHasAxe = InventoryManager.isItemInInventory("Axe");
+            if (playerHasAxe) {
+                // chop down tree
+                GameObject log = Instantiate(logPrefab);
+                log.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
 
-            Destroy(this.gameObject);
+                Destroy(this.gameObject);
+            } else {
+                // unable to chop down tree - hit your hand on it
+                // TODO: Run punching tree animation
+                DialogueManager.instance.RunDialogueNode("Punch_Tree");
+
+            }
+            
 
         }
        

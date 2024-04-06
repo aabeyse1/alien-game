@@ -5,3 +5,10 @@ Alien Officer: Good, you crafted a bag. Now go get the wood. Our intel tells us 
 
 <<StartQuest DialogueManager CollectLogsAfterBagQuest>>
 ===
+
+
+title: Punch_Tree
+tags:
+---
+Alien Officer: You can't do that!! You're going to need an axe. 
+===

@@ -38,8 +38,9 @@ public class ItemPickup : MonoBehaviour
         bool wasAdded = inventoryManager.AddItem(item, null);
         if (wasAdded)
         {
-            gameObject.SetActive(false);
+            
             GameEventsManager.instance.pickUpEvents.ItemPickedUp(item);
+            Destroy(this.gameObject);
         }
         else
         {

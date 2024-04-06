@@ -86,7 +86,6 @@ public class Objective : MonoBehaviour
     }
 
     private void StartQuest(string id) {
-            Debug.Log("Start quest UI = "+ id);
             Quest quest = QuestManager.instance.GetQuestById(id);
             QuestStateChange(quest);
         

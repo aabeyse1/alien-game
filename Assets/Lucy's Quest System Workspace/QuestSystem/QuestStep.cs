@@ -20,7 +20,6 @@ public abstract class QuestStep : MonoBehaviour // the class is abstract because
             SetQuestStepState(questStepState);
         }
 
-        Debug.Log("finished initializing quest step: " + questId);
     }
 
 
@@ -33,7 +32,7 @@ public abstract class QuestStep : MonoBehaviour // the class is abstract because
     }
 
     protected void ChangeState(string newState) {
-        Debug.Log("QuestStep ChangeState = " + questId);
+     
         GameEventsManager.instance.questEvents.QuestStepStateChange(questId, stepIndex, new QuestStepState(newState));
         
     }

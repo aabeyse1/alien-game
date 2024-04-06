@@ -113,12 +113,12 @@ public class QuestManager : MonoBehaviour
     }
 
     
-    private async void StartQuest(string id)
+    private void StartQuest(string id)
     {
-        Debug.Log("QuestManager starting quest = " + id);
+       
        Quest quest = GetQuestById(id);
        quest.InstantiateCurrentQuestStep(this.transform); // instantiate the quest step under the quest manager game object
-       Debug.Log("passed instantiate quest step line");
+      
        ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
        currentQuest = quest; 
     }
@@ -154,7 +154,7 @@ public class QuestManager : MonoBehaviour
     }
 
     private void QuestStepStateChange(string id, int stepIndex, QuestStepState questStepState) {
-        Debug.Log("QuestManager QuestStepStateChange = " + id);
+        
         Quest quest = GetQuestById(id);
         
         quest.StoreQuestStepState(questStepState, stepIndex);

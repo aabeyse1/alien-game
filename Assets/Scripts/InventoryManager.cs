@@ -19,40 +19,64 @@ public class InventoryManager : MonoBehaviour
 
     public static List<string> itemsInInventory = new List<string>();
 
-    public GameObject beltPrefab;
-    public GameObject hammerPrefab;
-    public GameObject sockPrefab;
-    public GameObject stickPrefab;
-    public GameObject quiltPrefab;
+    private Dictionary<string, GameObject> itemMap; // links item name to its prefab
 
-    private GameObject GetItemGameObjectByName(string itemName)
-    {
-        switch (itemName.ToLower())
-        {
-            case "belt":
-                return beltPrefab;
-            case "hammer":
-                return hammerPrefab;
-            case "sock":
-                return sockPrefab;
-            case "stick":
-                return stickPrefab;
-            case "quilt":
-                return quiltPrefab;
-            default:
-                Debug.LogError("GameObject not found for item: " + itemName);
-                return null;
-        }
+    // public GameObject beltPrefab;
+    // public GameObject hammerPrefab;
+    // public GameObject sockPrefab;
+    // public GameObject stickPrefab;
+    // public GameObject quiltPrefab;
+    // public GameObject axePrefab;
+    // public GameObject logPrefab;
+    // public GameObject skatePrefab;
+    // public GameObject rakePrefab;
+    // public GameObject pipePrefab;
+    // public GameObject rakeRakePrefab;
+
+    private void Awake() {
+        itemMap = CreateItemMap();
     }
+
+    private Dictionary<string, GameObject> CreateItemMap() {
+         // loads all Item scriptable objects under the Assets/Resources/Quests folder
+        GameObject[] allItems = Resources.LoadAll<GameObject>("ItemPrefabs");
+
+         // create the item map
+        Dictionary<string, GameObject> idToItemMap = new Dictionary<string, GameObject>();
+        foreach (GameObject itemSO in allItems) {
+            if (idToItemMap.ContainsKey(itemSO.name))
+            {
+                Debug.LogWarning("Duplicate ID found when creating item map: " + itemSO.name);
+            }
+            idToItemMap.Add(itemSO.name, itemSO);
+        }
+        return idToItemMap;
+    }
+
+     // catch errors if we try to access an item that doesn't exist
+    public GameObject GetItemByName(string name)
+    {
+        GameObject item = itemMap[name];
+        if (item == null)
+        {
+           Debug.LogError("GameObject not found for item: " + name);
+        }
+        return item;
+    }
+
+    
 
 
     public void PlaceItemInWorld(string itemName, Vector3 worldPosition)
     {
-        GameObject itemGameObject = GetItemGameObjectByName(itemName);
+        GameObject itemGameObject = GetItemByName(itemName);
         if (itemGameObject != null)
         {
-            itemGameObject.SetActive(true);
-            itemGameObject.transform.position = worldPosition;
+            Debug.Log("set game object active = " + itemGameObject);
+            
+            GameObject drop = Instantiate(itemGameObject);
+            drop.transform.position = worldPosition;
+
 
             RemoveFromInventory(itemName);
         }
