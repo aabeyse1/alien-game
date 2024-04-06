@@ -12,6 +12,14 @@ public class PickUpEvents
         }
     }
 
+    public event Action<Item> onItemPickedUp;
+
+    public void ItemPickedUp(Item item) {
+        if (onItemPickedUp != null) {
+            onItemPickedUp(item);
+        }
+    }
+
     public event Action<string> onItemCrafted;
     public void ItemCrafted(string itemName) 
     {

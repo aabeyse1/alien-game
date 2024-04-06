@@ -21,8 +21,13 @@ public class CraftBagQuestStep : QuestStep // inherit from QuestStep
 
     private void ItemCrafted(string itemName) {
         if (itemName == backpackItemName) {
+            CraftBagDone();
             FinishQuestStep();
         }
+    }
+
+    private void CraftBagDone() {
+        DialogueManager.instance.RunDialogueNode("Crafted_Bag");
     }
 
     protected override void SetQuestStepState(string state)

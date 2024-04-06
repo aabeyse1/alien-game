@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd8d97eebac64b8dbee9902ce07f83d, type: 3}
+  m_Name: Log
+  m_EditorClassIdentifier: 
+  itemName: Hammer
+  itemSprite: {fileID: 21300000, guid: b4cfc0c6db4bc4709a0845c59a633822, type: 3}
+  itemPrefab: {fileID: 7056948275355669066, guid: c60b5f1c374524e869a5a69e8520f16f, type: 3}

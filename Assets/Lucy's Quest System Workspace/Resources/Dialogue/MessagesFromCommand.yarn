@@ -1,0 +1,7 @@
+﻿title: Crafted_Bag
+tags:
+---
+Alien Officer: Good, you crafted a bag. Now go get the wood. Our intel tells us that there is a forest on the north end of this chunk. 
+
+<<StartQuest DialogueManager CollectLogsAfterBagQuest>>
+===

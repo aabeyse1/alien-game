@@ -10,7 +10,9 @@ public class ItemPickup : MonoBehaviour
     {
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.Return))
         {
+            
             Pickup();
+
         }
     }
 
@@ -37,6 +39,7 @@ public class ItemPickup : MonoBehaviour
         if (wasAdded)
         {
             gameObject.SetActive(false);
+            GameEventsManager.instance.pickUpEvents.ItemPickedUp(item);
         }
         else
         {
