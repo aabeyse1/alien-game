@@ -7,11 +7,10 @@ using UnityEngine;
 public class CollectLogsAfterBagQuestStep : QuestStep // inherit from QuestStep
 {
     private int logsCollected = 0;
-    private int logsToComplete = 5; 
+    private int logsToComplete = 2; 
 
     private void OnEnable() { // this built in method is called when an object becomes enabled and active
         GameEventsManager.instance.pickUpEvents.onItemPickedUp += ItemPickedUp; // when the event goes off, call that method
-
         UpdateState();
     }
 
@@ -38,8 +37,10 @@ public class CollectLogsAfterBagQuestStep : QuestStep // inherit from QuestStep
     }
 
     private void UpdateState() {
+        
         string state = logsCollected.ToString();
-        // ChangeState(state); // TODO: uncomment this
+        Debug.Log("Sending state =  " + state);
+        ChangeState(state); 
     }
 
     protected override void SetQuestStepState(string state) {
