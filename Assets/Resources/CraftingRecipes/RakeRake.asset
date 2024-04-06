@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2195a8b832fd4de39b86b814c0346f3, type: 3}
   m_Name: RakeRake
   m_EditorClassIdentifier: 
-  requiredItems: []
-  resultItem: {fileID: 0}
+  requiredItems:
+  - {fileID: 11400000, guid: 97ae85bb4326542b88f2ce22e770835b, type: 2}
+  - {fileID: 11400000, guid: 97ae85bb4326542b88f2ce22e770835b, type: 2}
+  resultItem: {fileID: 11400000, guid: 74b6618c44f1344ce8a89c852ff2247b, type: 2}

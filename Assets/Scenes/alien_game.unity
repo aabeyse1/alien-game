@@ -952,6 +952,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189592095}
   m_CullTransparentMesh: 1
+--- !u!1001 &192877981
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4534700439484737800, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_Name
+      value: IceSkate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.402661
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0460216
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037974237094660919, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f319fe212ef04da8a30ce7180ea17c2, type: 3}
 --- !u!1 &196744066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,12 +2426,11 @@ MonoBehaviour:
   hideButton: {fileID: 922162618}
   extendedInventoryButton: {fileID: 1008836578}
   inventoryManager: {fileID: 2023465174}
-  recipes:
-  - {fileID: 11400000, guid: 42358888473e74a53b97962eae608bd3, type: 2}
+  recipes: []
   animationHandler: {fileID: 307414816}
   EatingAnimation: {fileID: 307414813}
   Character: {fileID: 455307134}
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 7526881428003216620, guid: 3a567f729cda949c7823790718b605d2, type: 3}
 --- !u!1 &433709129
 GameObject:
   m_ObjectHideFlags: 0
@@ -5037,7 +5093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -5160,7 +5216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5350467867655682666, guid: 2dbee1b99649541c1919b27710898b08, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00008834344
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5350467867655682666, guid: 2dbee1b99649541c1919b27710898b08, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5848,7 +5904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -7362,9 +7418,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 924413373581574567, guid: ce3a6899bc8c44dda8245847e7f05658, type: 3}
+      propertyPath: startPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 924413373581574567, guid: ce3a6899bc8c44dda8245847e7f05658, type: 3}
       propertyPath: questInfoForPoint
       value: 
-      objectReference: {fileID: 11400000, guid: b762893133a1645c5b21cc7e43f25492, type: 2}
+      objectReference: {fileID: 11400000, guid: 404eeeb4bcb534f6badc06fa86c1fe24, type: 2}
     - target: {fileID: 924413373581574567, guid: ce3a6899bc8c44dda8245847e7f05658, type: 3}
       propertyPath: <id>k__BackingField
       value: SouthernGuyQuestPoint
@@ -9523,7 +9583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -12968,7 +13028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -14433,3 +14493,4 @@ SceneRoots:
   - {fileID: 1344064542}
   - {fileID: 934707666}
   - {fileID: 981251517}
+  - {fileID: 192877981}
