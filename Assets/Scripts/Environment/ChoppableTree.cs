@@ -29,7 +29,7 @@ public class ChoppableTree : MonoBehaviour
             if (playerHasAxe) {
                 // chop down tree
                 GameObject log = Instantiate(logPrefab);
-                log.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
+                log.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 1);
 
                 Destroy(this.gameObject);
             } else {

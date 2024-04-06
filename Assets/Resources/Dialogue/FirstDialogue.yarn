@@ -53,7 +53,7 @@ Alien Officer: You’ll need to find a way to carry all of it, then! Take a look
 
 title: Southern_During
 ---
-<<if isItemInInventory("Log") == true>>
+<<if areNumItemsInInventory("Log", 5) == true>>
     <<jump Start_Correct>>
 <<else>>
     <<jump Start_Incorrect>>
@@ -71,6 +71,11 @@ Buck: The hell is this, stranger? What, 5 pieces of wood too hard for ya? No woo
 
 title: Start_Correct
 ---
+<<removeFromInventory InventoryCanvas Log>>
+<<removeFromInventory InventoryCanvas Log>>
+<<removeFromInventory InventoryCanvas Log>>
+<<removeFromInventory InventoryCanvas Log>>
+<<removeFromInventory InventoryCanvas Log>> 
 Buck: That’s my boy. I’m an alien of my word. Here y’go!
 Ua: Thanks
 Buck: Don’t bother. Just stay safe out there. Aliens of all kinds tryna start a ruckus causa that so-called “honey war”.

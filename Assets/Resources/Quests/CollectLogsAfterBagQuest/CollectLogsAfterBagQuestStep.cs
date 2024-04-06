@@ -7,7 +7,7 @@ using UnityEngine;
 public class CollectLogsAfterBagQuestStep : QuestStep // inherit from QuestStep
 {
     private int logsCollected = 0;
-    private int logsToComplete = 2; 
+    private int logsToComplete = 5; 
 
     private void OnEnable() { // this built in method is called when an object becomes enabled and active
         GameEventsManager.instance.pickUpEvents.onItemPickedUp += ItemPickedUp; // when the event goes off, call that method

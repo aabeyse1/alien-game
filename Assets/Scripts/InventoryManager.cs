@@ -274,6 +274,20 @@ public class InventoryManager : MonoBehaviour
         return itemsInInventory.Contains(itemName);
     }
 
+    // Returns true if there are at least n of the specified item in the inventory
+    [YarnFunction("areNumItemsInInventory")]
+    public static bool areNumItemsInInventory(string itemName, int n)
+    {
+        int count = 0;
+        foreach (string item in itemsInInventory) {
+            if (item == itemName) {
+                count++;
+            }
+        }
+        return count >= n;
+    }
+
+
    
 
 
