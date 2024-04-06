@@ -21,18 +21,6 @@ public class InventoryManager : MonoBehaviour
 
     private Dictionary<string, GameObject> itemMap; // links item name to its prefab
 
-    // public GameObject beltPrefab;
-    // public GameObject hammerPrefab;
-    // public GameObject sockPrefab;
-    // public GameObject stickPrefab;
-    // public GameObject quiltPrefab;
-    // public GameObject axePrefab;
-    // public GameObject logPrefab;
-    // public GameObject skatePrefab;
-    // public GameObject rakePrefab;
-    // public GameObject pipePrefab;
-    // public GameObject rakeRakePrefab;
-
     private void Awake() {
         itemMap = CreateItemMap();
     }

@@ -11710,11 +11710,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!1 &1709927999 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8604874267251589064, guid: 61fd6fbc09b404daa84032c0ef8aae40, type: 3}
-  m_PrefabInstance: {fileID: 5577078993961328646}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1730114262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8218631435617461955, guid: e47b5d2c5feb340518199c51ad8240db, type: 3}
@@ -13325,7 +13320,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2023465169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da879c115204343bf998b9f9d7bb1135, type: 3}
+  m_Script: {fileID: 11500000, guid: 177a0be4b840d4d5ea25727972d60bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlots:
@@ -13337,11 +13332,6 @@ MonoBehaviour:
   extendedInventoryManager: {fileID: 1425290304}
   backpackButton: {fileID: 1008836578}
   itemDatabase: {fileID: 11400000, guid: 020760be11ac943efa046e64584b3962, type: 2}
-  beltPrefab: {fileID: 1709927999}
-  hammerPrefab: {fileID: 1111106333}
-  sockPrefab: {fileID: 1747720100}
-  stickPrefab: {fileID: 587986479}
-  quiltPrefab: {fileID: 805063426}
 --- !u!1 &2035487188
 GameObject:
   m_ObjectHideFlags: 0

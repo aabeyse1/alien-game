@@ -46,11 +46,19 @@ Alien Officer: Did they now? It’s some good advice. Your brother ought to like
 Ua: ...
 Ua: ...They told me to get wood.
 Alien Officer: You’ll need to find a way to carry all of it, then! Take a look around.
-<<setDialogueNode DialogueManager SouthernGuyQuestPoint Start_Repeat>>
+<<setDialogueNode DialogueManager SouthernGuyQuestPoint Southern_During>>
 <<setDialogueNode DialogueManager SleepyQuestPoint LazyDialogue>>
 <<StartQuest DialogueManager CraftBagQuest>>
 ===
 
+title: Southern_During
+---
+<<if isItemInInventory("Log") == true>>
+    <<jump Start_Correct>>
+<<else>>
+    <<jump Start_Incorrect>>
+<<endif>>
+===
 title: Start_Repeat
 ---
 Buck: Think you could grab 5 pieces of wood? Should be able to get some if ya put yer min’ to it!

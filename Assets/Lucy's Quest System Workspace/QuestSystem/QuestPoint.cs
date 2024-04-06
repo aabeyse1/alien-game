@@ -68,22 +68,8 @@ public class QuestPoint : MonoBehaviour
         
         if (runDialogueBeforeQuest)
         {
-            
-            // string id = questInfoForPoint.id;
-            // Quest quest = QuestManager.instance.GetQuestById(id);
-            // Debug.Log("quest state = "+ quest.state);
-            // if (quest.state == QuestState.IN_PROGRESS) {
-            //     DialogueManager.instance.RunDialogueNode(dialogueWhileQuestActive.id);
-            // } else if (quest.state == QuestState.CAN_START) {
-            //     DialogueManager.instance.RunDialogueNode(dialogueBeforeQuestActive);
-            // }
-              
-            DialogueManager.instance.RunDialogueNode(dialogueNodeForPoint);
-           
-
             // Run dialogue
-           
-
+            DialogueManager.instance.RunDialogueNode(dialogueNodeForPoint);
         }
         else
         {
@@ -94,6 +80,7 @@ public class QuestPoint : MonoBehaviour
             }
             else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
             {
+                Debug.Log("FINISH QUEST");
                 GameEventsManager.instance.questEvents.FinishQuest(questId);
             }
         }

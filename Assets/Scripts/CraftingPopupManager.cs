@@ -28,6 +28,10 @@ public class CraftingPopupManager : MonoBehaviour
         craftButton.interactable = false;
     }
 
+    void Awake() {
+        recipes = Resources.LoadAll<CraftingRecipe>("CraftingRecipes");
+    }
+
     public void ExecuteCrafting(CraftingRecipe recipe)
     {
         if (recipe.resultItem.itemName == "Backpack")
@@ -101,10 +105,12 @@ public class CraftingPopupManager : MonoBehaviour
 
     // Called by CraftingSlot when an item is dropped
     public void ItemDroppedInSlot(CraftingSlot slot, Item item)
-    {
+    {   
+        
         int slotIndex = System.Array.IndexOf(craftingSlots, slot.GetComponent<Image>());
         if (slotIndex != -1)
         {
+            Debug.Log(slotIndex);
             itemsInSlots[slotIndex] = item;
             UpdateCraftability();
         }
@@ -112,6 +118,7 @@ public class CraftingPopupManager : MonoBehaviour
 
     public void UpdateCraftability()
     {
+        Debug.Log("recipes: " + recipes.Length);
         craftButton.interactable = recipes.Any(recipe => RecipeMatches(recipe));
     }
 
