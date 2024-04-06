@@ -58,7 +58,6 @@ public class DebugUI : MonoBehaviour
 
     // Send event that one log was collected
     public void collectOneLog() {
-        Debug.Log("click");
         GameEventsManager.instance.pickUpEvents.LogCollected();
     }
 

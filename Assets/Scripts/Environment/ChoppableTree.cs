@@ -40,7 +40,6 @@ public class Tree : MonoBehaviour
         if (otherCollider.CompareTag("Player")) {
             interactIcon.SetState(active: true, locked: false);
             playerIsNear = true;
-            Debug.Log("near");
         }
     }
     private void OnTriggerExit2D(Collider2D otherCollider) {

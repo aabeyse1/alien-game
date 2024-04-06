@@ -11,7 +11,6 @@ public class CollectLogsAfterBagQuestStep : QuestStep // inherit from QuestStep
 
     private void OnEnable() { // this built in method is called when an object becomes enabled and active
         GameEventsManager.instance.pickUpEvents.onItemPickedUp += ItemPickedUp; // when the event goes off, call that method
-        UpdateState();
     }
 
     private void OnDisable() {
@@ -39,8 +38,9 @@ public class CollectLogsAfterBagQuestStep : QuestStep // inherit from QuestStep
     private void UpdateState() {
         
         string state = logsCollected.ToString();
-        Debug.Log("Sending state =  " + state);
-        ChangeState(state); 
+        Debug.Log("Collect Logs After Bag Change state = " + state);
+        ChangeState(state);
+        
     }
 
     protected override void SetQuestStepState(string state) {

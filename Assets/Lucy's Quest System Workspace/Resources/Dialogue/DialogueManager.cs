@@ -32,19 +32,16 @@ public class DialogueManager : MonoBehaviour
     }
 
     private void DoneLoadingQuests() {
-        Debug.Log("done loading quests");
         RunDialogueNode("InitialDialogue");
     }
 
 
     public void RunDialogueNode(string conversationStartNode) {
-        Debug.Log("starting dialogue node: "+ dialogueRunner);
         dialogueRunner.StartDialogue(conversationStartNode);
     }
 
     [YarnCommand("StartQuest")]
     public void StartQuest(string id) {  
-        Debug.Log("Quest starting after dialogue = " + id);
         GameEventsManager.instance.questEvents.StartQuest(id);
             
     }

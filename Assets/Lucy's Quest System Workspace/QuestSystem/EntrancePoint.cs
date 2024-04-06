@@ -37,7 +37,6 @@ public class EntrancePoint : MonoBehaviour
     private void SubmitPressed() {
        
         if (!playerIsNear) {
-            Debug.Log("not near");
             return;
         }
         ChangeArea();
@@ -45,13 +44,11 @@ public class EntrancePoint : MonoBehaviour
 
     private void ChangeArea() {
         playerCharacter.transform.position = positionToChangeTo.transform.position;
-        Debug.Log("change");
         GameEventsManager.instance.playerEvents.PlayerAreaChange(entrancePointName);
     }
 
     private void OnTriggerEnter2D(Collider2D otherCollider) {
         if (otherCollider.CompareTag("Player")) {
-            Debug.Log("enter");
             interactIcon.SetState(active: true, locked: locked);
             playerIsNear = true;
         }
@@ -60,7 +57,6 @@ public class EntrancePoint : MonoBehaviour
          if (otherCollider.CompareTag("Player")) {
             playerIsNear = false;
             interactIcon.SetState(active: false, locked: locked);
-            Debug.Log("exit");
         }
     }
    

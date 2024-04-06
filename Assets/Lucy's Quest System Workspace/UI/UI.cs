@@ -17,29 +17,11 @@ public class Objective : MonoBehaviour
     public TMP_Text objectiveDescriptionText;
     public TMP_Text progressText;
 
-    
-    // [Header("Fuel Intro Quest")]
-    // // private bool fuelIntroQuestCompleted = false; // true after the log quest in the first chunk has been started
-    // public string collectLogsQuestId = "CollectLogsQuest";
-    // public string craftBagQuestId = "CraftBagQuest";
-
-    // public string fuelQuestDisplayText = "Collect Fuel";
-    // public string fuelQuestDescriptionText = "Collect fuel so you can continue your mission";
-
-
-
-
-
 
     private void Awake()
     {
         objectiveDisplayText.SetText("No active quests");
 
-        // if (!fuelIntroQuestCompleted)
-        // {
-        //     objectiveDisplayText.SetText(fuelQuestDisplayText);
-        //     objectiveDescriptionText.SetText(fuelQuestDescriptionText);
-        // }
     }
     // Listen to events
     private void OnEnable()
@@ -64,15 +46,17 @@ public class Objective : MonoBehaviour
 
     private void QuestStateChange(Quest quest)
     {
-        Debug.Log("quest state change = " + quest.info.id);
-        
-            Debug.Log("UI quest id = " + quest.info.id + " state = " + quest.state);
             QuestState currentQuestState = quest.state;
             // show this quest name as current quest
             if (currentQuestState == QuestState.IN_PROGRESS || currentQuestState == QuestState.CAN_FINISH)
             {
                 objectiveDisplayText.SetText(quest.info.displayName);
                 objectiveDescriptionText.SetText(quest.info.description);
+
+                if (currentQuestState == QuestState.IN_PROGRESS) {
+                    // Quest just started
+                    progressText.SetText("Progress: 0");
+                }                
             }
             else
             {
@@ -102,7 +86,7 @@ public class Objective : MonoBehaviour
     }
 
     private void StartQuest(string id) {
-        
+            Debug.Log("Start quest UI = "+ id);
             Quest quest = QuestManager.instance.GetQuestById(id);
             QuestStateChange(quest);
         

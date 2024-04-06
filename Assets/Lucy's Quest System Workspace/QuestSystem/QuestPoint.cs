@@ -61,10 +61,8 @@ public class QuestPoint : MonoBehaviour
     private void SubmitPressed()
     {
 
-        Debug.Log("submit pressed!");
         if (!playerIsNear)
         {
-            // Debug.Log("not near and submit pressed");
             return;
         }
         
@@ -83,7 +81,6 @@ public class QuestPoint : MonoBehaviour
             DialogueManager.instance.RunDialogueNode(dialogueNodeForPoint);
            
 
-            Debug.Log("dialogue manager instance = " + DialogueManager.instance);
             // Run dialogue
            
 
@@ -116,7 +113,6 @@ public class QuestPoint : MonoBehaviour
     {
         if (otherCollider.CompareTag("Player"))
         {
-            Debug.Log("enter");
             playerIsNear = true;
         }
     }
@@ -125,7 +121,6 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = false;
-            Debug.Log("exit");
         }
     }
 

@@ -2,22 +2,23 @@
 tags:
 ---
 Alien Officer: What is it? If you don’t focus and get this done, I’ll hear it from Command.
-Ua: *Yawns in alien*
-Alien Officer: ...Ua. 
-Alien Officer: You remember why we’re doing this at least?
-Ua: *Mumbles in alien*
-Alien Officer: I heard that.
-Alien Officer: Listen, Command told me that they’ve located the largest reservoir of honey that any alien faction has ever discovered!
-Alien Officer: This is our chance to finally get a leg up. If we don’t get to this one first, we could be wiped out for good!
-Ua: ...
-Alien Officer: Heard you got someone who dreams of a day where we don’t got to worry about these types of things anymore.
-Alien Officer: So tell me, are our goals not aligned? If not for me, then surely for your brother?
-Alien Officer: For now, get yourself some fuel so we can get out of here.
-Ua: We?
-Alien Officer: Yeah, we. If you fail, I fail.
-Ua: Doesn't sound too bad!
-Alien Officer: ...
-Alien Officer: I knew I should've taken off today.
-<<StartQuest DialogueManager CollectFuelQuest>>
+// Ua: *Yawns in alien*
+// Alien Officer: ...Ua. 
+// Alien Officer: You remember why we’re doing this at least?
+// Ua: *Mumbles in alien*
+// Alien Officer: I heard that.
+// Alien Officer: Listen, Command told me that they’ve located the largest reservoir of honey that any alien faction has ever discovered!
+// Alien Officer: This is our chance to finally get a leg up. If we don’t get to this one first, we could be wiped out for good!
+// Ua: ...
+// Alien Officer: Heard you got someone who dreams of a day where we don’t got to worry about these types of things anymore.
+// Alien Officer: So tell me, are our goals not aligned? If not for me, then surely for your brother?
+// Alien Officer: For now, get yourself some fuel so we can get out of here.
+// Ua: We?
+// Alien Officer: Yeah, we. If you fail, I fail.
+// Ua: Doesn't sound too bad!
+// Alien Officer: ...
+// Alien Officer: I knew I should've taken off today.
+// <<StartQuest DialogueManager CollectFuelQuest>>
+<<StartQuest DialogueManager CollectLogsAfterBagQuest>>
 
 ===

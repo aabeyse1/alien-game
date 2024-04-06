@@ -11,7 +11,7 @@ public class DebugInputManager : MonoBehaviour
 
         if (context.started)
         {
-            Debug.Log(DebugEventManager.instance);
+           
             DebugEventManager.instance.debugEvents.DebugPressed();
         }
     }

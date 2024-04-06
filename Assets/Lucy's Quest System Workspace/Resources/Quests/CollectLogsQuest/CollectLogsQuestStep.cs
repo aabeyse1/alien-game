@@ -13,7 +13,7 @@ public class CollectLogsQuestStep : QuestStep // inherit from QuestStep
         GameEventsManager.instance.pickUpEvents.onLogCollected += LogCollected; // when the event goes off, call that method
         GameEventsManager.instance.playerEvents.onPlayerAreaChange += PlayerAreaChanged;
 
-        UpdateState();
+        // UpdateState();
     }
 
     private void OnDisable() {

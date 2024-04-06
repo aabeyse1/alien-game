@@ -262,11 +262,7 @@ public class InventoryManager : MonoBehaviour
         return itemsInInventory.Contains(itemName);
     }
 
-    [YarnCommand("testMethod")]
-
-    public void testMethod() {
-        Debug.Log("TESY METHOD CALLED");
-    }
+   
 
 
     [YarnCommand("addToInventory")]
