@@ -161,7 +161,6 @@ public class InventoryManager : MonoBehaviour
             ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
             if (itemRep != null && !itemRep.gameObject.activeSelf)
             {
-                Debug.Log("rep");
                 // Reactivate and update an existing but inactive ItemRepresentation
                 itemRep.item = item;
                 itemRep.gameObject.SetActive(true);
@@ -182,7 +181,6 @@ public class InventoryManager : MonoBehaviour
 
     private void CreateNewItemInSlot(GameObject slot, Item item, GameObject itemGameObject = null)
     {
-
         // Use the item's prefab if an itemGameObject isn't provided
         GameObject newItem = itemGameObject ?? Instantiate(item.itemPrefab, slot.transform);
         newItem.transform.SetAsFirstSibling(); // Ensure it's the first child for consistency

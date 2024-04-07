@@ -44,8 +44,10 @@ public class CraftingPopupManager : MonoBehaviour
         {
             // Proceed with crafting for non-special items
             GameObject resultItemPrefab = Instantiate(recipe.resultItem.itemPrefab);
+            resultItemPrefab.SetActive(false);
             // resultItemPrefab.transform.localScale = new Vector3(1f, 1f, 1f);
-
+            Debug.Log("this is the item");
+            Debug.Log(resultItemPrefab);
             bool wasAdded = inventoryManager.AddItem(recipe.resultItem, resultItemPrefab);
             if (!wasAdded)
             {
