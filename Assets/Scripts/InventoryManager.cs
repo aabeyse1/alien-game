@@ -161,6 +161,7 @@ public class InventoryManager : MonoBehaviour
             ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
             if (itemRep != null && !itemRep.gameObject.activeSelf)
             {
+                Debug.Log("rep");
                 // Reactivate and update an existing but inactive ItemRepresentation
                 itemRep.item = item;
                 itemRep.gameObject.SetActive(true);
@@ -179,31 +180,38 @@ public class InventoryManager : MonoBehaviour
         return false; // No suitable slot found
     }
 
-    private void CreateNewItemInSlot(GameObject slot, Item item, GameObject itemGameObject)
+    private void CreateNewItemInSlot(GameObject slot, Item item, GameObject itemGameObject = null)
     {
+
+        // Use the item's prefab if an itemGameObject isn't provided
         GameObject newItem = itemGameObject ?? Instantiate(item.itemPrefab, slot.transform);
         newItem.transform.SetAsFirstSibling(); // Ensure it's the first child for consistency
-        newItem.transform.localPosition = Vector3.zero;
-        newItem.transform.localRotation = Quaternion.identity;
-        newItem.transform.localScale = Vector3.one;
+        // newItem.transform.localPosition = Vector3.zero;
+        // newItem.transform.localRotation = Quaternion.identity;
+        // newItem.transform.localScale = Vector3.one;
 
-        SetupNewItem(newItem, item);
+        // Setup the new item with the correct components and configurations
+        SetupNewItem(newItem, item, slot); // Pass slot as an argument
     }
 
-
-    private void SetupNewItem(GameObject newItem, Item item)
+    private void SetupNewItem(GameObject newItem, Item item, GameObject slot)
     {
         Image itemImage = newItem.GetComponent<Image>();
         if (itemImage == null) itemImage = newItem.AddComponent<Image>();
         itemImage.sprite = item.itemSprite;
 
+        // Configure the ItemRepresentation component with the new item data
         ItemRepresentation itemRep = newItem.GetComponent<ItemRepresentation>();
         if (itemRep == null) itemRep = newItem.AddComponent<ItemRepresentation>();
         itemRep.item = item;
 
+        // Setup for DraggableItem, if applicable
         DraggableItem draggableItem = newItem.GetComponent<DraggableItem>();
         if (draggableItem == null) draggableItem = newItem.AddComponent<DraggableItem>();
+        draggableItem.originalSlot = slot; // Update to use the passed slot GameObject
     }
+
+
 
     private void UpdateItemVisuals(GameObject itemObject, Item item)
     {
@@ -225,7 +233,6 @@ public class InventoryManager : MonoBehaviour
     {
         if (slot.transform.childCount == 0)
         {
-            Debug.Log("amde it inside childcount if");
             // Instantiate the default item prefab as a child of the slot
             GameObject newItem = Instantiate(defaultItemPrefab, slot.transform);
             newItem.transform.localPosition = Vector3.zero;

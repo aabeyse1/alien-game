@@ -34,6 +34,7 @@ public class CraftingPopupManager : MonoBehaviour
 
     public void ExecuteCrafting(CraftingRecipe recipe)
     {
+        AddDefaultItemsToEmptySlots();
         if (recipe.resultItem.itemName == "Backpack")
         {
             // Special logic for backpack
@@ -43,7 +44,7 @@ public class CraftingPopupManager : MonoBehaviour
         {
             // Proceed with crafting for non-special items
             GameObject resultItemPrefab = Instantiate(recipe.resultItem.itemPrefab);
-            resultItemPrefab.transform.localScale = new Vector3(1f, 1f, 1f);
+            // resultItemPrefab.transform.localScale = new Vector3(1f, 1f, 1f);
 
             bool wasAdded = inventoryManager.AddItem(recipe.resultItem, resultItemPrefab);
             if (!wasAdded)
@@ -56,7 +57,6 @@ public class CraftingPopupManager : MonoBehaviour
         GameEventsManager.instance.pickUpEvents.ItemCrafted(recipe.resultItem.itemName);
 
         ClearUsedItemsInCraftingSlots();
-        AddDefaultItemsToEmptySlots();
     }
 
     public void ShowCraftingPopup()
@@ -110,7 +110,6 @@ public class CraftingPopupManager : MonoBehaviour
         int slotIndex = System.Array.IndexOf(craftingSlots, slot.GetComponent<Image>());
         if (slotIndex != -1)
         {
-            Debug.Log(slotIndex);
             itemsInSlots[slotIndex] = item;
             UpdateCraftability();
         }
@@ -118,14 +117,13 @@ public class CraftingPopupManager : MonoBehaviour
 
     public void UpdateCraftability()
     {
-        Debug.Log("recipes: " + recipes.Length);
+        // Debug.Log("recipes: " + recipes.Length);
         craftButton.interactable = recipes.Any(recipe => RecipeMatches(recipe));
     }
 
 
     private bool RecipeMatches(CraftingRecipe recipe)
     {
-        Debug.Log($"Checking recipe: {recipe.requiredItems[0].itemName} + {recipe.requiredItems[1].itemName}");
         return (itemsInSlots[0] == recipe.requiredItems[0] && itemsInSlots[1] == recipe.requiredItems[1]) ||
                (itemsInSlots[0] == recipe.requiredItems[1] && itemsInSlots[1] == recipe.requiredItems[0]);
     }
