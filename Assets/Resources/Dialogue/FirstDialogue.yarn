@@ -46,7 +46,7 @@ Alien Officer: Did they now? That's some good advice. Everyone back home ought t
 Hermie: ...
 Hermie: ...They told me to get wood.
 Alien Officer: Then you’ll need to find a way to carry it all! Take a look around.
-<<setDialogueNode DialogueManager SouthernGuyQuestPoint Start_Repeat>>
+<<setDialogueNode DialogueManager SouthernGuyQuestPoint Southern_During>>
 <<setDialogueNode DialogueManager SleepyQuestPoint LazyDialogue>>
 <<StartQuest DialogueManager CraftBagQuest>>
 ===

@@ -1,21 +1,25 @@
 ﻿title: InitialDialogue
 tags:
 ---
-Alien Officer: What is it? If you don’t focus and get this done, I’ll hear it from Command.
-Ua: *Yawns in alien*
-Alien Officer: ...Ua. 
+Alien Officer: What is it?
+<<wait 0.5>>If you don’t focus and get this done, I’ll hear it from Command.
+Hermie: *Yawns in alien*
+Alien Officer: .
+<<wait 0.5>>.
+<<wait 0.5>>.
+<<wait 0.5>>Hermi. 
 Alien Officer: You remember why we’re doing this at least?
-Ua: *Mumbles in alien*
-Alien Officer: I heard that.
-Alien Officer: Listen, Command told me that they’ve located the largest reservoir of honey that any alien faction has ever discovered!
-Alien Officer: This is our chance to finally get a leg up. If we don’t get to this one first, we could be wiped out for good!
-Ua: ...
-Alien Officer: Heard you got someone who dreams of a day where we don’t got to worry about these types of things anymore.
-Alien Officer: So tell me, are our goals not aligned? If not for me, then surely for your brother?
-Alien Officer: For now, get yourself some fuel so we can get out of here.
-Ua: We?
-Alien Officer: Yeah, we. If you fail, I fail.
-Ua: Doesn't sound too bad!
+Alien Officer: They told me they’ve located the largest reservoir of honey that any alien faction has ever discovered!
+Alien Officer: This is our chance to finally get a leg up.
+<<wait 1>> If we don’t get to this one first, we could be wiped out for good!
+Hermie: *Mumbles in alien*
+Alien Officer: ...
+Alien Officer: Just get yourself a bit of honey so we can get out of here.
+Hermie: We? Didn't realize you were here!
+Alien Officer: Hermi, please.
+<<wait 0.5>> If you fail, it's over for me.
+Hermie: You'd better give good instructions, then,
+<<wait 0.5>> huh?
 Alien Officer: ...
 Alien Officer: I knew I should've taken off today.
 <<StartQuest DialogueManager CollectFuelQuest>>
