@@ -1,9 +1,9 @@
 ﻿title: LazyDialogue
 tags:
 ---
-Ua: Hey, I need that belt on you.
+Hermie: Hey, I need that belt on you.
 Lazy Alien: Ok?
-Ua: Can you give it to me?
+Hermie: Can you give it to me?
 Lazy Alien: And why would I do that?
     -> Because I asked you to.
         Lazy Alien: Are you trying to intimidate me?
@@ -20,7 +20,7 @@ title: Problem
 ---
 Lazy Alien: My problem? You outsiders have got some nerve, coming into our houses, telling me to give you stuff.
 Lazy Alien: This truce won’t last with little aliens like you pressing buttons- tryin’ to start somethin’.
-Ua: *Dejected, yet imploring alien noises*
+Hermie: *Dejected, yet imploring alien noises*
 Lazy Alien: …Damn, alright, fine.
 Lazy Alien: If you bring me a nice sock - one for my horn here - I’ll give you what you damn near threatened me for.
 Lazy Alien: Anything to get rid of you.
@@ -30,9 +30,9 @@ Lazy Alien: Anything to get rid of you.
 title: Trade
 ---
 Lazy Alien: How about 10 million dollars?
-Ua: ...
+Hermie: ...
 Lazy Alien: ...
-Ua: What's your problem?
+Hermie: What's your problem?
 <<jump Problem>>
 ===
 
@@ -59,7 +59,7 @@ Lazy Alien: If you don’t get the sock right now you can kiss your precious bel
 title: Lazy_Correct
 ---
 Lazy Alien: Now take it and leave me alone. This chunk’s only big enough for one Faction, and it’s hard enough as it is.
-Ua: Why's that?
+Hermie: Why's that?
 Lazy Alien: …Our chief is hellbent on finding that honey reservoir everyone’s after.
 Lazy Alien: He’s got me all caught up in the mess. So do yourself a favor and get as far away from this nonsense as possible, yeah? 
 Lazy Alien: That includes here.

@@ -2,7 +2,7 @@
 tags:
 position: 22,-240
 ---
-Ua: Hello. Who are you?
+Hermie: Hello. Who are you?
 Friendly Alien: No English yet, eh? Youse must be an F1.
 Friendly Alien: Well lucky for you stranger, I got a translator right here, courtesy of our lost human folk!
 Friendly Alien: You and I could talk into it, then feel free to take it with ya! No one speaks Faction 1 anymore, ya know.
@@ -14,7 +14,7 @@ Buck: Name's Buck, by the way. So anyway adventurer, what d’ya need?
                 Buck: Well, ain’t that a problem?... 
                 Buck: Tell ya what, I’ve been tryna renovate- Get my quarters in tip-top shape, ya hear?
                 Buck: If you could grab me 5 pieces of wood, I’ll give ya what ya need.
-                Ua: And where're those?
+                Hermie: And where're those?
                 Buck: Well, that’s yer job, now ain’t it? C’mon, shouldn’t be too bad if you put yer min’ to it!
                 <<jump Interruption1>>
             -> My ship needs repair. Would you happen to have any fuel?
@@ -29,10 +29,10 @@ title: NeedRepair
 position: -138,8
 ---
 Buck: Sure I do.
-Ua: Well? I’m in a rush.
+Hermie: Well? I’m in a rush.
 Buck: Woah, hold yer ears, friend! I got some, but it ain’t gon’ be cheap.
-Ua: What do you need?
-Buck: Need some stuff to rebuild this here place.
+Hermie: What do you need?
+Buck: Something to rebuild this here place.
 Buck: Think you could grab 5 pieces of wood? Should be able to get some if ya put yer min’ to it!
 <<jump Interruption1>>
 ===
@@ -40,13 +40,13 @@ Buck: Think you could grab 5 pieces of wood? Should be able to get some if ya pu
 title: Interruption1
 position: 204,22
 ---
-Alien Officer: What’d they say? Don’t got a translator on me.
-Ua: They told me to go home and get some sleep.
-Alien Officer: Did they now? It’s some good advice. Your brother ought to like it.
-Ua: ...
-Ua: ...They told me to get wood.
-Alien Officer: You’ll need to find a way to carry all of it, then! Take a look around.
-<<setDialogueNode DialogueManager SouthernGuyQuestPoint Southern_During>>
+Alien Officer: So what’d they say? Don’t got a translator on me.
+Hermie: They told me to go home and get some sleep.
+Alien Officer: Did they now? That's some good advice. Everyone back home ought to like it.
+Hermie: ...
+Hermie: ...They told me to get wood.
+Alien Officer: Then you’ll need to find a way to carry it all! Take a look around.
+<<setDialogueNode DialogueManager SouthernGuyQuestPoint Start_Repeat>>
 <<setDialogueNode DialogueManager SleepyQuestPoint LazyDialogue>>
 <<StartQuest DialogueManager CraftBagQuest>>
 ===
@@ -77,7 +77,7 @@ title: Start_Correct
 <<removeFromInventory InventoryCanvas Log>>
 <<removeFromInventory InventoryCanvas Log>> 
 Buck: That’s my boy. I’m an alien of my word. Here y’go!
-Ua: Thanks
+Hermie: Thanks.
 Buck: Don’t bother. Just stay safe out there. Aliens of all kinds tryna start a ruckus causa that so-called “honey war”.
 Buck: They don’t take kindly to folks like yerself, regardless of any “truce” we may go pretendin’ we got.
 Buck: So, jus’, good luck out there, stranger, for whatever you’re up to.
