@@ -23,6 +23,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+       
         Vector2 movement = Vector2.zero;
 
         if (Input.GetKeyDown(KeyCode.W)) lastUpPress = Time.time;
