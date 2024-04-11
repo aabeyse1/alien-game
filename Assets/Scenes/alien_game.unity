@@ -2831,10 +2831,10 @@ RectTransform:
   - {fileID: 1636418542}
   m_Father: {fileID: 2023465173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -192.64929, y: 97.369156}
-  m_SizeDelta: {x: 366.6634, y: 225.7116}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 197.77002, y: -127.51}
+  m_SizeDelta: {x: 366.6634, y: 225.71161}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &399297263
 MonoBehaviour:
@@ -7012,8 +7012,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -123, y: 45}
-  m_SizeDelta: {x: 111.8421, y: 107.5654}
+  m_AnchoredPosition: {x: -133.6417, y: 41.641}
+  m_SizeDelta: {x: 90.5587, y: 83.283}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1011092822
 GameObject:
@@ -9945,7 +9945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7778558434911714085, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -35.145
+      value: -31.988
       objectReference: {fileID: 0}
     - target: {fileID: 7778558434911714085, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: m_LocalScale.y
@@ -9957,7 +9957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7778558434911714085, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -17.573
+      value: -19.6862
       objectReference: {fileID: 0}
     - target: {fileID: 7778558434911714087, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: m_Sprite
@@ -10915,7 +10915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlotPrefab: {fileID: 9108718673822282051, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
-  slotCount: 20
+  slotCount: 15
   slotsParent: {fileID: 1425290308}
   extendedInventorySlots: []
 --- !u!114 &1425290305
@@ -10994,10 +10994,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2023465173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 199.6712, y: 97.369}
-  m_SizeDelta: {x: -436.1824, y: -277.48}
+  m_AnchoredPosition: {x: -200.3288, y: -154.11}
+  m_SizeDelta: {x: 363.8176, y: 172.51999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1430155336
 GameObject:
