@@ -15,6 +15,7 @@ public class IceSkatePole : MonoBehaviour
 
     [SerializeField] GameObject iceSkateVisual;
 
+
     private void Awake()
     {
         interactIcon = GetComponentInChildren<InteractIcon>();
