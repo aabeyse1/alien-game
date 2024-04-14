@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5350467867655682666}
   - component: {fileID: 6418985381126024912}
-  - component: {fileID: 3102916052740647892}
   - component: {fileID: 4329216887003994414}
   - component: {fileID: 326964907857129367}
   - component: {fileID: 7918169240357760963}
@@ -30,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875275513914938607}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.08999806, y: 0.008455418, z: -0.024115084, w: 0.99561405}
+  m_LocalRotation: {x: -0.08966137, y: 0.011499191, z: 0.009656621, w: 0.9958591}
   m_LocalPosition: {x: -5.901, y: 0.474, z: 1}
   m_LocalScale: {x: 0.022769984, y: 0.02143434, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -10.3, y: 1.233, z: -2.886}
+  m_LocalEulerAnglesHint: {x: -10.3, y: 1.233, z: 1}
 --- !u!212 &6418985381126024912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,50 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &3102916052740647892
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875275513914938607}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -5.8846135, y: -2.669965}
-  - {x: 5.852132, y: 3.4522111}
-  - {x: 6.328453, y: 1.6495963}
-  - {x: -5.858138, y: -2.950572}
-  - {x: -5.5451965, y: -3.8565629}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &4329216887003994414
 MonoBehaviour:
   m_ObjectHideFlags: 0
