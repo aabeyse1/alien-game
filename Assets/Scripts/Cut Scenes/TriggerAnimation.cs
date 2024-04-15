@@ -12,6 +12,8 @@ public class TriggerAnimation : MonoBehaviour
     [SerializeField] Transform afterAnimationPosition;
     [SerializeField] GameObject closedDoorCollider;
 
+    [SerializeField] GameObject openDoorIcon;
+
     private Animator animator;
     private Renderer characterRenderer;
     public float tweenSpeed = 0.1f;
