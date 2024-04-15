@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 4070707211520138753}
   - component: {fileID: 2243257624752616193}
   - component: {fileID: 8021969121714454228}
+  - component: {fileID: 996005261367760971}
   m_Layer: 5
   m_Name: InventorySlot 1
   m_TagString: InventorySlot
@@ -238,3 +239,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &996005261367760971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9108718673822282051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad69f3242e7e45dba128985831ac531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 0}
+  craftingPopupManager: {fileID: 0}
