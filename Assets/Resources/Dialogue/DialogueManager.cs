@@ -12,6 +12,18 @@ public class DialogueManager : MonoBehaviour
     private Dictionary<string, QuestPoint> questPointMap;
 
     [SerializeField] public QuestPoint[] allQuestPoints;
+    public static bool dialogueIsRunning = false;
+
+    public void StartDialogue()
+    {
+        dialogueIsRunning = true;
+    }
+
+    public void EndDialogue()
+    {
+        dialogueIsRunning = false;
+    }
+
     public void Start() {
         instance = this;
         // dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();

@@ -42,10 +42,24 @@ public class EntrancePoint : MonoBehaviour
         ChangeArea();
     }
 
-    private void ChangeArea() {
-        playerCharacter.transform.position = positionToChangeTo.transform.position;
-        GameEventsManager.instance.playerEvents.PlayerAreaChange(entrancePointName);
+    private void ChangeArea()
+    {
+        CameraFade cameraFade = Camera.main.GetComponent<CameraFade>();
+        if (cameraFade != null)
+        {
+            cameraFade.StartFadeOutAndIn(() =>
+            {
+                playerCharacter.transform.position = positionToChangeTo.transform.position;
+                GameEventsManager.instance.playerEvents.PlayerAreaChange(entrancePointName);
+            });
+        }
+        else
+        {
+            Debug.LogError("CameraFade component is not found on the main camera.");
+        }
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D otherCollider) {
         if (otherCollider.CompareTag("Player")) {

@@ -20,11 +20,20 @@ public class CraftingPopupManager : MonoBehaviour
 
     public GameObject EatingAnimation;
     public GameObject Character;
+    public Camera mainCamera;
+
+    private float originalFOV; // To store the original field of view of the camera
+    private Vector3 originalCameraPosition; 
 
     // private bool isAnimationPlaying = false;
 
     void Start()
     {
+        if (mainCamera != null)
+        {
+            originalFOV = mainCamera.fieldOfView;
+            originalCameraPosition = mainCamera.transform.position;
+        }
         craftButton.interactable = false;
     }
 

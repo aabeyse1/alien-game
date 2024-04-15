@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class AnimationHandler : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public static AnimationHandler Instance { get; private set; }
 
     public CraftingPopupManager craftingManager;
     private CraftingRecipe currentRecipe;
+    public Camera mainCamera;
+    private float originalFOV;
+    private Vector3 originalCameraPosition;
+    public Light2D surroundingLight;
 
     void Awake()
     {
@@ -28,6 +33,11 @@ public static AnimationHandler Instance { get; private set; }
 
         // craftingManager = FindObjectOfType<CraftingPopupManager>(); // Ideally, you'd pass this reference instead of finding it.
         animator = eatingAnimation.GetComponent<Animator>(); // Cache the Animator component.
+        if (mainCamera != null)
+        {
+            originalFOV = mainCamera.fieldOfView;
+            originalCameraPosition = mainCamera.transform.position;
+        }
     }
 
     public void StartCraftingAnimation(CraftingRecipe recipe)
@@ -35,6 +45,7 @@ public static AnimationHandler Instance { get; private set; }
         currentRecipe = recipe;
         SetupAnimationSprites(recipe);
         StartCoroutine(CraftingAnimationCoroutine());
+        StartCoroutine(ZoomInOnCharacter());
     }
 
     private IEnumerator CraftingAnimationCoroutine()
@@ -47,9 +58,53 @@ public static AnimationHandler Instance { get; private set; }
         OnAnimationComplete();
     }
 
+    private IEnumerator ZoomInOnCharacter()
+    {
+
+        if (mainCamera != null)
+        {
+            Debug.Log("Starting camera zoom.");
+            float duration = 1.0f;
+            float elapsedTime = 0;
+            float targetOrthographicSize = 0.45f;
+            float originalOrthographicSize = mainCamera.orthographicSize;
+            Vector3 targetPosition = character.transform.position + new Vector3(0, 0, -10);
+            float originalLightIntensity = surroundingLight.intensity;
+            float targetLightIntensity = 0.05f;
+
+            while (elapsedTime < duration)
+            {
+                mainCamera.orthographicSize = Mathf.Lerp(originalOrthographicSize, targetOrthographicSize, elapsedTime / duration);
+                mainCamera.transform.position = Vector3.Lerp(originalCameraPosition, targetPosition, elapsedTime / duration);
+                surroundingLight.intensity = Mathf.Lerp(originalLightIntensity, targetLightIntensity, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            mainCamera.orthographicSize = targetOrthographicSize;
+            mainCamera.transform.position = targetPosition;
+        }
+        else
+        {
+            Debug.LogError("Main camera is not assigned.");
+        }
+    }
+
+    private void ResetCameraZoom()
+    {
+        if (mainCamera != null)
+        {
+            surroundingLight.intensity = 0.3f;
+            mainCamera.orthographicSize = 0.8f; // Reset to original orthographic size
+            mainCamera.transform.position = originalCameraPosition;
+            Debug.Log("Camera reset to original settings.");
+        }
+    }
+
 
     private void OnAnimationComplete()
     {
+        ResetCameraZoom();
+
         eatingAnimation.SetActive(false);
         character.SetActive(true);
 
