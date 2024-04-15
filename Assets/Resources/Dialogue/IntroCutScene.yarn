@@ -1,5 +1,10 @@
 title: IntroCutScene
 tags:
 ---
-Alien Officer: 
+Alien Officer: Open the door, Hermi.
+
+// Once the door is broken:
+Alien Officer: ...
+
+//Once walk outside, start the InitialDialogue.yarn file.
 ===
