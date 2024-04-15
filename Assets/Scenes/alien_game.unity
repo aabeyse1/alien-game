@@ -8318,7 +8318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1008836578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8857,6 +8857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalSlot: {fileID: 0}
+  defaultItem: {fileID: 11400000, guid: 26dc3c066699e41f7b79c04e1936faad, type: 2}
 --- !u!225 &1032981589
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13132,7 +13133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe505aa28dee4cee85c11ebbe373be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlotPrefab: {fileID: 9108718673822282051, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
+  inventorySlotPrefab: {fileID: 9108718673822282051, guid: 929b134e78a294e3ead2eab82de52e9d, type: 3}
   slotCount: 15
   slotsParent: {fileID: 1425290308}
   extendedInventorySlots: []
@@ -16941,6 +16942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalSlot: {fileID: 0}
+  defaultItem: {fileID: 11400000, guid: 26dc3c066699e41f7b79c04e1936faad, type: 2}
 --- !u!225 &1916879085
 CanvasGroup:
   m_ObjectHideFlags: 0

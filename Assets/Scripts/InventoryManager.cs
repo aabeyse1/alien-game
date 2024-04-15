@@ -159,6 +159,8 @@ public class InventoryManager : MonoBehaviour
         foreach (GameObject slot in slots)
         {
             ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
+            Debug.Log("it is making it in here");
+            Debug.Log(itemRep.gameObject);
             if (itemRep != null && !itemRep.gameObject.activeSelf)
             {
                 // Reactivate and update an existing but inactive ItemRepresentation

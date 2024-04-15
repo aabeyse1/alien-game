@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalSlot: {fileID: 0}
-  defaultItem: {fileID: 0}
 --- !u!225 &417557267219335938
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -130,8 +129,8 @@ GameObject:
   - component: {fileID: 2243257624752616193}
   - component: {fileID: 8021969121714454228}
   m_Layer: 5
-  m_Name: InventorySlot 1
-  m_TagString: InventorySlot
+  m_Name: ExInventorySlot
+  m_TagString: ExInventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

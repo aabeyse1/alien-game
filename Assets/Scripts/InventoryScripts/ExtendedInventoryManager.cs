@@ -6,7 +6,6 @@ public class ExtendedInventoryManager : MonoBehaviour
     public GameObject inventorySlotPrefab;
     public int slotCount = 20;
     public Transform slotsParent;
-
     public GameObject[] extendedInventorySlots;
 
     void Awake()

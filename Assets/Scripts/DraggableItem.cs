@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
@@ -12,11 +13,19 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public GameObject originalSlot;
     private Vector3 originalScale;
+    private InventoryManager inventoryManager;
+
+    public Item defaultItem;
 
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
         originalScale = transform.localScale;
+        inventoryManager = FindObjectOfType<InventoryManager>();
+        if (inventoryManager == null)
+        {
+            Debug.LogError("InventoryManager instance not found in the scene.");
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -93,11 +102,50 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
     }
 
+
     private void ResetItemPositionToSlot(Transform slotTransform)
     {
-        transform.SetParent(slotTransform, false);
-        transform.localPosition = Vector3.zero;
-        transform.localScale = originalScale; // Reset any scale changes
+        // Get the dragged item and the item currently in the target slot
+        GameObject draggedObject = gameObject;
+        GameObject targetObject = slotTransform.childCount > 0 ? slotTransform.GetChild(0).gameObject : null;
+
+        Transform originalParent = startParent; // Remember original parent for swapping back if needed
+
+        if (targetObject != null)
+        {
+            Debug.Log("reached if statement");
+            // Swap the children between the slots
+            targetObject.transform.SetParent(originalParent, false);
+            targetObject.transform.localPosition = Vector3.zero;
+            targetObject.transform.localScale = originalScale;
+
+            draggedObject.transform.SetParent(slotTransform, false);
+            draggedObject.transform.localPosition = Vector3.zero;
+            draggedObject.transform.localScale = originalScale;
+        }
+        else
+        {
+            // If the target slot is empty, simply move the dragged object to the target slot
+            draggedObject.transform.SetParent(slotTransform, false);
+            draggedObject.transform.localPosition = Vector3.zero;
+            draggedObject.transform.localScale = originalScale;
+
+            // Since the original slot is now empty, add a default item to it
+            inventoryManager.AddDefaultItemToSlot(originalParent.gameObject);
+        }
+    }
+
+    private void UpdateItemVisuals(GameObject itemObject, Item item)
+    {
+        Image itemImage = itemObject.GetComponent<Image>();
+        if (itemImage != null)
+        {
+            itemImage.sprite = item.itemSprite;
+        }
+        else
+        {
+            Debug.LogError("Item representation does not have an Image component.", itemObject);
+        }
     }
 
 
