@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour
     private float lastRightPress = float.MinValue;
     private float lastLeftPress = float.MinValue;
 
+    public DialogueManager dialogueManager;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -23,6 +25,13 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+
+        if (dialogueManager.dialogueRunner.IsDialogueRunning)
+        {
+            rigidBody.velocity = Vector2.zero;
+            animator.SetInteger("Direction", 0);
+            return;
+        }
        
         Vector2 movement = Vector2.zero;
 

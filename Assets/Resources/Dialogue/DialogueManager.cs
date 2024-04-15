@@ -6,7 +6,7 @@ using Yarn.Unity;
 public class DialogueManager : MonoBehaviour
 {
    
-    [SerializeField] private DialogueRunner dialogueRunner;
+    [SerializeField] public DialogueRunner dialogueRunner;
     public static DialogueManager instance { get; private set;}
 
     private Dictionary<string, QuestPoint> questPointMap;

@@ -18919,6 +18919,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1043216863774421225, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1139106903}
     - target: {fileID: 3525578872734738767, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -18953,7 +18957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5471498026383913394, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5471498026383913394, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
       propertyPath: m_LocalRotation.w
