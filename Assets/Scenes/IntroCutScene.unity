@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1043216863774421225, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1931986236}
     - target: {fileID: 3525578872734738767, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -852,6 +856,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5471498026383913394, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
   m_PrefabInstance: {fileID: 81026236}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &920115184 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
+  m_PrefabInstance: {fileID: 218779151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &920905498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,6 +1950,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1931986235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1931986237}
+  - component: {fileID: 1931986236}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1931986236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931986235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7705a3aac46c435cad29081cfd2ff99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 920115184}
+  allQuestPoints: []
+--- !u!4 &1931986237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931986235}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.5939376, y: -2.5565574, z: 0.99429226}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1994530530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,8 +2047,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.84745, y: -0.45749998, z: 0}
-    m_Extent: {x: 3.01285, y: 2.8409, z: 0}
+    m_Center: {x: -0.8471999, y: -0.45705009, z: 0}
+    m_Extent: {x: 3.0144, y: 2.84005, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.2658535
@@ -2203,3 +2264,4 @@ SceneRoots:
   - {fileID: 218779151}
   - {fileID: 1994530532}
   - {fileID: 564374636}
+  - {fileID: 1931986237}
