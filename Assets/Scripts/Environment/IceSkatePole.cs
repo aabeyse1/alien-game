@@ -23,16 +23,16 @@ public class IceSkatePole : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameEventsManager.instance.inputEvents.onSubmitPressed += SubmitPressed;
+        GameEventsManager.instance.inputEvents.onSpacePressed += SpacePressed;
     }
 
     private void OnDisable()
     {
-        GameEventsManager.instance.inputEvents.onSubmitPressed -= SubmitPressed;
+        GameEventsManager.instance.inputEvents.onSpacePressed -= SpacePressed;
 
     }
 
-    private void SubmitPressed()
+    private void SpacePressed()
     {
         // Do nothing if the skate has already fallen
         if(!iceSkateVisual.activeInHierarchy) {
