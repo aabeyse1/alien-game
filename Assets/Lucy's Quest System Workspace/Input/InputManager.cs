@@ -13,4 +13,12 @@ public class InputManager : MonoBehaviour
             GameEventsManager.instance.inputEvents.SubmitPressed();
         }
     }
+
+     public void SpacePressed(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            GameEventsManager.instance.inputEvents.SpacePressed();
+        }
+    }
 }

@@ -2,6 +2,7 @@
 tags:
 ---
 Alien Officer: What is it? If you don’t focus and get this done, I’ll hear it from Command.
+
 Hermie: *Yawns in alien*
 Alien Officer: ...Hermi. 
 Alien Officer: You remember why we’re doing this at least?
@@ -16,6 +17,5 @@ Hermie: You'd better give some good instructions, then, huh?
 Alien Officer: ...
 Alien Officer: I knew I should've taken off today.
 <<StartQuest DialogueManager CollectFuelQuest>>
-//<<StartQuest DialogueManager CollectLogsAfterBagQuest>>
 
 ===

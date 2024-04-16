@@ -22,6 +22,15 @@ public class InputEvents
         }
     }
 
+    public event Action onSpacePressed;
+    public void SpacePressed()
+    {
+        if (onSpacePressed != null) 
+        {
+            onSpacePressed();
+        }
+    }
+
     public event Action onQuestLogTogglePressed;
     public void QuestLogTogglePressed()
     {

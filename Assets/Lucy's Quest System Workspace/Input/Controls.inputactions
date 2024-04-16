@@ -13,13 +13,22 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "ef9e138c-1c4a-423e-a78d-7a8e33c30432",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "ce2e73c3-9ffa-4665-90eb-e7cd39be9c36",
-                    "path": "<Keyboard>/space",
+                    "id": "733b7f9e-5a1d-40f8-99b1-7d2c4fe13a84",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -29,12 +38,12 @@
                 },
                 {
                     "name": "",
-                    "id": "733b7f9e-5a1d-40f8-99b1-7d2c4fe13a84",
-                    "path": "<Keyboard>/enter",
+                    "id": "7a526610-e0f3-4008-84e1-709ab4be4627",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Submit",
+                    "action": "Space",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

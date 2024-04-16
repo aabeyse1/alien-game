@@ -2133,6 +2133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftingPopupManager: {fileID: 1462606635}
+  SlotIndex: 0
 --- !u!222 &231766996
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2248,6 +2249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59da59321995a4418824b2b5fd913acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  craftingManager: {fileID: 0}
   originalSlot: {fileID: 0}
   defaultItem: {fileID: 11400000, guid: 26dc3c066699e41f7b79c04e1936faad, type: 2}
 --- !u!114 &259240034
@@ -3217,7 +3219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5350467867655682666, guid: 72acd28a73e3d4379809ebee213bf00f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.52
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5350467867655682666, guid: 72acd28a73e3d4379809ebee213bf00f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3450,7 +3452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &450010392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3562,7 +3564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5350467867655682666, guid: 72acd28a73e3d4379809ebee213bf00f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5350467867655682666, guid: 72acd28a73e3d4379809ebee213bf00f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8391,6 +8393,7 @@ MonoBehaviour:
   slotCount: 15
   slotsParent: {fileID: 914404937}
   extendedInventorySlots: []
+  craftingManager: {fileID: 0}
 --- !u!224 &914404937
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9294,6 +9297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftingPopupManager: {fileID: 1462606635}
+  SlotIndex: 0
 --- !u!222 &957158527
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13003,7 +13007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 92.913605, y: 23.707}
+  m_AnchoredPosition: {x: 92.913574, y: 23.707031}
   m_SizeDelta: {x: 185.82727, y: 47.409973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1449391905
@@ -19071,7 +19075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2035410040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19106,6 +19110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot1: {fileID: 1970810555}
   slot2: {fileID: 1328913056}
+  panel: {fileID: 450010391}
 --- !u!114 &2035410042
 MonoBehaviour:
   m_ObjectHideFlags: 0

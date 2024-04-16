@@ -12,29 +12,35 @@ public class QuestHintUI : MonoBehaviour
     [SerializeField] GameObject slot1;
     [SerializeField] GameObject slot2;
 
-    // TODO: what happens when the thing is crafted
-    // private void OnEnable() {
+    [SerializeField] GameObject panel;
+
+    private string currentRecipeName = "";
+
+
+    
+    private void OnEnable() {
         
-    //     GameEventsManager.instance.questEvents.onFinishQuest += FinishQuest;
+        GameEventsManager.instance.pickUpEvents.onItemCrafted += ItemCrafted;
 
-    // }
-
-    // private void OnDisable() {
-    //     GameEventsManager.instance.questEvents.onFinishQuest += FinishQuest;
-    // }
-
-    public void ShowQuestHint() {
-        gameObject.SetActive(true);
     }
 
-    public void HideQuestHint() {
-        gameObject.SetActive(false);
+    private void OnDisable() {
+        GameEventsManager.instance.pickUpEvents.onItemCrafted -= ItemCrafted;
+    }
+
+   
+    private void ShowQuestHint() {
+        panel.SetActive(true);
+    }
+
+    private void HideQuestHint() {
+        panel.SetActive(false);
     }
     
     [YarnCommand("SetSlotItems")]
-    public void SetSlotItems(string item1Name, string item2Name) {
+    public void SetSlotItems(string item1Name, string item2Name, string recipeName) {
+      
         ShowQuestHint();
-        
         Item[] allItemSOs = Resources.LoadAll<Item>("ItemSO");
         Sprite item1 = null;
         Sprite item2 = null;
@@ -51,6 +57,17 @@ public class QuestHintUI : MonoBehaviour
             slot2.GetComponent<Image>().sprite = item2;
         } else {
             Debug.LogError("QuestHintUI: Item sprite image not found.");
+        }
+
+        currentRecipeName = recipeName;
+    }
+
+    private void ItemCrafted(string itemName) {
+        if (itemName == currentRecipeName) {
+            HideQuestHint();
+            if (itemName == "RakeRake") {
+                SetSlotItems("IceSkate", "Pipe", "Axe");
+            }
         }
 
         
