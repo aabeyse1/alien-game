@@ -27,7 +27,7 @@ public class CameraFade : MonoBehaviour
     {
         float alpha = fadeOverlay.color.a;
         
-        for (float t = 0; t < 1; t += Time.deltaTime / fadeDuration)
+        for (float t = 0; t < 0.6; t += Time.deltaTime / fadeDuration)
         {
             Color newColor = new Color(0, 0, 0, Mathf.Lerp(alpha, targetAlpha, t));
             fadeOverlay.color = newColor;

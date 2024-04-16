@@ -1,14 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TriggerNextScene : MonoBehaviour
 {
-    [SerializeField] string nextSceneName;
-   private void OnTriggerEnter2D(Collider2D otherCollider) {
-        if (otherCollider.CompareTag("Player")) {
-             SceneManager.LoadScene(nextSceneName);
+    [SerializeField] private string nextSceneName;
+    [SerializeField] private CameraFade cameraFade;
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player")) {
+            cameraFade.StartFadeOutAndIn(() => 
+            {
+                LoadScene();
+            });
         }
-   }
+    }
+
+    private void LoadScene() {
+        SceneManager.LoadScene(nextSceneName);
+    }
 }
