@@ -8,6 +8,7 @@ public class ExtendedInventoryManager : MonoBehaviour
     public Transform slotsParent;
     public GameObject[] extendedInventorySlots;
     public CraftingPopupManager craftingManager;
+    public InventoryManager inventoryManager;
 
     void Awake()
     {
@@ -23,10 +24,14 @@ public class ExtendedInventoryManager : MonoBehaviour
         {
             GameObject slot = Instantiate(inventorySlotPrefab, slotsParent);
             slot.name = "InventorySlot " + i;
+            InventorySlot invSlot = slot.GetComponent<InventorySlot>();
+            invSlot.inventoryManager = inventoryManager;
+            // invSlot.craftingPopupManager = craftingManager;
             extendedInventorySlots[i] = slot;
             DraggableItem draggableItem = slot.GetComponentInChildren<DraggableItem>(true); // 'true' to include inactive children
             if (draggableItem != null)
             {
+                draggableItem.inventoryManager = inventoryManager;
                 draggableItem.craftingManager = craftingManager;
             }
         }

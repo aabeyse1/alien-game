@@ -176,11 +176,11 @@ public class CraftingPopupManager : MonoBehaviour
                 
                 // Activate the EatingAnimation GameObject and hide the character
                 // It's crucial to ensure these lines are executed before starting the coroutine
+                animationHandler.ResetCameraToCharacter();
+
                 EatingAnimation.transform.position = Character.transform.position;
                 Character.SetActive(false);
                 EatingAnimation.SetActive(true);
-
-
                 animationHandler.StartCraftingAnimation(recipe);
 
                 HideCraftingPopup(); // Hide crafting popup if necessary

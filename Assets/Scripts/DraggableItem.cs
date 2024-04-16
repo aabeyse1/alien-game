@@ -14,7 +14,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public GameObject originalSlot;
     private Vector3 originalScale;
-    private InventoryManager inventoryManager;
+    public InventoryManager inventoryManager;
 
     public Item defaultItem;
     public int? originatingSlotIndex = null;
@@ -124,6 +124,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         // Check if the original parent had the 'CraftingSlot' tag
         bool originalParentIsCraftingSlot = originalParent.CompareTag("CraftingSlot");
+        bool originalParentIsInvSlot = originalParent.CompareTag("InventorySlot");
 
         if (targetObject != null)
         {
@@ -141,6 +142,14 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 Destroy(targetObject); // Destroy the target object which is now in the original crafting slot
                 craftingManager.UpdateCraftability();
+            }
+            if (originalParentIsInvSlot)
+            {
+                Debug.Log("replacing item here");
+                Destroy(targetObject);
+                Debug.Log(originalParent.childCount);
+
+                StartCoroutine(inventoryManager.AddDefaultItemAfterFrame(originalParent.gameObject));
             }
         }
         else

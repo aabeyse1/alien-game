@@ -44,8 +44,18 @@ public static AnimationHandler Instance { get; private set; }
     {
         currentRecipe = recipe;
         SetupAnimationSprites(recipe);
+        ResetCameraToCharacter();
         StartCoroutine(CraftingAnimationCoroutine());
         StartCoroutine(ZoomInOnCharacter());
+    }
+
+    public void ResetCameraToCharacter()
+    {
+        if (mainCamera != null && character != null)
+        {
+            // Set camera directly above the character or at a specific offset
+            mainCamera.transform.position = character.transform.position + new Vector3(0, 0, -10);  // Adjust Z as necessary
+        }
     }
 
     private IEnumerator CraftingAnimationCoroutine()
@@ -123,6 +133,7 @@ public static AnimationHandler Instance { get; private set; }
     {
         surroundingLight.intensity = 0.6f;
         StartCoroutine(ResetCameraZoom());
+        ResetCameraToCharacter();
 
         eatingAnimation.SetActive(false);
         character.SetActive(true);

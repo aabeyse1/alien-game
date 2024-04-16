@@ -20,6 +20,7 @@ public class InventoryManager : MonoBehaviour
     public static List<string> itemsInInventory = new List<string>();
 
     private Dictionary<string, GameObject> itemMap; // links item name to its prefab
+    public CraftingPopupManager craftingManager;
 
     private void Awake() {
         itemMap = CreateItemMap();
@@ -99,7 +100,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private IEnumerator AddDefaultItemAfterFrame(GameObject slot)
+    public IEnumerator AddDefaultItemAfterFrame(GameObject slot)
     {
         yield return null; 
         AddDefaultItemToSlot(slot);
@@ -159,8 +160,6 @@ public class InventoryManager : MonoBehaviour
         foreach (GameObject slot in slots)
         {
             ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
-            Debug.Log("it is making it in here");
-            Debug.Log(itemRep.gameObject);
             if (itemRep != null && !itemRep.gameObject.activeSelf)
             {
                 // Reactivate and update an existing but inactive ItemRepresentation
@@ -231,10 +230,13 @@ public class InventoryManager : MonoBehaviour
 
     public void AddDefaultItemToSlot(GameObject slot)
     {
+        Debug.Log("made it inside add default");
         if (slot.transform.childCount == 0)
         {
+            Debug.Log("made it inside if as well");
             // Instantiate the default item prefab as a child of the slot
             GameObject newItem = Instantiate(defaultItemPrefab, slot.transform);
+
             newItem.transform.localPosition = Vector3.zero;
             newItem.transform.localRotation = Quaternion.identity;
             newItem.transform.localScale = Vector3.one;
@@ -265,6 +267,8 @@ public class InventoryManager : MonoBehaviour
             DraggableItem draggableItem = newItem.GetComponent<DraggableItem>();
             if (draggableItem != null)
             {
+                draggableItem.inventoryManager = this; // Assuming this script is attached to the InventoryManager GameObject
+                draggableItem.craftingManager = craftingManager;
                 // draggableItem.originalSlot = slot;
             }
             else
