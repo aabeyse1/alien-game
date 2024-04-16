@@ -1,21 +1,24 @@
 ﻿title: InitialDialogue
 tags:
 ---
+<<<<<<< Updated upstream
 Alien Officer: What is it? If you don’t focus and get this done, I’ll hear it from Command.
 
+=======
+Alien Officer: ...Hermie. You already crashed the ship. Why did you break the door...
+>>>>>>> Stashed changes
 Hermie: *Yawns in alien*
-Alien Officer: ...Hermi. 
 Alien Officer: You remember why we’re doing this at least?
 Alien Officer: They told me they’ve located the largest reservoir of honey that any alien faction has ever discovered!
 Alien Officer: This is our chance to finally get a leg up. If we don’t get to this one first, we could be wiped out for good!
 Hermie: *Mumbles in alien*
 Alien Officer: ...
-Alien Officer: Just get yourself a bit of honey so we can get out of here.
+Alien Officer: Just get yourself a bit of fuel so we can get out of here.
 Hermie: We? Didn't realize you were here too.
-Alien Officer: Hermi, please. If you fail, it's over for me.
+Alien Officer: Hermie, please. If you fail, I'll hear it from Command.
 Hermie: You'd better give some good instructions, then, huh?
-Alien Officer: ...
-Alien Officer: I knew I should've taken off today.
+Alien Officer: ...I knew I should've taken off today. 
+Alien Officer: Just check out that house north of here.
 <<StartQuest DialogueManager CollectFuelQuest>>
 
 ===
