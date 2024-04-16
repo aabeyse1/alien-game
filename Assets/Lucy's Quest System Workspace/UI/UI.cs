@@ -17,6 +17,9 @@ public class Objective : MonoBehaviour
     public TMP_Text objectiveDescriptionText;
     public TMP_Text progressText;
 
+    [Header("Quest Hints")]
+    public GameObject questHintsUI;
+
 
     private void Awake()
     {

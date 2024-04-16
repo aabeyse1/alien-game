@@ -4,6 +4,7 @@ tags:
 Alien Officer: Good, you crafted a bag. Now go get the wood. Our intel tells us that there is a forest on the north end of this chunk. 
 
 <<StartQuest DialogueManager CollectLogsAfterBagQuest>>
+<<SetSlotItems QuestHintUI IceSkate Pipe>>
 ===
 
 
@@ -11,10 +12,12 @@ title: Punch_Tree
 tags:
 ---
 Alien Officer: Trying to punch the tree now? You gotta cut it down. Obviously.
+<<SetSlotItems QuestHintUI IceSkate Pipe>>
 ===
 
 title: Punch_Pole
 tags:
 ---
 Alien Officer: Yeah, I see it. You'll need something to knock it down, though.
+<<SetSlotItems QuestHintUI Rake Rake>>
 ===

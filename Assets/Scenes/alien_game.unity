@@ -2604,7 +2604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
+  m_RequiresDepthTextureOption: 1
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
@@ -10586,6 +10586,7 @@ MonoBehaviour:
   objectiveDisplayText: {fileID: 942998483}
   objectiveDescriptionText: {fileID: 560826222}
   progressText: {fileID: 1123330286}
+  questHintsUI: {fileID: 0}
 --- !u!1 &1233061639
 GameObject:
   m_ObjectHideFlags: 0
