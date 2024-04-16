@@ -138,7 +138,6 @@ public class CraftingPopupManager : MonoBehaviour
 
     public void UpdateCraftability()
     {
-        Debug.Log("this method was called");
         Debug.Log(itemsInSlots[0]);
         Debug.Log(itemsInSlots[1]);
         // Debug.Log("recipes: " + recipes.Length);

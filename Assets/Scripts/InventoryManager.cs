@@ -230,10 +230,8 @@ public class InventoryManager : MonoBehaviour
 
     public void AddDefaultItemToSlot(GameObject slot)
     {
-        Debug.Log("made it inside add default");
         if (slot.transform.childCount == 0)
         {
-            Debug.Log("made it inside if as well");
             // Instantiate the default item prefab as a child of the slot
             GameObject newItem = Instantiate(defaultItemPrefab, slot.transform);
 

@@ -70,9 +70,25 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
             if (result.gameObject != null)
             {
+                GameObject targetObject = result.gameObject.transform.childCount > 0 ? result.gameObject.transform.GetChild(0).gameObject : null;
+                Transform originalParent = startParent; 
+
+                bool originalParentIsCraftingSlot = originalParent.CompareTag("CraftingSlot");
+                int? originalSlotIndex = GetSlotIndex(originalParent);
+
                 if (result.gameObject.CompareTag("CraftingSlot"))
                 {
                     Debug.Log("Dropped on Crafting Slot");
+                    
+                    if (originalParentIsCraftingSlot)
+                    {
+                        if (originalSlotIndex.HasValue)
+                        {
+                            craftingManager.ClearItemFromSlot(originalSlotIndex.Value);
+                        }
+                    }
+
+                    SetItemToSlot(GetComponent<ItemRepresentation>(), result.gameObject.transform, originalSlotIndex);
                 }
                 else if (result.gameObject.CompareTag("InventorySlot"))
                 {
@@ -113,6 +129,54 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             ResetItemPosition();
         }
     }
+
+    private int? GetSlotIndex(Transform slotTransform)
+    {
+        CraftingSlot slot = slotTransform.GetComponent<CraftingSlot>();
+        return slot ? slot.SlotIndex : null;
+    }
+
+
+private void SetItemToSlot(ItemRepresentation itemRep, Transform slotTransform, int? originatingSlotIndex)
+{
+    // Retrieve the existing item representation in the target slot, if any
+    ItemRepresentation targetSlotItemRep = slotTransform.GetComponentInChildren<ItemRepresentation>(true);
+
+    if (targetSlotItemRep != null)
+    {
+        // If the target slot already has an item, we need to swap the GameObjects
+        GameObject tempGameObject = targetSlotItemRep.gameObject; // Store the existing GameObject temporarily
+        Transform originalParent = itemRep.transform.parent; // Store the original parent
+
+        // Swap the GameObjects
+        tempGameObject.transform.SetParent(originalParent);
+        tempGameObject.transform.localPosition = Vector3.zero;
+        tempGameObject.transform.localRotation = Quaternion.identity;
+        tempGameObject.transform.localScale = Vector3.one;
+
+        itemRep.gameObject.transform.SetParent(slotTransform);
+        itemRep.gameObject.transform.localPosition = Vector3.zero;
+        itemRep.gameObject.transform.localRotation = Quaternion.identity;
+        itemRep.gameObject.transform.localScale = Vector3.one;
+    }
+    else
+    {
+        // If no item is in the slot, directly move the GameObject to the new slot
+        itemRep.gameObject.transform.SetParent(slotTransform);
+        itemRep.gameObject.transform.localPosition = Vector3.zero;
+        itemRep.gameObject.transform.localRotation = Quaternion.identity;
+        itemRep.gameObject.transform.localScale = Vector3.one;
+    }
+
+    // Update crafting slots and craftability if necessary
+    if (originatingSlotIndex.HasValue)
+    {
+        craftingManager.ClearItemFromSlot(originatingSlotIndex.Value);
+    }
+    craftingManager.UpdateCraftability(); // Update craftability after the item is set
+}
+
+
 
 
     private void ResetItemPositionToSlot(Transform slotTransform)
