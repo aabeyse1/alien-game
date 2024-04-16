@@ -8280,7 +8280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1008836578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14677,6 +14677,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 655334369}
     m_Modifications:
+    - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
+      propertyPath: inventoryManager
+      value: 
+      objectReference: {fileID: 2023465174}
     - target: {fileID: 2243257624752616193, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -15728,7 +15732,7 @@ PrefabInstance:
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: inventoryManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2023465174}
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: craftingPopupManager
       value: 
@@ -17772,8 +17776,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1437436089}
-  - {fileID: 655334369}
   - {fileID: 399297262}
+  - {fileID: 655334369}
   - {fileID: 922162621}
   - {fileID: 1008836581}
   - {fileID: 1425290308}
@@ -19172,7 +19176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5471498026383913394, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5471498026383913394, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
       propertyPath: m_LocalRotation.w

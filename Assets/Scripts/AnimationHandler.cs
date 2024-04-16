@@ -89,13 +89,31 @@ public static AnimationHandler Instance { get; private set; }
         }
     }
 
-    private void ResetCameraZoom()
+    private IEnumerator ResetCameraZoom()
     {
         if (mainCamera != null)
         {
-            surroundingLight.intensity = 0.3f;
-            mainCamera.orthographicSize = 0.8f; // Reset to original orthographic size
-            mainCamera.transform.position = originalCameraPosition;
+            float duration = 1.0f;
+            float elapsedTime = 0;
+            float targetOrthographicSize = 0.8f;
+            float originalOrthographicSize = mainCamera.orthographicSize;
+            Vector3 targetPosition = character.transform.position + new Vector3(0, 0, -10);
+            float originalLightIntensity = surroundingLight.intensity;
+            float targetLightIntensity = 0.6f;
+            while (elapsedTime < duration)
+            {
+                float lerpFactor = elapsedTime / duration;
+                mainCamera.orthographicSize = Mathf.Lerp(originalOrthographicSize, targetOrthographicSize, elapsedTime / duration);
+                mainCamera.transform.position = Vector3.Lerp(originalCameraPosition, targetPosition, elapsedTime / duration);
+                surroundingLight.intensity = Mathf.Lerp(originalLightIntensity, targetLightIntensity, lerpFactor);                
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            mainCamera.orthographicSize = targetOrthographicSize;
+            mainCamera.transform.position = targetPosition;
+            surroundingLight.intensity = targetLightIntensity;
+            // mainCamera.orthographicSize = 0.8f; // Reset to original orthographic size
+            // mainCamera.transform.position = originalCameraPosition;
             Debug.Log("Camera reset to original settings.");
         }
     }
@@ -103,7 +121,8 @@ public static AnimationHandler Instance { get; private set; }
 
     private void OnAnimationComplete()
     {
-        ResetCameraZoom();
+        surroundingLight.intensity = 0.6f;
+        StartCoroutine(ResetCameraZoom());
 
         eatingAnimation.SetActive(false);
         character.SetActive(true);
