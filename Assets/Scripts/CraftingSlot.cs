@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class CraftingSlot : MonoBehaviour, IDropHandler, IBeginDragHandler
 {
     public CraftingPopupManager craftingPopupManager;
+    public int SlotIndex;
 
     public void OnBeginDrag(PointerEventData eventData)
     {

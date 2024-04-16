@@ -6922,6 +6922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftingPopupManager: {fileID: 399297265}
+  SlotIndex: 0
 --- !u!4 &888724932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8218631435617461955, guid: e47b5d2c5feb340518199c51ad8240db, type: 3}
@@ -8280,7 +8281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1008836578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15729,6 +15730,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 655334369}
     m_Modifications:
+    - target: {fileID: 247420878320269091, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
+      propertyPath: craftingManager
+      value: 
+      objectReference: {fileID: 399297265}
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: inventoryManager
       value: 
@@ -15736,7 +15741,7 @@ PrefabInstance:
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: craftingPopupManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 399297265}
     - target: {fileID: 7965701906372194262, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -16782,6 +16787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59da59321995a4418824b2b5fd913acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  craftingManager: {fileID: 399297265}
   originalSlot: {fileID: 0}
   defaultItem: {fileID: 11400000, guid: 26dc3c066699e41f7b79c04e1936faad, type: 2}
 --- !u!225 &1916879085
@@ -16934,6 +16940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftingPopupManager: {fileID: 399297265}
+  SlotIndex: 1
 --- !u!1 &1921976493
 GameObject:
   m_ObjectHideFlags: 0

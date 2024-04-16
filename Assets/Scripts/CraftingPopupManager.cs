@@ -24,6 +24,7 @@ public class CraftingPopupManager : MonoBehaviour
 
     private float originalFOV; // To store the original field of view of the camera
     private Vector3 originalCameraPosition; 
+    
 
     // private bool isAnimationPlaying = false;
 
@@ -101,6 +102,15 @@ public class CraftingPopupManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void ClearItemFromSlot(int slotIndex)
+    {
+        if (slotIndex >= 0 && slotIndex < itemsInSlots.Length)
+        {
+            itemsInSlots[slotIndex] = null;
+            UpdateCraftability(); // Update the craft button's state
+        }
+    }
+
     private void ClearCraftingSlots()
     {
         for (int i = 0; i < craftingSlots.Length; i++)
@@ -117,7 +127,7 @@ public class CraftingPopupManager : MonoBehaviour
     // Called by CraftingSlot when an item is dropped
     public void ItemDroppedInSlot(CraftingSlot slot, Item item)
     {   
-        
+        AddDefaultItemsToEmptySlots();
         int slotIndex = System.Array.IndexOf(craftingSlots, slot.GetComponent<Image>());
         if (slotIndex != -1)
         {
@@ -128,6 +138,9 @@ public class CraftingPopupManager : MonoBehaviour
 
     public void UpdateCraftability()
     {
+        Debug.Log("this method was called");
+        Debug.Log(itemsInSlots[0]);
+        Debug.Log(itemsInSlots[1]);
         // Debug.Log("recipes: " + recipes.Length);
         craftButton.interactable = recipes.Any(recipe => RecipeMatches(recipe));
     }

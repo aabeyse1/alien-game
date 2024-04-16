@@ -10,12 +10,14 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Vector3 startPosition;
     private Transform startParent;
     private CanvasGroup canvasGroup;
+    public CraftingPopupManager craftingManager;
 
     public GameObject originalSlot;
     private Vector3 originalScale;
     private InventoryManager inventoryManager;
 
     public Item defaultItem;
+    public int? originatingSlotIndex = null;
 
     private void Awake()
     {
@@ -34,6 +36,11 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         startPosition = transform.localPosition; 
         startParent = transform.parent;
         canvasGroup.blocksRaycasts = false;
+        CraftingSlot originatingSlot = startParent.GetComponent<CraftingSlot>();
+        if (originatingSlot != null)
+        {
+            originatingSlotIndex = originatingSlot.SlotIndex;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -69,6 +76,11 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 }
                 else if (result.gameObject.CompareTag("InventorySlot"))
                 {
+                    if (originatingSlotIndex.HasValue)
+                    {
+                        craftingManager.ClearItemFromSlot(originatingSlotIndex.Value);
+                        originatingSlotIndex = null; // Reset the index after clearing
+                    }
                     ResetItemPositionToSlot(result.gameObject.transform);
                 }
                 else
@@ -105,15 +117,16 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private void ResetItemPositionToSlot(Transform slotTransform)
     {
-        // Get the dragged item and the item currently in the target slot
         GameObject draggedObject = gameObject;
         GameObject targetObject = slotTransform.childCount > 0 ? slotTransform.GetChild(0).gameObject : null;
 
         Transform originalParent = startParent; // Remember original parent for swapping back if needed
 
+        // Check if the original parent had the 'CraftingSlot' tag
+        bool originalParentIsCraftingSlot = originalParent.CompareTag("CraftingSlot");
+
         if (targetObject != null)
         {
-            Debug.Log("reached if statement");
             // Swap the children between the slots
             targetObject.transform.SetParent(originalParent, false);
             targetObject.transform.localPosition = Vector3.zero;
@@ -122,6 +135,13 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             draggedObject.transform.SetParent(slotTransform, false);
             draggedObject.transform.localPosition = Vector3.zero;
             draggedObject.transform.localScale = originalScale;
+
+            // If the original slot was a crafting slot, destroy the child now placed there
+            if (originalParentIsCraftingSlot)
+            {
+                Destroy(targetObject); // Destroy the target object which is now in the original crafting slot
+                craftingManager.UpdateCraftability();
+            }
         }
         else
         {
@@ -129,11 +149,15 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             draggedObject.transform.SetParent(slotTransform, false);
             draggedObject.transform.localPosition = Vector3.zero;
             draggedObject.transform.localScale = originalScale;
+        }
 
-            // Since the original slot is now empty, add a default item to it
+        // Add a default item to the original slot if it's not a crafting slot
+        if (!originalParentIsCraftingSlot && originalParent.childCount == 0)
+        {
             inventoryManager.AddDefaultItemToSlot(originalParent.gameObject);
         }
     }
+
 
     private void UpdateItemVisuals(GameObject itemObject, Item item)
     {
