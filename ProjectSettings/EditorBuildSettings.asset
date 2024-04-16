@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/First Chunk House.unity
     guid: 34e5ab957dc784fc8b48f6b6fad5e6d3
   - enabled: 1
+    path: Assets/Scenes/IntroCutScene.unity
+    guid: 8b4ba692c9f284fdba119714a79f9796
+  - enabled: 1
     path: Assets/Scenes/alien_game.unity
     guid: 6e86ac28042e04e589b29d1e346d3be2
   m_configObjects: {}
