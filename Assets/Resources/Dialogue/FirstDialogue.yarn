@@ -49,6 +49,7 @@ Alien Officer: Then you’ll need to find a way to carry it all! Take a look aro
 <<setDialogueNode DialogueManager SouthernGuyQuestPoint Southern_During>>
 <<setDialogueNode DialogueManager SleepyQuestPoint LazyDialogue>>
 <<StartQuest DialogueManager CraftBagQuest>>
+<<SetSlotItems CraftingRecipeUI Quilt Belt Backpack>>
 ===
 
 title: Southern_During
