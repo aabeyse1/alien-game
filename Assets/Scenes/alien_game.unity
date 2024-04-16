@@ -12995,6 +12995,7 @@ MonoBehaviour:
   slotCount: 15
   slotsParent: {fileID: 1425290308}
   extendedInventorySlots: []
+  craftingManager: {fileID: 399297265}
 --- !u!114 &1425290305
 MonoBehaviour:
   m_ObjectHideFlags: 0
