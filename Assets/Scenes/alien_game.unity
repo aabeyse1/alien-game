@@ -12985,7 +12985,19 @@ MonoBehaviour:
     m_ActionId: c9259f06-8fd0-4c34-bce2-f0ef7fbbf55f
     m_ActionName: Gameplay/Submit[/Keyboard/space,/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1392053075}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: SpacePressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ef9e138c-1c4a-423e-a78d-7a8e33c30432
     m_ActionName: Gameplay/New action
   m_NeverAutoSwitchControlSchemes: 0

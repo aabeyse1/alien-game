@@ -35,16 +35,16 @@ public class ChoppableTree : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameEventsManager.instance.inputEvents.onSubmitPressed += SubmitPressed;
+        GameEventsManager.instance.inputEvents.onSpacePressed += SpacePressed;
     }
 
     private void OnDisable()
     {
-        GameEventsManager.instance.inputEvents.onSubmitPressed -= SubmitPressed;
+        GameEventsManager.instance.inputEvents.onSpacePressed -= SpacePressed;
 
     }
 
-    private void SubmitPressed()
+    private void SpacePressed()
     {
 
         if (playerIsNear)
