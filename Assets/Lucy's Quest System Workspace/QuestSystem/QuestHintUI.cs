@@ -47,7 +47,8 @@ public class QuestHintUI : MonoBehaviour
         foreach (Item item in allItemSOs) {
             if (item.itemName == item1Name) {
                 item1 = item.itemSprite;
-            } else if (item.itemName == item2Name) {
+            } 
+            if (item.itemName == item2Name) {
                 item2 = item.itemSprite;
             }
         }
