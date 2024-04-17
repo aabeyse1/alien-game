@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  dialogueManager: {fileID: 0}
 --- !u!61 &447425469172265231
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.49628717, y: 0.35479796}
     oldSize: {x: 9.25, y: 10.88}
     newSize: {x: 9.2699995, y: 10.901302}
     adaptiveTilingThreshold: 0.5

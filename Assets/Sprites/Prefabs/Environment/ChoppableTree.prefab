@@ -494,6 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logPrefab: {fileID: 7056948275355669066, guid: af01645f8f6614dfc973605aacec4a17, type: 3}
   highlightColor: {r: 0.8736966, g: 1, b: 0.8254717, a: 1}
+  choppingAnimationPrefab: {fileID: 3444939057954461737, guid: a33adab80bd124f62a68c475a53b9772, type: 3}
 --- !u!95 &2697589541007812345
 Animator:
   serializedVersion: 5
