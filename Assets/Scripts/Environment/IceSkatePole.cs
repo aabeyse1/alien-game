@@ -15,11 +15,18 @@ public class IceSkatePole : MonoBehaviour
 
     [SerializeField] GameObject iceSkateVisual;
 
+    [SerializeField] GameObject pokingAnimationPrefab;
+
+    private GameObject character;
+    private GameObject animationObject;
 
     private void Awake()
     {
         interactIcon = GetComponentInChildren<InteractIcon>();
         animator = GetComponent<Animator>();
+        character = GameObject.FindGameObjectsWithTag("Player")[0];
+        
+        animator.Play("IceSkateSwinging", -1, 0f);
     }
     private void OnEnable()
     {
@@ -44,6 +51,7 @@ public class IceSkatePole : MonoBehaviour
             if (playerHasRakeRake)
             {
                 // knock down ice skate
+                PlayPokingCharacterAnimation();
                 StartCoroutine(FallingAnimationCoroutine());
 
 
@@ -60,16 +68,32 @@ public class IceSkatePole : MonoBehaviour
         }
 
     }
+    private void PlayPokingCharacterAnimation() {
+        animationObject = Instantiate(pokingAnimationPrefab);
+        
+        // put the animation at an offset position to account for the difference in sprite sizes
+        Vector3 characterPos = character.transform.position;
+        animationObject.transform.position = new Vector3(characterPos.x, characterPos.y + 0.1f, characterPos.z);
 
+        // face left or right
+        if (character.transform.position.x > transform.position.x)  {
+            animationObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        
+    }
     private IEnumerator FallingAnimationCoroutine()
     {
-        animator.enabled = true;
-        animator.Play("IceSkateFall", -1, 0f);
+        character.SetActive(false);
+        animator.SetBool("Poked", true);
+        
         // Wait for the animation to reach its end
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsName("Exit"));
+        
         animator.enabled = false;
         iceSkatePickUpItem.SetActive(true);
         iceSkateVisual.SetActive(false);
+        Destroy(animationObject);
+        character.SetActive(true);
         
 
     }
