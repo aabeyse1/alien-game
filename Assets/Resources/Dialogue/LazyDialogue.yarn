@@ -58,18 +58,23 @@ Lazy Alien: If you don’t get the sock right now you can kiss your precious bel
 
 title: Lazy_Correct
 ---
+
+<<removeFromInventory InventoryCanvas Sock>>
+<<RemoveBeltFromSprite SleepySprite>>
+<<addToInventory InventoryCanvas Belt>>
+
+
 Lazy Alien: Now take it and leave me alone. This chunk’s only big enough for one Faction, and it’s hard enough as it is.
 Hermie: Why's that?
 Lazy Alien: …Our chief is hellbent on finding that honey reservoir everyone’s after.
 Lazy Alien: He’s got me all caught up in the mess. So do yourself a favor and get as far away from this nonsense as possible, yeah? 
 Lazy Alien: That includes here.
 
-<<removeFromInventory InventoryCanvas Sock>>
-<<addToInventory InventoryCanvas Belt>>
 ===
 
 title: Lazy_Before
 ---
+
 Lazy Alien: Leave me alone.
 
 ===

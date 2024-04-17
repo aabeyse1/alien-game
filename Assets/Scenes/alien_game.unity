@@ -6188,14 +6188,34 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 4198242516510546573, guid: f02e221a17428468094f40316ccfc09c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198242516510546573, guid: f02e221a17428468094f40316ccfc09c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198242516510546573, guid: f02e221a17428468094f40316ccfc09c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.22
+      objectReference: {fileID: 0}
     - target: {fileID: 5754272422652024742, guid: f02e221a17428468094f40316ccfc09c, type: 3}
       propertyPath: m_Name
       value: IceSkatePole
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297836331544017074, guid: f02e221a17428468094f40316ccfc09c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6388235266327984542, guid: f02e221a17428468094f40316ccfc09c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 6390367016190634458, guid: f02e221a17428468094f40316ccfc09c, type: 3}
+      propertyPath: pokingAnimationPrefab
+      value: 
+      objectReference: {fileID: 3444939057954461737, guid: 61e7422367c9c49dc8aace4994045b83, type: 3}
     - target: {fileID: 6658835553895967650, guid: f02e221a17428468094f40316ccfc09c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -8937,7 +8957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534700439484737800, guid: 2c367f31f18ab4b6bafc272b6472a138, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6037974237094660919, guid: 2c367f31f18ab4b6bafc272b6472a138, type: 3}
       propertyPath: m_LocalPosition.x

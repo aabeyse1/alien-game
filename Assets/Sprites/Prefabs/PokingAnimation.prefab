@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5047211067708294785}
   - component: {fileID: 6175814456921674696}
-  - component: {fileID: 811496770477769636}
+  - component: {fileID: 8168537725424887511}
   m_Layer: 0
   m_Name: PokingAnimation
   m_TagString: Untagged
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &811496770477769636
+--- !u!95 &8168537725424887511
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 3444939057954461737}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e0ad516c3214a4985ae9ab3eb351f967, type: 2}
+  m_Controller: {fileID: 9100000, guid: 80881a4418d354801a7ea05eb062230e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

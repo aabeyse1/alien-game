@@ -25,7 +25,7 @@ public class IceSkatePole : MonoBehaviour
         interactIcon = GetComponentInChildren<InteractIcon>();
         animator = GetComponent<Animator>();
         character = GameObject.FindGameObjectsWithTag("Player")[0];
-        
+        animator.enabled = true;
         animator.Play("IceSkateSwinging", -1, 0f);
     }
     private void OnEnable()
