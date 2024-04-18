@@ -1,35 +1,37 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    public InventoryManager inventoryManager;
-    public CraftingPopupManager craftingPopupManager;
+    public Outline outline;
+    private bool isEquipped = false;
+    private ItemRepresentation itemRep;
 
-    // public void OnDrop(PointerEventData eventData)
-    // {
-    //     DraggableItem draggableItem = eventData.pointerDrag.GetComponent<DraggableItem>();
-    //     if (draggableItem == null)
-    //     {
-    //         Debug.LogError("DraggableItem component not found on the dragged object.");
-    //         return; // Exit if we can't find DraggableItem to prevent null reference
-    //     }
+    public CharacterEquipManager equipManager;
 
-    //     ItemRepresentation itemRep = draggableItem.GetComponent<ItemRepresentation>();
-    //     if (itemRep == null || itemRep.item == null)
-    //     {
-    //         Debug.LogError("ItemRepresentation component is missing or item is null.");
-    //         return; // Exit to prevent null reference
-    //     }
+    void Start()
+    {
+        itemRep = GetComponentInChildren<ItemRepresentation>(true);
+        SetEquipped(false); // Start with no outline
+    }
 
-    //     // Ensure that inventoryManager is assigned and not null
-    //     if (inventoryManager == null)
-    //     {
-    //         Debug.LogError("InventoryManager reference is not set.");
-    //         return; // Exit to prevent null reference
-    //     }
+    public void OnSlotClicked()
+    {
+        ToggleEquipItem();
+    }
 
-    //     bool wasAdded = inventoryManager.AddItem(itemRep.item, draggableItem.gameObject);
-    // }
+    private void ToggleEquipItem()
+    {
+        if (itemRep != null && itemRep.gameObject.activeSelf)
+        {
+            SetEquipped(!isEquipped);
+        }
+    }
 
+    public void SetEquipped(bool equip)
+    {
+        isEquipped = equip;
+        outline.enabled = isEquipped;
+        equipManager.UpdateEquippedItem(this, isEquipped ? itemRep.item : null);
+    }
 }
