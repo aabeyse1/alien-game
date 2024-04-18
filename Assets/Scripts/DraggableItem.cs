@@ -23,6 +23,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
         originalScale = transform.localScale;
+        craftingManager = FindObjectOfType<CraftingPopupManager>(true);
         inventoryManager = FindObjectOfType<InventoryManager>();
         if (inventoryManager == null)
         {
@@ -92,12 +93,20 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 }
                 else if (result.gameObject.CompareTag("InventorySlot"))
                 {
-                    if (originatingSlotIndex.HasValue)
+                    if (startParent == result.gameObject.transform)
                     {
-                        craftingManager.ClearItemFromSlot(originatingSlotIndex.Value);
-                        originatingSlotIndex = null; // Reset the index after clearing
+                        ResetItemPosition();
                     }
-                    ResetItemPositionToSlot(result.gameObject.transform);
+                    else
+                    {
+                        if (originatingSlotIndex.HasValue)
+                        {
+                            craftingManager.ClearItemFromSlot(originatingSlotIndex.Value);
+                            originatingSlotIndex = null; // Reset the index after clearing
+                        }
+                        ResetItemPositionToSlot(result.gameObject.transform);
+                            
+                    }
                 }
                 else
                 {
