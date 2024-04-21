@@ -3,7 +3,8 @@ using UnityEngine;
 public class CharacterEquipManager : MonoBehaviour
 {
     private InventorySlot currentEquippedSlot;
-
+    
+    
     public void UpdateEquippedItem(InventorySlot slot, Item item)
     {
         if (currentEquippedSlot != null && currentEquippedSlot != slot)
@@ -28,5 +29,12 @@ public class CharacterEquipManager : MonoBehaviour
         {
             currentEquippedSlot = null;
         }
+    }
+
+    public string GetEquippedItemName() {
+        if (currentEquippedSlot == null) {
+            return null;
+        }
+        return currentEquippedSlot.GetItemName();
     }
 }

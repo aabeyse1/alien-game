@@ -34,4 +34,8 @@ public class InventorySlot : MonoBehaviour
         outline.enabled = isEquipped;
         equipManager.UpdateEquippedItem(this, isEquipped ? itemRep.item : null);
     }
+
+    public string GetItemName() {
+        return itemRep.item.itemName;
+    }
 }

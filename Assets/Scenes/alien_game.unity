@@ -341,6 +341,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &37176838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37176839}
+  - component: {fileID: 37176840}
+  m_Layer: 0
+  m_Name: CharacterEquipManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &37176839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37176838}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 125904847}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &37176840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37176838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7de181d8f51d4145a8c7f46a034f976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &39606334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3900,18 +3944,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footstep: {fileID: 534418913}
---- !u!114 &455307146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455307134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7de181d8f51d4145a8c7f46a034f976, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &478934584
 GameObject:
   m_ObjectHideFlags: 0
@@ -13480,7 +13512,7 @@ MonoBehaviour:
   extendedInventorySlots: []
   craftingManager: {fileID: 399297265}
   inventoryManager: {fileID: 2023465174}
-  equipManager: {fileID: 455307146}
+  equipManager: {fileID: 0}
 --- !u!114 &1425290305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15172,7 +15204,7 @@ PrefabInstance:
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: equipManager
       value: 
-      objectReference: {fileID: 455307146}
+      objectReference: {fileID: 0}
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: inventoryManager
       value: 
@@ -16406,7 +16438,7 @@ PrefabInstance:
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: equipManager
       value: 
-      objectReference: {fileID: 455307146}
+      objectReference: {fileID: 0}
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: inventoryManager
       value: 
@@ -20034,13 +20066,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5471498026383913394, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 534418914}
+    - targetCorrespondingSourceObject: {fileID: 5471498026383913394, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 37176839}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4641375397197739048, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 455307140}
-    - targetCorrespondingSourceObject: {fileID: 4641375397197739048, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 455307146}
   m_SourcePrefab: {fileID: 100100000, guid: a3ba48cd7d299425d971361cf78d2f2d, type: 3}
 --- !u!1001 &5577078993961328646
 PrefabInstance:

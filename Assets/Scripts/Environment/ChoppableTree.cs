@@ -20,13 +20,15 @@ public class ChoppableTree : MonoBehaviour
 
     private GameObject character;
     private GameObject animationObject;
-
+    private CharacterEquipManager characterEquipManager;
     private void Awake()
     {
         animator = GetComponent<Animator>();
         interactIcon = GetComponentInChildren<InteractIcon>();
         character = GameObject.FindGameObjectsWithTag("Player")[0];
         Transform visualsGameObject = gameObject.transform.Find("Visuals");
+        
+        characterEquipManager = character.GetComponentInChildren<CharacterEquipManager>();
 
         // finding first active child code is from: https://discussions.unity.com/t/get-first-active-child-gameobject/181486
         for (int i = 0; i < visualsGameObject.childCount; i++)
@@ -55,15 +57,13 @@ public class ChoppableTree : MonoBehaviour
 
         if (playerIsNear)
         {
-            bool playerHasAxe = InventoryManager.isItemInInventory("Axe");
+            bool playerHasAxe = characterEquipManager.GetEquippedItemName() == "Axe";
             if (playerHasAxe)
             {
                 // chop down tree
                 PlayChoppingCharacterAnimation();
 
-
                 StartCoroutine(FallDownAnimationCoroutine());
-                
                
             }
             else

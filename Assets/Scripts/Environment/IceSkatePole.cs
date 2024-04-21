@@ -20,13 +20,17 @@ public class IceSkatePole : MonoBehaviour
     private GameObject character;
     private GameObject animationObject;
 
+    private CharacterEquipManager characterEquipManager;
+
     private void Awake()
     {
         interactIcon = GetComponentInChildren<InteractIcon>();
         animator = GetComponent<Animator>();
         character = GameObject.FindGameObjectsWithTag("Player")[0];
+        characterEquipManager = character.GetComponentInChildren<CharacterEquipManager>();
         animator.enabled = true;
         animator.Play("IceSkateSwinging", -1, 0f);
+        
     }
     private void OnEnable()
     {
@@ -47,7 +51,7 @@ public class IceSkatePole : MonoBehaviour
         }
         if (playerIsNear)
         {
-            bool playerHasRakeRake = InventoryManager.isItemInInventory("RakeRake");
+            bool playerHasRakeRake = characterEquipManager.GetEquippedItemName() == "RakeRake";
             if (playerHasRakeRake)
             {
                 // knock down ice skate
