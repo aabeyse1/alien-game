@@ -3146,6 +3146,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8911951168619742865, guid: b0bed48274d19451b8cdc39558d18887, type: 3}
+      propertyPath: startPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8911951168619742865, guid: b0bed48274d19451b8cdc39558d18887, type: 3}
       propertyPath: dialogueNodeForPoint
       value: Lazy_Before
       objectReference: {fileID: 0}
@@ -15204,7 +15208,7 @@ PrefabInstance:
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: equipManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 37176840}
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: inventoryManager
       value: 
@@ -15742,7 +15746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -16438,7 +16442,7 @@ PrefabInstance:
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: equipManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 37176840}
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: inventoryManager
       value: 
@@ -16533,6 +16537,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7965701906372194262, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021969121714454228, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
+      propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8021969121714454228, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
@@ -17204,7 +17212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
