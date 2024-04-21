@@ -104,7 +104,10 @@ public class IceSkatePole : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
         
-
+         // Do nothing if the skate has already fallen
+        if(!iceSkateVisual.activeInHierarchy) {
+            return;
+        }
         if (otherCollider.CompareTag("Player"))
         {
             interactIcon.SetState(active: true, locked: false);

@@ -69,12 +69,18 @@ Hermie: Why's that?
 Lazy Alien: …Our chief is hellbent on finding that honey reservoir everyone’s after.
 Lazy Alien: He’s got me all caught up in the mess. So do yourself a favor and get as far away from this nonsense as possible, yeah? 
 Lazy Alien: That includes here.
-
+<<setDialogueNode DialogueManager SleepyQuestPoint Lazy_After>>
 ===
 
 title: Lazy_Before
 ---
 
 Lazy Alien: Leave me alone.
+
+===
+
+title: Lazy_After
+---
+Lazy Alien: Thanks for the sock. We need to write something else here. 
 
 ===
