@@ -21,6 +21,8 @@ public class ItemPickup : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isPlayerNearby = true;
+            // increase the size of the item when you walk past it
+            transform.localScale = transform.localScale * 1.1f;
         }
     }
 
@@ -29,6 +31,8 @@ public class ItemPickup : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isPlayerNearby = false;
+             // reset the size of the item
+            transform.localScale = transform.localScale / 1.1f;
         }
     }
 

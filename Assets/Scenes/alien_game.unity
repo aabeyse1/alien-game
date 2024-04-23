@@ -1476,6 +1476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 178488041}
   - component: {fileID: 178488040}
+  - component: {fileID: 178488042}
   m_Layer: 0
   m_Name: BackgroundMusic
   m_TagString: Untagged
@@ -1594,6 +1595,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &178488042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178488039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2a6267e638744188bbc4b72ab113fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &189592095
 GameObject:
   m_ObjectHideFlags: 0
@@ -7387,6 +7400,10 @@ PrefabInstance:
       propertyPath: positionToChangeTo
       value: 
       objectReference: {fileID: 1837597507}
+    - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
+      propertyPath: backgroundMusicObject
+      value: 
+      objectReference: {fileID: 178488042}
     - target: {fileID: 6050593723042875386, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: m_Name
       value: EntrancePoint
@@ -7459,7 +7476,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 819b50b47d3114a6387742965c208788, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f811abaf1cdc1424c96070979f6196ec, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -9665,6 +9682,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3544197531358160932, guid: 2c367f31f18ab4b6bafc272b6472a138, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544197531358160932, guid: 2c367f31f18ab4b6bafc272b6472a138, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544197531358160932, guid: 2c367f31f18ab4b6bafc272b6472a138, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544197531358160932, guid: 2c367f31f18ab4b6bafc272b6472a138, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -10727,6 +10756,10 @@ PrefabInstance:
       propertyPath: positionToChangeTo
       value: 
       objectReference: {fileID: 869542}
+    - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
+      propertyPath: backgroundMusicObject
+      value: 
+      objectReference: {fileID: 178488042}
     - target: {fileID: 6050593723042875386, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: m_Name
       value: EntrancePoint
@@ -16506,6 +16539,10 @@ PrefabInstance:
       propertyPath: positionToChangeTo
       value: 
       objectReference: {fileID: 89353787}
+    - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
+      propertyPath: backgroundMusicObject
+      value: 
+      objectReference: {fileID: 178488042}
     - target: {fileID: 6050593723042875386, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: m_Name
       value: EntrancePoint
@@ -16890,6 +16927,10 @@ PrefabInstance:
       propertyPath: positionToChangeTo
       value: 
       objectReference: {fileID: 1745333248}
+    - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
+      propertyPath: backgroundMusicObject
+      value: 
+      objectReference: {fileID: 178488042}
     - target: {fileID: 6050593723042875386, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: m_Name
       value: EntrancePoint
@@ -17535,6 +17576,10 @@ PrefabInstance:
     - target: {fileID: 996005261367760971, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: craftingPopupManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906315221902089107, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5906315221902089107, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
       propertyPath: m_EffectDistance.x
