@@ -21,3 +21,10 @@ tags:
 Alien Officer: Yeah, I see it. You'll need something to knock it down, though.
 <<SetSlotItems CraftingRecipeUI Rake Rake RakeRake>>
 ===
+
+title: Too_Dark
+tags:
+---
+Alien Officer: It's too dark down here.
+<<ChangeArea WellExitEntrancePoint>>
+===

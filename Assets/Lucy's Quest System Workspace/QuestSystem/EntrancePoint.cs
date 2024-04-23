@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 [RequireComponent(typeof(CircleCollider2D))] // require this component to be attatched to the same gameobject that this script is attatched to 
 public class EntrancePoint : MonoBehaviour
@@ -51,8 +52,9 @@ public class EntrancePoint : MonoBehaviour
         }
         ChangeArea();
     }
-
-    private void ChangeArea()
+    
+    [YarnCommand("ChangeArea")]
+    public void ChangeArea()
     {
         CameraFade cameraFade = Camera.main.GetComponent<CameraFade>();
         if (cameraFade != null)

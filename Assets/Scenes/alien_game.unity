@@ -13306,7 +13306,7 @@ PrefabInstance:
       objectReference: {fileID: 178488042}
     - target: {fileID: 6050593723042875386, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: m_Name
-      value: EntrancePoint
+      value: WellExitEntrancePoint
       objectReference: {fileID: 0}
     - target: {fileID: 8379228266060208053, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: m_LocalScale.x
@@ -20658,6 +20658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1677467920}
+  - component: {fileID: 1677467921}
   m_Layer: 0
   m_Name: Well Area
   m_TagString: Untagged
@@ -20684,6 +20685,18 @@ Transform:
   - {fileID: 1108121818}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1677467921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677467919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5919b767b5bf84c57b142c226d62147d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1685385251
 GameObject:
   m_ObjectHideFlags: 0
