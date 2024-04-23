@@ -45,6 +45,8 @@ public class ItemPickup : MonoBehaviour
             
             GameEventsManager.instance.pickUpEvents.ItemPickedUp(item);
             Destroy(this.gameObject);
+            
+          
         }
         else
         {
