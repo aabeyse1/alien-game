@@ -10,33 +10,40 @@ public class EntrancePoint : MonoBehaviour
     [Header("Entrance Point Info")]
 
     [SerializeField] private string entrancePointName;
-    [SerializeField] private bool locked = false; 
-    
+    [SerializeField] private bool locked = false;
+
     [SerializeField] private GameObject positionToChangeTo;
 
     [Header("Player Info")]
-    [SerializeField] private GameObject playerCharacter; 
-    
-    private bool playerIsNear = false; 
-    
+    [SerializeField] private GameObject playerCharacter;
+
+    AudioSource audioSource;
+
+    private bool playerIsNear = false;
+
     private InteractIcon interactIcon;
 
-    private void Awake() {
+    private void Awake()
+    {
         interactIcon = GetComponentInChildren<InteractIcon>();
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         GameEventsManager.instance.inputEvents.onSubmitPressed += SubmitPressed;
     }
 
-     private void OnDisable() {
+    private void OnDisable()
+    {
         GameEventsManager.instance.inputEvents.onSubmitPressed -= SubmitPressed;
 
     }
 
-    private void SubmitPressed() {
-       
-        if (!playerIsNear) {
+    private void SubmitPressed()
+    {
+
+        if (!playerIsNear)
+        {
             return;
         }
         ChangeArea();
@@ -52,6 +59,16 @@ public class EntrancePoint : MonoBehaviour
                 playerCharacter.transform.position = positionToChangeTo.transform.position;
                 GameEventsManager.instance.playerEvents.PlayerAreaChange(entrancePointName);
             });
+
+            if (entrancePointName == "EnterWell")
+            {
+                audioSource = GetComponent<AudioSource>();
+                cameraFade.StartFadeOutAndInWithFallingScene(() =>
+                 {
+                     playerCharacter.transform.position = positionToChangeTo.transform.position;
+                     GameEventsManager.instance.playerEvents.PlayerAreaChange(entrancePointName);
+                 }, audioSource);
+            }
         }
         else
         {
@@ -61,17 +78,21 @@ public class EntrancePoint : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D otherCollider) {
-        if (otherCollider.CompareTag("Player")) {
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        if (otherCollider.CompareTag("Player"))
+        {
             interactIcon.SetState(active: true, locked: locked);
             playerIsNear = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D otherCollider) {
-         if (otherCollider.CompareTag("Player")) {
+    private void OnTriggerExit2D(Collider2D otherCollider)
+    {
+        if (otherCollider.CompareTag("Player"))
+        {
             playerIsNear = false;
             interactIcon.SetState(active: false, locked: locked);
         }
     }
-   
+
 }
