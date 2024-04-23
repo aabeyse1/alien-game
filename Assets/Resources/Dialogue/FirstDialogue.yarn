@@ -5,7 +5,7 @@ position: 22,-240
 Hermie: Hello. Who are you?
 Friendly Alien: No English yet, eh? Youse must be an F1. //#line:SB1s
 Friendly Alien: Well lucky for you stranger, I got a translator right here, courtesy of our lost human folk! //#line:SB1l
-Friendly Alien: You and I could talk into it, then feel free to take it with ya! No one speaks Faction 1 anymore, ya know. //#line:SB2l
+Friendly Alien: Feel free to take it with ya! No one speaks Faction 1 anymore, ya know. //#line:SB2l
 Buck: Name's Buck, by the way. So anyway adventurer, what d’ya need? //#line:SB3l
     -> What’re you doing here?
         Buck: That’s my line, stranger. This here’s our territory, didn’t ya know?
@@ -13,13 +13,13 @@ Buck: Name's Buck, by the way. So anyway adventurer, what d’ya need? //#line:S
             -> Sorry, I've got nothing.
                 Buck: Well, ain’t that a problem?...
                 Buck: Tell ya what, I’ve been tryna renovate- Get my quarters in tip-top shape, ya hear?
-                Buck: If you could grab me 5 pieces of wood, I’ll give ya what ya need.
+                Buck: If you could grab me 5 pieces of wood, I’ll give ya some honey. Seems like you could use it. Everyone does.
                 Hermie: And where're those?
                 Buck: Well, that’s yer job, now ain’t it? C’mon, shouldn’t be too bad if you put yer min’ to it!
                 <<jump Interruption1>>
-            -> My ship needs repair. Would you happen to have any fuel?
+            -> My ship needs repair. Would you happen to have any honey?
                 <<jump NeedRepair>>
-    -> My ship needs repair. Would you happen to have any fuel?
+    -> My ship needs repair. Would you happen to have any honey?
         <<jump NeedRepair>>
          
            
@@ -67,7 +67,7 @@ Buck: Think you could grab 5 pieces of wood? Should be able to get some if ya pu
 
 title: Start_Incorrect
 ---
-Buck: The hell is this, stranger? What, 5 pieces of wood too hard for ya? No wood, no fuel, I’m afraid.
+Buck: The hell is this, stranger? What, 5 pieces of wood too hard for ya? No wood, no honey, I’m afraid.
 ===
 
 title: Start_Correct
