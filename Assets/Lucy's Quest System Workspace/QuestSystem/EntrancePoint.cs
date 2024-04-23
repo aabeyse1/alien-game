@@ -17,6 +17,9 @@ public class EntrancePoint : MonoBehaviour
     [Header("Player Info")]
     [SerializeField] private GameObject playerCharacter;
 
+    [SerializeField] BackgroundMusicManager backgroundMusicObject;
+    [SerializeField] AudioClip musicToPlay;
+
     AudioSource audioSource;
 
     private bool playerIsNear = false;
@@ -54,11 +57,7 @@ public class EntrancePoint : MonoBehaviour
         CameraFade cameraFade = Camera.main.GetComponent<CameraFade>();
         if (cameraFade != null)
         {
-            cameraFade.StartFadeOutAndIn(() =>
-            {
-                playerCharacter.transform.position = positionToChangeTo.transform.position;
-                GameEventsManager.instance.playerEvents.PlayerAreaChange(entrancePointName);
-            });
+            
 
             if (entrancePointName == "EnterWell")
             {
@@ -67,7 +66,16 @@ public class EntrancePoint : MonoBehaviour
                  {
                      playerCharacter.transform.position = positionToChangeTo.transform.position;
                      GameEventsManager.instance.playerEvents.PlayerAreaChange(entrancePointName);
+                     backgroundMusicObject.SwitchMusic(musicToPlay);
                  }, audioSource);
+
+            } else {
+                cameraFade.StartFadeOutAndIn(() =>
+            {
+                playerCharacter.transform.position = positionToChangeTo.transform.position;
+                GameEventsManager.instance.playerEvents.PlayerAreaChange(entrancePointName);
+                backgroundMusicObject.SwitchMusic(musicToPlay);
+            });
             }
         }
         else
@@ -75,6 +83,8 @@ public class EntrancePoint : MonoBehaviour
             Debug.LogError("CameraFade component is not found on the main camera.");
         }
     }
+
+
 
 
 

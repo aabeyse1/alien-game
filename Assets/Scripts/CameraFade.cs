@@ -47,9 +47,7 @@ public class CameraFade : MonoBehaviour
         audioSource.Play(0);
         yield return StartCoroutine(FadeTo(1));  // Fade to black
         onFullyFaded?.Invoke();  // Call the callback to change the area when fully black
-       
-       
-        yield return new WaitForSeconds(0.8f);  // Wait at fully black 
+        yield return new WaitForSeconds(3f);  // Wait at fully black 
         yield return StartCoroutine(FadeTo(0));  // Fade back to scene
         fadeOverlay.gameObject.SetActive(false);
     }
