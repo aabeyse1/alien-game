@@ -17,6 +17,7 @@ public class InventorySlot : MonoBehaviour
 
     public void OnSlotClicked()
     {
+        itemRep = GetComponentInChildren<ItemRepresentation>();
         ToggleEquipItem();
     }
 
