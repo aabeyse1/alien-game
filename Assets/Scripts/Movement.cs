@@ -8,11 +8,6 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rigidBody;
     private Animator animator;
 
-    private float lastUpPress = float.MinValue;
-    private float lastDownPress = float.MinValue;
-    private float lastRightPress = float.MinValue;
-    private float lastLeftPress = float.MinValue;
-
     public DialogueManager dialogueManager;
 
     void Start()
@@ -25,49 +20,53 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-
         if (dialogueManager.dialogueRunner.IsDialogueRunning)
         {
             rigidBody.velocity = Vector2.zero;
             animator.SetInteger("Direction", 0);
             return;
         }
-       
+
         Vector2 movement = Vector2.zero;
 
-        if (Input.GetKeyDown(KeyCode.W)) lastUpPress = Time.time;
-        if (Input.GetKeyDown(KeyCode.S)) lastDownPress = Time.time;
-        if (Input.GetKeyDown(KeyCode.D)) lastRightPress = Time.time;
-        if (Input.GetKeyDown(KeyCode.A)) lastLeftPress = Time.time;
-
-        float latestKeyPressTime = Mathf.Max(lastUpPress, lastDownPress, lastRightPress, lastLeftPress);
-
-        if (latestKeyPressTime == lastRightPress && Input.GetKey(KeyCode.D))
+        // Check each direction independently
+        if (Input.GetKey(KeyCode.W))
         {
-            movement.x = speed;
-            animator.SetInteger("Direction", 3); 
+            movement.y += 1;
         }
-        else if (latestKeyPressTime == lastLeftPress && Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.S))
         {
-            movement.x = -speed;
-            animator.SetInteger("Direction", 4); 
+            movement.y -= 1;
         }
-        else if (latestKeyPressTime == lastUpPress && Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.D))
         {
-            movement.y = speed;
-            animator.SetInteger("Direction", 1); 
+            movement.x += 1;
         }
-        else if (latestKeyPressTime == lastDownPress && Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.A))
         {
-            movement.y = -speed;
-            animator.SetInteger("Direction", 2); 
+            movement.x -= 1;
         }
 
-        rigidBody.velocity = movement;
+        movement.Normalize(); // Normalize the vector to maintain consistent speed in all directions
 
-        if(movement == Vector2.zero)
+        // Set the velocity based on the movement direction
+        rigidBody.velocity = movement * speed;
+
+        // Set the animation parameter based on the movement direction
+        if (movement != Vector2.zero)
         {
-            animator.SetInteger("Direction", 0); 
+            if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
+            {
+                animator.SetInteger("Direction", movement.x > 0 ? 3 : 4); // Right or Left
+            }
+            else
+            {
+                animator.SetInteger("Direction", movement.y > 0 ? 1 : 2); // Up or Down
+            }
+        }
+        else
+        {
+            animator.SetInteger("Direction", 0); // Idle
         }
     }
 }
