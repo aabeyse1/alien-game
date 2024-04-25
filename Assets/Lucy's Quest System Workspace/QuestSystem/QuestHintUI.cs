@@ -16,6 +16,8 @@ public class QuestHintUI : MonoBehaviour
 
     private string currentRecipeName = "";
 
+    private Animator animator;
+
 
     
     private void OnEnable() {
@@ -28,9 +30,28 @@ public class QuestHintUI : MonoBehaviour
         GameEventsManager.instance.pickUpEvents.onItemCrafted -= ItemCrafted;
     }
 
-   
+    private void Start() {
+        animator = GetComponent<Animator>();
+    }
     private void ShowQuestHint() {
-        panel.SetActive(true);
+        StartCoroutine(AnimationCoroutine());
+        animator.enabled = true;
+    }
+
+    private IEnumerator AnimationCoroutine()
+    {   
+        // Wait for the animation to reach its end
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        
+        OnAnimationComplete();
+    }
+
+    private void OnAnimationComplete() {
+        animator.enabled = false;
+        Vector3 position = gameObject.transform.position;
+        position.x = 159 * 1.7f;
+        gameObject.transform.position = position;
+        
     }
 
     private void HideQuestHint() {
@@ -40,7 +61,7 @@ public class QuestHintUI : MonoBehaviour
     [YarnCommand("SetSlotItems")]
     public void SetSlotItems(string item1Name, string item2Name, string recipeName) {
       
-        ShowQuestHint();
+        
         Item[] allItemSOs = Resources.LoadAll<Item>("ItemSO");
         Sprite item1 = null;
         Sprite item2 = null;
@@ -61,6 +82,7 @@ public class QuestHintUI : MonoBehaviour
         }
 
         currentRecipeName = recipeName;
+        ShowQuestHint();
     }
 
     private void ItemCrafted(string itemName) {
