@@ -21,9 +21,35 @@ public class InventoryManager : MonoBehaviour
 
     private Dictionary<string, GameObject> itemMap; // links item name to its prefab
     public CraftingPopupManager craftingManager;
+    public CharacterEquipManager characterEquipManager;
 
-    private void Awake() {
+    private void Awake() 
+    {
         itemMap = CreateItemMap();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DropEquippedItem();
+        }
+    }
+
+    public void DropEquippedItem()
+    {
+        if (characterEquipManager.currentEquippedSlot != null)
+        {
+            string itemName = characterEquipManager.GetEquippedItemName();
+            if (!string.IsNullOrEmpty(itemName))
+            {
+                PlaceItemInWorld(itemName, GameObject.FindGameObjectWithTag("Player").transform.position);
+                RemoveFromInventory(itemName);
+            }
+            characterEquipManager.currentEquippedSlot.GetComponent<Outline>().enabled = false;
+            characterEquipManager.currentEquippedSlot.SetEquipped(false);
+            characterEquipManager.SetEquipped(characterEquipManager.currentEquippedSlot, false);
+        }
     }
 
     private Dictionary<string, GameObject> CreateItemMap() {
@@ -53,7 +79,6 @@ public class InventoryManager : MonoBehaviour
         return item;
     }
 
-    
 
 
     public void PlaceItemInWorld(string itemName, Vector3 worldPosition)

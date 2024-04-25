@@ -478,6 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7de181d8f51d4145a8c7f46a034f976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEquippedSlot: {fileID: 0}
 --- !u!1 &39606334
 GameObject:
   m_ObjectHideFlags: 0
@@ -24678,6 +24679,7 @@ MonoBehaviour:
   backpackButton: {fileID: 1008836578}
   itemDatabase: {fileID: 11400000, guid: 020760be11ac943efa046e64584b3962, type: 2}
   craftingManager: {fileID: 0}
+  characterEquipManager: {fileID: 37176840}
 --- !u!1001 &2027431375
 PrefabInstance:
   m_ObjectHideFlags: 0

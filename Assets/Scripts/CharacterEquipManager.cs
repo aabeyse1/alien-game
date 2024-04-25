@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CharacterEquipManager : MonoBehaviour
 {
-    private InventorySlot currentEquippedSlot;
+    public InventorySlot currentEquippedSlot;
     private GameObject lightObject;
     private void Start() {
         GameObject character = GameObject.FindGameObjectsWithTag("Player")[0];
