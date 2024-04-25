@@ -29,9 +29,9 @@ public class BackgroundMusicManager : MonoBehaviour
     }
 
     public void SwitchMusic(AudioClip audioClip)
-    {
+    {   
         if (audioClip != null)
-        {
+        {  
             Stop();
             SetAudioClip(audioClip);
             Play();
