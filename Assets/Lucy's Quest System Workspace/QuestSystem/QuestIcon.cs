@@ -20,25 +20,27 @@ public class QuestIcon : MonoBehaviour
     requirementsNotMetToFinishIcon.SetActive(false);
     canFinishIcon.SetActive(false);
 
-    // set the appropriate icon to active based on the new state
-    switch (newState) {
-        case QuestState.REQUIREMENTS_NOT_MET:
-            if (startPoint) { requirementsNotMetToStartIcon.SetActive(true); }
-            break;
-        case QuestState.CAN_START:
-            if (startPoint) { canStartIcon.SetActive(true); }
-            break;
-        case QuestState.IN_PROGRESS:
-            if (finishPoint) { requirementsNotMetToFinishIcon.SetActive(true);}
-            break;
-        case QuestState.CAN_FINISH:
-            if (finishPoint) { canFinishIcon.SetActive(true); }
-            break;
-        case QuestState.FINISHED:
-            break;
-        default:
-            Debug.LogWarning("Quest State not recognized by switch statement for quest icon: " + newState);
-            break;
-    }
+    // TODO: should we bring this back?
+    return;
+    // // set the appropriate icon to active based on the new state
+    // switch (newState) {
+    //     case QuestState.REQUIREMENTS_NOT_MET:
+    //         if (startPoint) { requirementsNotMetToStartIcon.SetActive(true); }
+    //         break;
+    //     case QuestState.CAN_START:
+    //         if (startPoint) { canStartIcon.SetActive(true); }
+    //         break;
+    //     case QuestState.IN_PROGRESS:
+    //         if (finishPoint) { requirementsNotMetToFinishIcon.SetActive(true);}
+    //         break;
+    //     case QuestState.CAN_FINISH:
+    //         if (finishPoint) { canFinishIcon.SetActive(true); }
+    //         break;
+    //     case QuestState.FINISHED:
+    //         break;
+    //     default:
+    //         Debug.LogWarning("Quest State not recognized by switch statement for quest icon: " + newState);
+    //         break;
+    // }
    }
 }
