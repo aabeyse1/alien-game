@@ -1076,6 +1076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 89353788}
+  - component: {fileID: 89353790}
   m_Layer: 0
   m_Name: EntrancePosition
   m_TagString: Untagged
@@ -1098,6 +1099,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1470870676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &89353790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89353787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2a6267e638744188bbc4b72ab113fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &92843132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,7 +2136,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0cd7c4c5c8c554190a9dbfd25bd326e6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a3f733bdd7f6e44c9a9568538fd0d33e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -9729,6 +9742,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
+      propertyPath: musicToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: 609b2cdb406ea44af976b27904718bd6, type: 3}
+    - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: playerCharacter
       value: 
       objectReference: {fileID: 455307134}
@@ -13468,6 +13485,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
+      propertyPath: musicToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: a3f733bdd7f6e44c9a9568538fd0d33e, type: 3}
     - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: playerCharacter
       value: 
@@ -20114,6 +20135,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1685385252}
     m_Modifications:
     - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
+      propertyPath: musicToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: cf3b84554870b46bd88aa687f3900c76, type: 3}
+    - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: playerCharacter
       value: 
       objectReference: {fileID: 455307134}
@@ -20656,6 +20681,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
+      propertyPath: musicToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: a3f733bdd7f6e44c9a9568538fd0d33e, type: 3}
     - target: {fileID: 5354221895643115889, guid: e253c0303deda46a8aa05fd68c480169, type: 3}
       propertyPath: playerCharacter
       value: 
@@ -22534,6 +22563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1837597508}
+  - component: {fileID: 1837597510}
   m_Layer: 0
   m_Name: EntrancePosition
   m_TagString: Untagged
@@ -22556,6 +22586,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1677467920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1837597510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837597507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2a6267e638744188bbc4b72ab113fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1841451980
 PrefabInstance:
   m_ObjectHideFlags: 0
