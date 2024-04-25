@@ -29,6 +29,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             Debug.LogError("InventoryManager instance not found in the scene.");
         }
+        originalSlot = transform.parent.gameObject;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

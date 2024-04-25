@@ -83,15 +83,29 @@ public class CraftingPopupManager : MonoBehaviour
     {
         foreach (Image craftingSlot in craftingSlots)
         {
-            foreach (Transform child in craftingSlot.transform)
+            ItemRepresentation itemRep = craftingSlot.GetComponentInChildren<ItemRepresentation>(includeInactive: true);
+            if (itemRep != null && itemRep.gameObject.activeSelf)
             {
-                DraggableItem draggableItem = child.GetComponent<DraggableItem>();
+                DraggableItem draggableItem = itemRep.GetComponent<DraggableItem>();
                 if (draggableItem != null && draggableItem.originalSlot != null)
                 {
-                    GameObject originalSlot = draggableItem.originalSlot;
-                    child.SetParent(originalSlot.transform, false);
-                    child.localPosition = Vector3.zero;
-                    child.gameObject.SetActive(true);
+                    // Reactivate the original slot's item representation and update it
+                    ItemRepresentation originalSlotItemRep = draggableItem.originalSlot.GetComponentInChildren<ItemRepresentation>(true);
+                    if (originalSlotItemRep != null)
+                    {
+                        originalSlotItemRep.item = itemRep.item; // Update with the new item
+                        originalSlotItemRep.gameObject.SetActive(true);
+                        Image itemImage = originalSlotItemRep.GetComponent<Image>();
+                        if (itemImage != null) {
+                            itemImage.enabled = true;
+                            itemImage.sprite = itemRep.item.itemSprite;
+                            Canvas.ForceUpdateCanvases(); // Force update all canvases
+                        }
+
+                    }
+
+                    // Remove the item from the crafting slot
+                    Destroy(itemRep.gameObject);
                 }
             }
         }
@@ -101,6 +115,24 @@ public class CraftingPopupManager : MonoBehaviour
         hideButton.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
+
+    public GameObject FindInventorySlotForItem(Item item)
+    {
+        foreach (GameObject slot in inventoryManager.inventorySlots)
+        {
+            ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
+            if (itemRep != null && itemRep.item == item)
+            {
+                // Found the slot containing the item.
+                return slot;
+            }
+        }
+
+        // If we're here, no slot was found with the item.
+        return null;
+    }
+
+
 
     public void ClearItemFromSlot(int slotIndex)
     {
