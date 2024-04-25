@@ -3422,7 +3422,7 @@ MonoBehaviour:
   m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3504,7 +3504,7 @@ Transform:
   m_GameObject: {fileID: 307414813}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.384, y: -1.567, z: 0}
+  m_LocalPosition: {x: -7.384, y: -1.567, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3555,7 +3555,7 @@ MonoBehaviour:
   m_Intensity: 1.6
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -8789,6 +8789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 726184354}
   - component: {fileID: 726184355}
+  - component: {fileID: 726184356}
   m_Layer: 0
   m_Name: CharacterSprite
   m_TagString: Untagged
@@ -8849,9 +8850,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2015428505
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 413687469
+  m_SortingLayer: 4
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 0efaf3a26de694736bd9dbb9597297a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8863,6 +8864,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &726184356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726184353}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.65
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.6
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 0.55
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &728146728
 GameObject:
   m_ObjectHideFlags: 0
@@ -9173,7 +9224,7 @@ MonoBehaviour:
   m_Intensity: 0.08
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -9552,7 +9603,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -12023,7 +12074,7 @@ MonoBehaviour:
   m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -16016,7 +16067,7 @@ MonoBehaviour:
   m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -20716,7 +20767,7 @@ MonoBehaviour:
   m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -23737,7 +23788,7 @@ MonoBehaviour:
   m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -24061,7 +24112,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380
+  m_ApplyToSortingLayers: 00000000fb1b1d4c6700df8765b86380ad5ea818
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -26781,7 +26832,6 @@ SceneRoots:
   - {fileID: 565714129438494757}
   - {fileID: 1589365394}
   - {fileID: 744472960}
-  - {fileID: 307414815}
   - {fileID: 1470870676}
   - {fileID: 340977621}
   - {fileID: 1139106904}
@@ -26799,3 +26849,4 @@ SceneRoots:
   - {fileID: 643849060}
   - {fileID: 178488041}
   - {fileID: 1677467920}
+  - {fileID: 307414815}
