@@ -49,6 +49,7 @@ public class CharacterEquipManager : MonoBehaviour
                 currentEquippedSlot.SetEquipped(false);
             }
             currentEquippedSlot = slot;
+            currentEquippedSlot.SetEquipped(true);
         }
         else if (currentEquippedSlot == slot)
         {

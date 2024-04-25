@@ -192,6 +192,13 @@ public class InventoryManager : MonoBehaviour
                 itemRep.gameObject.SetActive(true);
                 UpdateItemVisuals(itemRep.gameObject, item);
                 itemsInInventory.Add(item.itemName);
+                if(characterEquipManager.currentEquippedSlot == null)
+                {
+                    InventorySlot inventorySlot = slot.GetComponent<InventorySlot>(); // Get InventorySlot component
+                    if (inventorySlot != null) {
+                        characterEquipManager.SetEquipped(inventorySlot, true);
+                    }
+                }
                 return true; // Item successfully reactivated
             }
             else if (slot.transform.childCount == 0)
@@ -199,6 +206,13 @@ public class InventoryManager : MonoBehaviour
                 // Create a new item if there's no child
                 CreateNewItemInSlot(slot, item, itemGameObject);
                 itemsInInventory.Add(item.itemName);
+                if(characterEquipManager.currentEquippedSlot == null)
+                {
+                    InventorySlot inventorySlot = slot.GetComponent<InventorySlot>(); // Get InventorySlot component
+                    if (inventorySlot != null) {
+                        characterEquipManager.SetEquipped(inventorySlot, true);
+                    }
+                }
                 return true;
             }
         }
