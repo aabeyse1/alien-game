@@ -14,6 +14,8 @@ public class TriggerAnimation : MonoBehaviour
 
     [SerializeField] GameObject openDoorIcon;
 
+    [SerializeField] GameObject nextSceneTrigger;
+
     private Animator animator;
     private Renderer characterRenderer;
     public float tweenSpeed = 0.1f;
@@ -47,7 +49,7 @@ public class TriggerAnimation : MonoBehaviour
 
             
         //    characterRenderer.enabled = false;
-        playerObject.SetActive(false);
+            playerObject.SetActive(false);
            animatedCharacter.SetActive(true);
             StartCoroutine(OpenDoorAnimationCoroutine());
         }
@@ -69,11 +71,17 @@ public class TriggerAnimation : MonoBehaviour
 
     private void continueAfterAnimation() {
         
-        playerObject.transform.position = playerObject.transform.position; // not sure why but this code seems to be needed in order to set the player object active again
-        playerObject.SetActive(true); 
-        animationGameObject.SetActive(false);
+        //playerObject.transform.position = playerObject.transform.position; // not sure why but this code seems to be needed in order to set the player object active again
+        playerObject.transform.position = afterAnimationPosition.transform.position;
+        playerObject.SetActive(true);
+        // animationGameObject.SetActive(false);
+        
+        for (int i = 0; i < animationGameObject.transform.childCount; i++) { // set all children inactive. we need the main gameobject to still be active because it is playing sound
+            animationGameObject.transform.GetChild(i).gameObject.SetActive(false);
+        }
         newBackground.SetActive(true);
         closedDoorCollider.SetActive(false);
+        nextSceneTrigger.SetActive(true);
         
     }
     
