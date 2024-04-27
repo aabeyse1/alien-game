@@ -60,6 +60,7 @@ public static AnimationHandler Instance { get; private set; }
 
     private IEnumerator CraftingAnimationCoroutine()
     {
+
         animator.Play("Eating", -1, 0f);
         
         // Wait for the animation to reach its end

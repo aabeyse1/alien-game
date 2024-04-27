@@ -24,6 +24,8 @@ public class CraftingPopupManager : MonoBehaviour
 
     private float originalFOV; // To store the original field of view of the camera
     private Vector3 originalCameraPosition; 
+
+    [SerializeField] GameObject draggingTutorialObject;
     
 
     // private bool isAnimationPlaying = false;
@@ -77,10 +79,19 @@ public class CraftingPopupManager : MonoBehaviour
         mainButton.gameObject.SetActive(false);
         hideButton.gameObject.SetActive(true);
         Time.timeScale = 0; // Freeze game, excluding inventory interactions
+        
+        if (!TutorialManager.instance.hasDraggedItemForCrafting) {
+                // if haven't poked yet, show the spacebar icon telling you how to use tools
+                draggingTutorialObject.SetActive(true);
+        }
     }
 
     public void HideCraftingPopup()
     {
+        if (draggingTutorialObject) {
+             draggingTutorialObject.SetActive(false);
+        }
+       
         foreach (Image craftingSlot in craftingSlots)
         {
             ItemRepresentation itemRep = craftingSlot.GetComponentInChildren<ItemRepresentation>(includeInactive: true);
@@ -165,6 +176,14 @@ public class CraftingPopupManager : MonoBehaviour
         {
             itemsInSlots[slotIndex] = item;
             UpdateCraftability();
+            
+            // Tutorial won't show up anymore
+            if (!TutorialManager.instance.hasDraggedItemForCrafting) {
+                TutorialManager.instance.hasDraggedItemForCrafting = true;
+                if (draggingTutorialObject) {
+                    draggingTutorialObject.SetActive(false);
+                }
+            }
         }
     }
 

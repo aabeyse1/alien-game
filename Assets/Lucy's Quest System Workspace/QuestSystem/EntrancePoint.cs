@@ -27,6 +27,8 @@ public class EntrancePoint : MonoBehaviour
 
     private InteractIcon interactIcon;
 
+    [SerializeField] GameObject enterTutorialObject;
+
     private void Awake()
     {
         interactIcon = GetComponentInChildren<InteractIcon>();
@@ -52,14 +54,23 @@ public class EntrancePoint : MonoBehaviour
         }
         ChangeArea();
     }
-    
+
     [YarnCommand("ChangeArea")]
     public void ChangeArea()
     {
         CameraFade cameraFade = Camera.main.GetComponent<CameraFade>();
         if (cameraFade != null)
         {
-            
+             // Tutorial won't show up anymore
+            if (!TutorialManager.instance.hasEnteredAnArea)
+            {
+                TutorialManager.instance.hasEnteredAnArea = true;
+                if (enterTutorialObject)
+                {
+                    enterTutorialObject.SetActive(false);
+                }
+            }
+
 
             if (entrancePointName == "EnterWell")
             {
@@ -71,7 +82,9 @@ public class EntrancePoint : MonoBehaviour
                      backgroundMusicObject.SwitchMusic(musicToPlay);
                  }, audioSource);
 
-            } else {
+            }
+            else
+            {
                 cameraFade.StartFadeOutAndIn(() =>
             {
                 playerCharacter.transform.position = positionToChangeTo.transform.position;
@@ -79,6 +92,8 @@ public class EntrancePoint : MonoBehaviour
                 backgroundMusicObject.SwitchMusic(musicToPlay);
             });
             }
+
+           
         }
         else
         {
@@ -96,6 +111,11 @@ public class EntrancePoint : MonoBehaviour
         {
             interactIcon.SetState(active: true, locked: locked);
             playerIsNear = true;
+            if (!TutorialManager.instance.hasPickedUpItem)
+            {
+                // if haven't poked yet, show the spacebar icon telling you how to use tools
+                enterTutorialObject.SetActive(true);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D otherCollider)
@@ -104,6 +124,11 @@ public class EntrancePoint : MonoBehaviour
         {
             playerIsNear = false;
             interactIcon.SetState(active: false, locked: locked);
+            if (enterTutorialObject)
+            {
+                enterTutorialObject.SetActive(false);
+            }
+
         }
     }
 

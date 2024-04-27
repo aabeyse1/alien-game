@@ -10,8 +10,8 @@ using Yarn.Unity;
 public class QuestPoint : MonoBehaviour
 {
 
-    [field: SerializeField] public string id { get; private set;} // Used to reference a specific quest point across the entire system. Unique to each quest point
-    
+    [field: SerializeField] public string id { get; private set; } // Used to reference a specific quest point across the entire system. Unique to each quest point
+
     [Header("Quest")]
     [SerializeField] private QuestInfoSO questInfoForPoint;
 
@@ -36,6 +36,8 @@ public class QuestPoint : MonoBehaviour
 
     private QuestIcon questIcon;
 
+    [SerializeField] GameObject enterTutorialObject;
+
     private void Awake()
     {
         questId = questInfoForPoint.id;
@@ -56,7 +58,7 @@ public class QuestPoint : MonoBehaviour
 
     }
 
-    
+
 
     private void SubmitPressed()
     {
@@ -65,7 +67,17 @@ public class QuestPoint : MonoBehaviour
         {
             return;
         }
-        
+
+        // Tutorial won't show up anymore
+        if (!TutorialManager.instance.hasTalkedToNPC)
+        {
+            TutorialManager.instance.hasTalkedToNPC = true;
+            if (enterTutorialObject)
+            {
+                enterTutorialObject.SetActive(false);
+            }
+        }
+
         if (runDialogueBeforeQuest)
         {
             // Run dialogue
@@ -101,6 +113,11 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = true;
+            if (!TutorialManager.instance.hasTalkedToNPC)
+            {
+                // if haven't poked yet, show the spacebar icon telling you how to use tools
+                enterTutorialObject.SetActive(true);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D otherCollider)
@@ -108,15 +125,20 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = false;
+            if (enterTutorialObject)
+            {
+                enterTutorialObject.SetActive(false);
+            }
         }
     }
 
-     // forces the id of a quest to be the same as the name of the scriptable object
-    private void OnValidate(){ // editor-only function called when the script is loaded or value is changed in the inspector
-        #if UNITY_EDITOR 
-            id = this.name;
-            UnityEditor.EditorUtility.SetDirty(this);
-        #endif
+    // forces the id of a quest to be the same as the name of the scriptable object
+    private void OnValidate()
+    { // editor-only function called when the script is loaded or value is changed in the inspector
+#if UNITY_EDITOR
+        id = this.name;
+        UnityEditor.EditorUtility.SetDirty(this);
+#endif
     }
 
 }
