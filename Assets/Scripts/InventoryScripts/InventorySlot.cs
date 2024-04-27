@@ -34,6 +34,10 @@ public class InventorySlot : MonoBehaviour
         isEquipped = equip;
         outline.enabled = isEquipped;
         equipManager.UpdateEquippedItem(this, isEquipped ? itemRep.item : null);
+        if (equip) {
+             GameEventsManager.instance.pickUpEvents.ItemEquipped();
+        }
+       
     }
 
     public string GetItemName() {

@@ -45,6 +45,7 @@ public class InventoryManager : MonoBehaviour
             {
                 PlaceItemInWorld(itemName, GameObject.FindGameObjectWithTag("Player").transform.position);
                 RemoveFromInventory(itemName);
+                GameEventsManager.instance.pickUpEvents.ItemDropped();
             }
             characterEquipManager.currentEquippedSlot.GetComponent<Outline>().enabled = false;
             characterEquipManager.currentEquippedSlot.SetEquipped(false);

@@ -20,6 +20,22 @@ public class PickUpEvents
         }
     }
 
+    public event Action onItemDropped;
+
+    public void ItemDropped() {
+        if (onItemDropped != null) {
+            onItemDropped();
+        }
+    }
+
+    public event Action onItemEquipped;
+
+    public void ItemEquipped() {
+        if (onItemEquipped != null) {
+            onItemEquipped();
+        }
+    }
+
     public event Action<string> onItemCrafted;
     public void ItemCrafted(string itemName) 
     {

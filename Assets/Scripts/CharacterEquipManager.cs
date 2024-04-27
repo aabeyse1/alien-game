@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CharacterEquipManager : MonoBehaviour
 {
+    
     public InventorySlot currentEquippedSlot;
     private GameObject lightObject;
     private void Start() {
@@ -31,6 +32,7 @@ public class CharacterEquipManager : MonoBehaviour
         }
 
         currentEquippedSlot = item != null ? slot : null;
+        
         
         if (GetEquippedItemName() == "Torch") {
             // emit light if torch is equipped
