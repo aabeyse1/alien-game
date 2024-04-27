@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2195a8b832fd4de39b86b814c0346f3, type: 3}
   m_Name: Scepter
   m_EditorClassIdentifier: 
-  requiredItems: []
-  resultItem: {fileID: 0}
+  requiredItems:
+  - {fileID: 11400000, guid: 533cc119bc42d4108af8fdac5cb30e8b, type: 2}
+  - {fileID: 11400000, guid: 74b6618c44f1344ce8a89c852ff2247b, type: 2}
+  resultItem: {fileID: 11400000, guid: 7ea77bbf110424896bbe98354faede75, type: 2}

@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4472c92cc7d04e9dbdb1dcab8e22f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: b6fff0387d6884b4081d1552bf084ccb, type: 2}
+  item: {fileID: 11400000, guid: 7ea77bbf110424896bbe98354faede75, type: 2}
   enterTutorialObject: {fileID: 5388454807931739906}
 --- !u!225 &8044209736757356145
 CanvasGroup:

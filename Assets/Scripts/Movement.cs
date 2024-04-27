@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
         if (movement != Vector2.zero)
         {
             // hide WASD icon after moving for the first time
-            if (WASDicon.activeInHierarchy) {
+            if (WASDicon && WASDicon.activeInHierarchy) {
                  WASDicon.SetActive(false);
             }
            
