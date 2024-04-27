@@ -34,6 +34,8 @@ public class QuestPoint : MonoBehaviour
     private QuestState currentQuestState;
     private bool playerIsNear = false;
 
+    [SerializeField] GameObject speechBubbleObject;
+
     private QuestIcon questIcon;
 
     [SerializeField] GameObject enterTutorialObject;
@@ -105,7 +107,7 @@ public class QuestPoint : MonoBehaviour
         if (quest.info.id.Equals(questId))
         {
             currentQuestState = quest.state;
-            questIcon.SetState(currentQuestState, startPoint, finishPoint);
+            // questIcon.SetState(currentQuestState, startPoint, finishPoint);
         }
     }
     private void OnTriggerEnter2D(Collider2D otherCollider)
@@ -113,6 +115,7 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = true;
+            speechBubbleObject.SetActive(true);
             if (!TutorialManager.instance.hasTalkedToNPC)
             {
                 // if haven't poked yet, show the spacebar icon telling you how to use tools
@@ -125,6 +128,7 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = false;
+            speechBubbleObject.SetActive(false);
             if (enterTutorialObject)
             {
                 enterTutorialObject.SetActive(false);

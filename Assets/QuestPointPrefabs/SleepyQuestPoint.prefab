@@ -157,6 +157,7 @@ MonoBehaviour:
   runDialogueBeforeQuest: 1
   startPoint: 1
   finishPoint: 1
+  speechBubbleObject: {fileID: 0}
   enterTutorialObject: {fileID: 0}
 --- !u!1 &8764234346466965811
 GameObject:

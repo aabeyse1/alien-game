@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     private Animator animator;
 
     public DialogueManager dialogueManager;
+    
+    [SerializeField] GameObject WASDicon;
 
     void Start()
     {
@@ -55,6 +57,11 @@ public class Movement : MonoBehaviour
         // Set the animation parameter based on the movement direction
         if (movement != Vector2.zero)
         {
+            // hide WASD icon after moving for the first time
+            if (WASDicon.activeInHierarchy) {
+                 WASDicon.SetActive(false);
+            }
+           
             if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
             {
                 animator.SetInteger("Direction", movement.x > 0 ? 3 : 4); // Right or Left
