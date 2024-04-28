@@ -150,6 +150,23 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
 private void SetItemToSlot(ItemRepresentation itemRep, Transform slotTransform, int? originatingSlotIndex)
 {
+    // Get the index of the target slot from the craftingSlots array
+    int slotIndex = -1;
+    for (int i = 0; i < craftingManager.craftingSlots.Length; i++)
+    {
+        if (craftingManager.craftingSlots[i].transform == slotTransform)
+        {
+            slotIndex = i;
+            break;
+        }
+    }
+
+    if (slotIndex == -1)
+    {
+        Debug.LogError("Slot not found in craftingSlots array");
+        return;
+    }
+
     // Retrieve the existing item representation in the target slot, if any
     ItemRepresentation targetSlotItemRep = slotTransform.GetComponentInChildren<ItemRepresentation>(true);
 
@@ -165,30 +182,25 @@ private void SetItemToSlot(ItemRepresentation itemRep, Transform slotTransform, 
         tempGameObject.transform.localRotation = Quaternion.identity;
         tempGameObject.transform.localScale = Vector3.one;
 
-        itemRep.gameObject.transform.SetParent(slotTransform);
-        itemRep.gameObject.transform.localPosition = Vector3.zero;
-        itemRep.gameObject.transform.localRotation = Quaternion.identity;
-        itemRep.gameObject.transform.localScale = Vector3.one;
-    }
-    else
-    {
-        // If no item is in the slot, directly move the GameObject to the new slot
-        itemRep.gameObject.transform.SetParent(slotTransform);
-        itemRep.gameObject.transform.localPosition = Vector3.zero;
-        itemRep.gameObject.transform.localRotation = Quaternion.identity;
-        itemRep.gameObject.transform.localScale = Vector3.one;
+        // Update itemsInSlots for the originating slot
+        if (originatingSlotIndex.HasValue && originatingSlotIndex.Value >= 0 && originatingSlotIndex.Value < craftingManager.craftingSlots.Length)
+        {
+            craftingManager.itemsInSlots[originatingSlotIndex.Value] = tempGameObject.GetComponent<ItemRepresentation>().item;
+        }
     }
 
-    // Update crafting slots and craftability if necessary
-    if (originatingSlotIndex.HasValue)
-    {
-        craftingManager.ClearItemFromSlot(originatingSlotIndex.Value);
-    }
-    craftingManager.UpdateCraftability(); // Update craftability after the item is set
+    // Move the itemRep GameObject to the new slot
+    itemRep.gameObject.transform.SetParent(slotTransform);
+    itemRep.gameObject.transform.localPosition = Vector3.zero;
+    itemRep.gameObject.transform.localRotation = Quaternion.identity;
+    itemRep.gameObject.transform.localScale = Vector3.one;
+
+    // Update itemsInSlots for the new slot
+    craftingManager.itemsInSlots[slotIndex] = itemRep.item;
+
+    // Update craftability
+    craftingManager.UpdateCraftability();
 }
-
-
-
 
     private void ResetItemPositionToSlot(Transform slotTransform)
     {

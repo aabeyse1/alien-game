@@ -11,7 +11,7 @@ public class CraftingPopupManager : MonoBehaviour
     public Button mainButton;
     public Button hideButton;
     public Button extendedInventoryButton;
-    private Item[] itemsInSlots = new Item[2]; // To store items in slots
+    public Item[] itemsInSlots = new Item[2]; // To store items in slots
     public InventoryManager inventoryManager; // Reference to manage inventory
     public CraftingRecipe[] recipes; 
     private CraftingRecipe currentRecipe;

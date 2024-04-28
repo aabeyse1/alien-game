@@ -5391,6 +5391,9 @@ MonoBehaviour:
   mainButton: {fileID: 1437436090}
   hideButton: {fileID: 922162618}
   extendedInventoryButton: {fileID: 1008836578}
+  itemsInSlots:
+  - {fileID: 0}
+  - {fileID: 0}
   inventoryManager: {fileID: 2023465174}
   recipes: []
   animationHandler: {fileID: 307414816}
