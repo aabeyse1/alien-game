@@ -8,6 +8,8 @@ TagManager:
   - InventorySlot
   - CraftingSlot
   - ExInventory
+  - QueenBee
+  - EarSpinAnimationPrefab
   layers:
   - Default
   - TransparentFX

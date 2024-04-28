@@ -42,7 +42,10 @@ public class QuestPoint : MonoBehaviour
 
     private void Awake()
     {
-        questId = questInfoForPoint.id;
+        if (questInfoForPoint) {
+             questId = questInfoForPoint.id;
+        }
+       
         questIcon = GetComponentInChildren<QuestIcon>();
     }
 
@@ -116,7 +119,7 @@ public class QuestPoint : MonoBehaviour
         {
             playerIsNear = true;
             speechBubbleObject.SetActive(true);
-            if (!TutorialManager.instance.hasTalkedToNPC)
+            if (!TutorialManager.instance.hasTalkedToNPC && enterTutorialObject)
             {
                 // if haven't poked yet, show the spacebar icon telling you how to use tools
                 enterTutorialObject.SetActive(true);

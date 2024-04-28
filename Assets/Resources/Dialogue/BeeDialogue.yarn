@@ -1,0 +1,33 @@
+﻿title: Start_Bee
+tags:
+---
+Queen Bee: hi, you can't have my honey. 
+Queen Bee: I want a new scepter. 
+<<SetSlotItems CraftingRecipeUI Axe RakeRake Scepter>>
+<<setDialogueNode DialogueManager QueenBeeQuestPoint Bee_Waiting_For_Scepter>>
+<<StartQuest DialogueManager GetMoreHoneyQuest>>
+===
+
+title: Bee_Waiting_For_Scepter
+tags:
+---
+Queen Bee: scepter pls. 
+<<if isItemInInventory("Scepter") == true>>
+    <<jump Bee_Correct>>
+<<else>>
+    <<jump Bee_Repeat>>
+<<endif>>
+===
+
+title: Bee_Repeat
+tags:
+---
+Queen Bee: grrr
+===
+
+title: Bee_Correct
+tags:
+---
+Queen Bee: ooooo this is so pretty 
+<<ShowAttackOption GetMoreHoneyQuestStep(Clone)>>
+===

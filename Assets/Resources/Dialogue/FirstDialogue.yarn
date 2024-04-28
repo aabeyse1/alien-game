@@ -77,9 +77,12 @@ title: Start_Correct
 <<removeFromInventory InventoryCanvas Log>>
 <<removeFromInventory InventoryCanvas Log>>
 <<removeFromInventory InventoryCanvas Log>> 
+<<addToInventory InventoryCanvas Honey>>
 Buck: That’s my boy. I’m an alien of my word. Here y’go!
 Hermie: Thanks.
 Buck: Don’t bother. Just stay safe out there. Aliens of all kinds tryna start a ruckus causa that so-called “honey war”.
 Buck: They don’t take kindly to folks like yerself, regardless of any “truce” we may go pretendin’ we got.
 Buck: So, jus’, good luck out there, stranger, for whatever you’re up to.
+Buck: heard there's more honey down the well... Kinda dangerous though i hear. 
+<<StartQuest DialogueManager GetMoreHoneyQuest>>
 ===

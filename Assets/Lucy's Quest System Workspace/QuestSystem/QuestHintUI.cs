@@ -14,6 +14,8 @@ public class QuestHintUI : MonoBehaviour
 
     [SerializeField] GameObject panel;
 
+    [SerializeField] Transform afterAnimationPosition;
+
     private string currentRecipeName = "";
 
     private Animator animator;
@@ -48,9 +50,8 @@ public class QuestHintUI : MonoBehaviour
 
     private void OnAnimationComplete() {
         animator.enabled = false;
-        Vector3 position = gameObject.transform.position;
-        position.x = 159 * 1.7f;
-        gameObject.transform.position = position;
+        
+        gameObject.transform.position = afterAnimationPosition.position;
         
     }
 

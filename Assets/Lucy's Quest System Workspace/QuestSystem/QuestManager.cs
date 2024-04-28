@@ -4,6 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class QuestManager : MonoBehaviour
 {
@@ -67,6 +68,11 @@ public class QuestManager : MonoBehaviour
         
         // // Let everyone know that all of the quests have been loaded in 
         GameEventsManager.instance.questEvents.DoneLoadingQuests();
+    }
+
+    [YarnFunction("GetCurrentQuestId")]
+    public static string GetCurrentQuestId() {
+        return instance.currentQuest.info.id;
     }
 
 
