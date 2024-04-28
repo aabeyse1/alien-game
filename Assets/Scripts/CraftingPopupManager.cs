@@ -127,6 +127,26 @@ public class CraftingPopupManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void HideCraftingPopupCrafting()
+    {
+        // Clear items in crafting slots without moving them back
+        foreach (Image craftingSlot in craftingSlots)
+        {
+            foreach (Transform child in craftingSlot.transform)
+            {
+                // Directly destroy the child items in the crafting slots
+                Destroy(child.gameObject);
+            }
+        }
+
+        // Update the UI components and resume the game
+        craftingPopup.SetActive(false);
+        mainButton.gameObject.SetActive(true);
+        hideButton.gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+
     public GameObject FindInventorySlotForItem(Item item)
     {
         foreach (GameObject slot in inventoryManager.inventorySlots)
@@ -233,7 +253,7 @@ public class CraftingPopupManager : MonoBehaviour
                 EatingAnimation.SetActive(true);
                 animationHandler.StartCraftingAnimation(recipe);
 
-                HideCraftingPopup(); // Hide crafting popup if necessary
+                HideCraftingPopupCrafting(); // Hide crafting popup if necessary
                 return; // Exit the loop as crafting is handled
             }
         }

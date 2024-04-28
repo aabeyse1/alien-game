@@ -215,15 +215,15 @@ private void SetItemToSlot(ItemRepresentation itemRep, Transform slotTransform, 
             // If the original slot was a crafting slot, destroy the child now placed there
             if (originalParentIsCraftingSlot)
             {
-                Destroy(targetObject); // Destroy the target object which is now in the original crafting slot
                 craftingManager.UpdateCraftability();
+                Destroy(targetObject); // Destroy the target object which is now in the original crafting slot
             }
             if (originalParentIsInvSlot)
             {
                 Debug.Log("replacing item here");
                 Destroy(targetObject);
                 Debug.Log(originalParent.childCount);
-
+                craftingManager.UpdateCraftability();
                 StartCoroutine(inventoryManager.AddDefaultItemAfterFrame(originalParent.gameObject));
             }
         }
