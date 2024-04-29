@@ -119,9 +119,10 @@ public class ChoppableTree : MonoBehaviour
             activeVisual.GetComponent<SpriteRenderer>().color = highlightColor;
             playerIsNear = true;
 
-            if (!TutorialManager.instance.hasChoppedTree)
+            if (!TutorialManager.instance.hasChoppedTree && QuestManager.instance.currentQuest.info.id != "CollectFuelQuest" &&  QuestManager.instance.currentQuest.info.id != "CraftBagQuest")
             {
                 // if haven't chopped a tree yet, show the spacebar icon telling you how to use tools
+                // only show the icon if craft bag quest is done
                 spacebarTutorialObject.SetActive(true);
             }
 
