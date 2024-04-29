@@ -204,14 +204,17 @@ public class CraftingPopupManager : MonoBehaviour
             itemsInSlots[slotIndex] = item;
             UpdateCraftability();
             
-            // Tutorial won't show up anymore
+        }
+    }
+
+    public void DroppedItemUpdateTutorial() {
+         // Tutorial won't show up anymore
             if (!TutorialManager.instance.hasDraggedItemForCrafting) {
                 TutorialManager.instance.hasDraggedItemForCrafting = true;
                 if (draggingTutorialObject) {
                     draggingTutorialObject.SetActive(false);
                 }
             }
-        }
     }
 
     public void UpdateCraftability()

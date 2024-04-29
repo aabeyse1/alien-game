@@ -81,7 +81,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 if (result.gameObject.CompareTag("CraftingSlot"))
                 {
                     Debug.Log("Dropped on Crafting Slot");
-                    
+                    craftingManager.DroppedItemUpdateTutorial();
                     if (originalParentIsCraftingSlot)
                     {
                         if (originalSlotIndex.HasValue)
