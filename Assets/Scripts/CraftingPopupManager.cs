@@ -40,7 +40,8 @@ public class CraftingPopupManager : MonoBehaviour
         craftButton.interactable = false;
     }
 
-    void Awake() {
+    void Awake() 
+    {
         recipes = Resources.LoadAll<CraftingRecipe>("CraftingRecipes");
     }
 
@@ -120,10 +121,14 @@ public class CraftingPopupManager : MonoBehaviour
                 }
             }
         }
-
+        for (int i = 0; i < itemsInSlots.Length; i++)
+        {
+            itemsInSlots[i] = null;
+        }
         craftingPopup.SetActive(false);
         mainButton.gameObject.SetActive(true);
         hideButton.gameObject.SetActive(false);
+        UpdateCraftability();
         Time.timeScale = 1;
     }
 

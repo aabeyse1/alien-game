@@ -21,6 +21,7 @@ public class InventoryManager : MonoBehaviour
 
     private Dictionary<string, GameObject> itemMap; // links item name to its prefab
     public CraftingPopupManager craftingManager;
+    private GameObject lightObject;
     public CharacterEquipManager characterEquipManager;
 
     private void Awake() 
@@ -36,6 +37,12 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        GameObject character = GameObject.FindGameObjectsWithTag("Player")[0];
+        lightObject = character.transform.Find("Light 2D").gameObject;
+    }
+
     public void DropEquippedItem()
     {
         if (characterEquipManager.currentEquippedSlot != null)
@@ -44,12 +51,17 @@ public class InventoryManager : MonoBehaviour
             if (!string.IsNullOrEmpty(itemName))
             {
                 PlaceItemInWorld(itemName, GameObject.FindGameObjectWithTag("Player").transform.position);
-                RemoveFromInventory(itemName);
+                // RemoveFromInventory(itemName);
                 GameEventsManager.instance.pickUpEvents.ItemDropped();
             }
-            characterEquipManager.currentEquippedSlot.GetComponent<Outline>().enabled = false;
-            characterEquipManager.currentEquippedSlot.SetEquipped(false);
-            characterEquipManager.SetEquipped(characterEquipManager.currentEquippedSlot, false);
+            // characterEquipManager.currentEquippedSlot.GetComponent<Outline>().enabled = false;
+            // characterEquipManager.currentEquippedSlot.SetEquipped(false);
+            // characterEquipManager.SetEquipped(characterEquipManager.currentEquippedSlot, false);
+
+            if(itemName == "Torch")
+            {
+                lightObject.SetActive(false);
+            }
         }
     }
 
@@ -82,24 +94,35 @@ public class InventoryManager : MonoBehaviour
 
 
 
-    public void PlaceItemInWorld(string itemName, Vector3 worldPosition)
+public void PlaceItemInWorld(string itemName, Vector3 worldPosition)
+{
+    GameObject itemPrefab = GetItemByName(itemName);
+    if (itemPrefab != null)
     {
-        GameObject itemGameObject = GetItemByName(itemName);
-        if (itemGameObject != null)
-        {
-            Debug.Log("set game object active = " + itemGameObject);
-            
-            GameObject drop = Instantiate(itemGameObject);
-            drop.transform.position = worldPosition;
+        Debug.Log("Setting game object active = " + itemPrefab);
+        
+        // Instantiate the item at the specified world position
+        GameObject drop = Instantiate(itemPrefab, worldPosition, Quaternion.identity);
 
+        // Ensure the scale is set correctly
+        drop.transform.localScale = itemPrefab.transform.localScale;
 
-            RemoveFromInventory(itemName);
-        }
-        else
+        // Optionally, if items need to interact with physics immediately:
+        Rigidbody2D rb = drop.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-            Debug.LogError($"GameObject for item '{itemName}' not found.");
+            rb.velocity = Vector2.zero; // Reset velocity if the item uses physics
         }
+
+        // Remove from inventory if the item is successfully placed in the world
+        RemoveFromInventory(itemName);
     }
+    else
+    {
+        Debug.LogError($"GameObject for item '{itemName}' not found.");
+    }
+}
+
 
     public void RemoveFromInventory(string itemName)
     {
@@ -107,13 +130,21 @@ public class InventoryManager : MonoBehaviour
         {
             itemsInInventory.Remove(itemName);
 
-            IEnumerable<GameObject> allSlots = inventorySlots.Concat(extendedInventoryManager.extendedInventorySlots);
+            // Combine both main and extended inventory slots if the backpack is active
+            IEnumerable<GameObject> allSlots = backpackButton.gameObject.activeSelf ?
+                inventorySlots.Concat(extendedInventoryManager.extendedInventorySlots) : inventorySlots;
 
             foreach (GameObject slot in allSlots)
             {
-                ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(true); // Include inactive children
+                ItemRepresentation itemRep = slot.GetComponentInChildren<ItemRepresentation>(); // Include inactive children
                 if (itemRep != null && itemRep.item.itemName == itemName)
                 {
+                    if (characterEquipManager.currentEquippedSlot == slot.GetComponent<InventorySlot>())
+                    {
+                        characterEquipManager.currentEquippedSlot.GetComponent<Outline>().enabled = false;
+                        characterEquipManager.SetEquipped(characterEquipManager.currentEquippedSlot, false); // Unequip if currently equipped
+                    }
+
                     Destroy(itemRep.gameObject); // Destroy the item representation GameObject
                     StartCoroutine(AddDefaultItemAfterFrame(slot));
                     break; // Exit after handling the item

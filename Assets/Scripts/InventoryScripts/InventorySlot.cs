@@ -15,6 +15,16 @@ public class InventorySlot : MonoBehaviour
         SetEquipped(false); // Start with no outline
     }
 
+    void Awake()
+    {
+        itemRep = GetComponentInChildren<ItemRepresentation>(true);
+    }
+
+    void Update()
+    {
+        itemRep = GetComponentInChildren<ItemRepresentation>(true);
+    }
+
     public void OnSlotClicked()
     {
         itemRep = GetComponentInChildren<ItemRepresentation>();
@@ -33,10 +43,11 @@ public class InventorySlot : MonoBehaviour
     {
         isEquipped = equip;
         outline.enabled = isEquipped;
-        equipManager.UpdateEquippedItem(this, isEquipped ? itemRep.item : null);
         if (equip) {
              GameEventsManager.instance.pickUpEvents.ItemEquipped();
         }
+        equipManager.UpdateEquippedItem(this, isEquipped ? itemRep.item : null);
+
        
     }
 

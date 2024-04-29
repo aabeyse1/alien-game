@@ -65,6 +65,7 @@ public class CharacterEquipManager : MonoBehaviour
         if (currentEquippedSlot == null) {
             return null;
         }
+        Debug.Log(currentEquippedSlot.GetItemName());
         return currentEquippedSlot.GetItemName();
     }
 }
