@@ -10,6 +10,10 @@ public class GetMoreHoneyQuestStep : QuestStep // inherit from QuestStep
 
 public static GetMoreHoneyQuestStep instance { get; private set; }
 
+private GameObject tutorialObject;
+
+ private GameObject queenBeeObject; 
+
 
 private GameObject animationObject;
 
@@ -19,17 +23,33 @@ private GameObject animationObject;
         instance = this;
         animationObject = GameObject.FindGameObjectsWithTag("EarSpinAnimationPrefab")[0];
         Debug.Log("AWAKE instance = " + instance);
-    }
-    private void OnEnable() { 
-       
-       
+        queenBeeObject = GameObject.FindGameObjectsWithTag("QueenBee")[0];
+        tutorialObject = GameObject.Find("AttackTutorial");
     }
 
-    private void OnDisable() {
+   
+     private void OnEnable()
+    {
+        GameEventsManager.instance.inputEvents.onSpacePressed += SpacePressed;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.instance.inputEvents.onSpacePressed -= SpacePressed;
 
     }
 
 
+    private void SpacePressed() {
+        if (tutorialObject.activeInHierarchy) {
+            // Attack
+            Animator queenBeeAnimator = queenBeeObject.GetComponent<Animator>();
+            queenBeeAnimator.SetTrigger("Attack");
+            tutorialObject.GetComponent<SpriteRenderer>().enabled = false;
+            PlayEarCharacterAnimation();
+            
+        }
+    }
 
 
     protected override void SetQuestStepState(string state)
@@ -39,21 +59,16 @@ private GameObject animationObject;
 
     [YarnCommand("ShowAttackOption")]
     public void ShowAttackButton() {
-        GameObject queenBeeObject = GameObject.FindGameObjectsWithTag("QueenBee")[0];
-        Animator queenBeeAnimator = queenBeeObject.GetComponent<Animator>();
-        queenBeeAnimator.SetTrigger("Attack");
-        
-        PlayEarCharacterAnimation();
-        
-        
-        
-        
+        tutorialObject.GetComponent<SpriteRenderer>().enabled = true;
+        // TODO: freeze player movement ?
     }
+
+    
 
      private void PlayEarCharacterAnimation()
     {
         Debug.Log("animation object" + animationObject);
-        
+        animationObject.GetComponent<Animator>().enabled = true;
         animationObject.GetComponent<SpriteRenderer>().enabled = true;
         GameObject character = GameObject.FindGameObjectsWithTag("Player")[0];
         Debug.Log(" character" + character);
