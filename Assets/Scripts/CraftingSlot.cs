@@ -9,6 +9,7 @@ public class CraftingSlot : MonoBehaviour, IDropHandler, IBeginDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        Debug.Log("Begin Drag Detected on Crafting Slot");
         ItemRepresentation itemRep = GetComponentInChildren<ItemRepresentation>();
         if (itemRep && itemRep.item)
         {
@@ -24,7 +25,6 @@ public class CraftingSlot : MonoBehaviour, IDropHandler, IBeginDragHandler
             DraggableItem.itemBeingDragged.transform.position = transform.position;
 
             ItemRepresentation itemRep = DraggableItem.itemBeingDragged.GetComponent<ItemRepresentation>();
-
             if (itemRep != null)
             {
                 Item droppedItem = itemRep.item;

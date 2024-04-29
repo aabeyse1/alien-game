@@ -25,7 +25,7 @@ public class CraftingPopupManager : MonoBehaviour
     private float originalFOV; // To store the original field of view of the camera
     private Vector3 originalCameraPosition; 
 
-    [SerializeField] GameObject draggingTutorialObject;
+    [SerializeField] public GameObject draggingTutorialObject;
     public ExtendedInventoryManager extendedInventoryManager; 
     public Button backpackButton;
     
@@ -197,7 +197,6 @@ public class CraftingPopupManager : MonoBehaviour
     // Called by CraftingSlot when an item is dropped
     public void ItemDroppedInSlot(CraftingSlot slot, Item item)
     {   
-        Debug.Log("vfrer4");
         AddDefaultItemsToEmptySlots();
         int slotIndex = System.Array.IndexOf(craftingSlots, slot.GetComponent<Image>());
         if (slotIndex != -1)

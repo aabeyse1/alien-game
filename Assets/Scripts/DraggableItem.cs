@@ -113,6 +113,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 {
                     ResetItemPosition();
                 }
+                if (originalParent != null && originalParent.childCount == 0)
+                {
+                    craftingManager.draggingTutorialObject.SetActive(false);
+                    inventoryManager.AddDefaultItemToSlot(originalParent.gameObject);
+                    craftingManager.UpdateCraftability();
+                }
             }
             else
             {
