@@ -232,7 +232,6 @@ private void SetItemToSlot(ItemRepresentation itemRep, Transform slotTransform, 
             }
             if (originalParentIsInvSlot)
             {
-                Debug.Log("replacing item here");
                 Destroy(targetObject);
                 Debug.Log(originalParent.childCount);
                 craftingManager.UpdateCraftability();

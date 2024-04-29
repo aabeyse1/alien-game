@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System.Collections.Generic;
 
 public class CraftingPopupManager : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class CraftingPopupManager : MonoBehaviour
     public InventoryManager inventoryManager; // Reference to manage inventory
     public CraftingRecipe[] recipes; 
     private CraftingRecipe currentRecipe;
-
     public AnimationHandler animationHandler;
 
     public GameObject EatingAnimation;
@@ -26,6 +26,8 @@ public class CraftingPopupManager : MonoBehaviour
     private Vector3 originalCameraPosition; 
 
     [SerializeField] GameObject draggingTutorialObject;
+    public ExtendedInventoryManager extendedInventoryManager; 
+    public Button backpackButton;
     
 
     // private bool isAnimationPlaying = false;
@@ -59,8 +61,8 @@ public class CraftingPopupManager : MonoBehaviour
             GameObject resultItemPrefab = Instantiate(recipe.resultItem.itemPrefab);
             resultItemPrefab.SetActive(false);
             // resultItemPrefab.transform.localScale = new Vector3(1f, 1f, 1f);
-            Debug.Log("this is the item");
-            Debug.Log(resultItemPrefab);
+            // Debug.Log("this is the item");
+            // Debug.Log(resultItemPrefab);
             bool wasAdded = inventoryManager.AddItem(recipe.resultItem, resultItemPrefab);
             if (!wasAdded)
             {
@@ -195,6 +197,7 @@ public class CraftingPopupManager : MonoBehaviour
     // Called by CraftingSlot when an item is dropped
     public void ItemDroppedInSlot(CraftingSlot slot, Item item)
     {   
+        Debug.Log("vfrer4");
         AddDefaultItemsToEmptySlots();
         int slotIndex = System.Array.IndexOf(craftingSlots, slot.GetComponent<Image>());
         if (slotIndex != -1)
@@ -214,8 +217,8 @@ public class CraftingPopupManager : MonoBehaviour
 
     public void UpdateCraftability()
     {
-        Debug.Log(itemsInSlots[0]);
-        Debug.Log(itemsInSlots[1]);
+        // Debug.Log(itemsInSlots[0]);
+        // Debug.Log(itemsInSlots[1]);
         // Debug.Log("recipes: " + recipes.Length);
         craftButton.interactable = recipes.Any(recipe => RecipeMatches(recipe));
     }
@@ -233,7 +236,7 @@ public class CraftingPopupManager : MonoBehaviour
     {
         // Find the slot index and clear the corresponding item
         int slotIndex = System.Array.IndexOf(craftingSlots, slot.GetComponent<Image>());
-        Debug.Log("Item is removed");
+        // Debug.Log("Item is removed");
         if (slotIndex != -1)
         {
             itemsInSlots[slotIndex] = null; // Clear the removed item
@@ -285,8 +288,11 @@ public class CraftingPopupManager : MonoBehaviour
 
     private void AddDefaultItemsToEmptySlots()
     {
+        IEnumerable<GameObject> allSlots = backpackButton.gameObject.activeSelf ? 
+        inventoryManager.inventorySlots.Concat(extendedInventoryManager.extendedInventorySlots) : inventoryManager.inventorySlots;
+
         // Check each inventory slot and add default item if empty
-        foreach (GameObject slot in inventoryManager.inventorySlots)
+        foreach (GameObject slot in allSlots)
         {
             if (slot.transform.childCount == 0)
             {

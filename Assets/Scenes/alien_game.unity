@@ -5401,6 +5401,8 @@ MonoBehaviour:
   Character: {fileID: 455307134}
   mainCamera: {fileID: 325723278}
   draggingTutorialObject: {fileID: 1690849738}
+  extendedInventoryManager: {fileID: 1425290304}
+  backpackButton: {fileID: 1008836578}
   itemPrefab: {fileID: 7526881428003216620, guid: 3a567f729cda949c7823790718b605d2, type: 3}
 --- !u!1001 &407605690
 PrefabInstance:
