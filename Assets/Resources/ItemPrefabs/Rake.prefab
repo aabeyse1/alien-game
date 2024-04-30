@@ -173,7 +173,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 6.8679485}
+  m_Size: {x: 3.525051, y: 3.684164}
   m_EdgeRadius: 0
 --- !u!225 &-7395994702806460349
 CanvasGroup:
