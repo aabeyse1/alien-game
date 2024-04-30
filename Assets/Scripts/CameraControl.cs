@@ -8,6 +8,10 @@ public class CameraControl : MonoBehaviour
     private Camera cam; // Reference to the camera component
     public DialogueManager dialogueManager;
     public  GameObject animation;
+    public float queenBeeZoom = 0.7f; 
+    public float zoomThreshold = 5f; 
+    public GameObject queenBee;
+    public GameObject player; 
 
     void Start()
     {
@@ -15,21 +19,30 @@ public class CameraControl : MonoBehaviour
         originalSize = cam.orthographicSize; // Store the original orthographic size
     }
 
-void Update()
-{
-    // Check if the dialogue is running from a public static bool in DialogueManager
-    if (dialogueManager.dialogueRunner.IsDialogueRunning)
+    void Update()
     {
-        StartCoroutine(AdjustCameraSize(targetSize)); // Zoom in if dialogue starts
-    }
-    else
-    {
-        if(!animation.activeSelf)
+        
+        // Check if the dialogue is running from a public static bool in DialogueManager
+        if (dialogueManager.dialogueRunner.IsDialogueRunning)
         {
-            StartCoroutine(AdjustCameraSize(originalSize));
-        } 
+            float distance = Vector3.Distance(player.transform.position, queenBee.transform.position);
+            if (distance <= zoomThreshold) 
+            {
+                StartCoroutine(AdjustCameraSize(queenBeeZoom)); // Zoom in when near Queen Bee
+            } 
+            else 
+            {
+                StartCoroutine(AdjustCameraSize(targetSize)); // Zoom out to normal when not near
+            }
+        }
+        else
+        {
+            if(!animation.activeSelf)
+            {
+                StartCoroutine(AdjustCameraSize(originalSize));
+            } 
+        }
     }
-}
 
     private IEnumerator AdjustCameraSize(float targetSize)
     {

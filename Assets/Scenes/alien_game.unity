@@ -4418,6 +4418,10 @@ MonoBehaviour:
   targetSize: 0.45
   dialogueManager: {fileID: 1139106903}
   animation: {fileID: 307414813}
+  queenBeeZoom: 0.7
+  zoomThreshold: 5
+  queenBee: {fileID: 1108121817}
+  player: {fileID: 455307134}
 --- !u!114 &325723283
 MonoBehaviour:
   m_ObjectHideFlags: 0
