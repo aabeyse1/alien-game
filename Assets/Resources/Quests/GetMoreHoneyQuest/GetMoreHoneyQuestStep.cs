@@ -14,6 +14,8 @@ private GameObject tutorialObject;
 
  private GameObject queenBeeObject; 
 
+ private Camera camera;
+
 
 private GameObject animationObject;
 
@@ -25,6 +27,7 @@ private GameObject animationObject;
         Debug.Log("AWAKE instance = " + instance);
         queenBeeObject = GameObject.FindGameObjectsWithTag("QueenBee")[0];
         tutorialObject = GameObject.Find("AttackTutorial");
+        camera = GameObject.FindObjectOfType<Camera>();
     }
 
    
@@ -46,6 +49,9 @@ private GameObject animationObject;
             Animator queenBeeAnimator = queenBeeObject.GetComponent<Animator>();
             queenBeeAnimator.SetTrigger("Attack");
             tutorialObject.GetComponent<SpriteRenderer>().enabled = false;
+
+            Animator cameraAnimatior = camera.GetComponent<Animator>();
+            cameraAnimatior.enabled = true;
             PlayEarCharacterAnimation();
             
         }
