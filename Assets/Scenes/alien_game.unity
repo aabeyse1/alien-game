@@ -9600,7 +9600,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2896827013300196994, guid: f02e221a17428468094f40316ccfc09c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7330429998375326307, guid: f02e221a17428468094f40316ccfc09c, type: 3}
