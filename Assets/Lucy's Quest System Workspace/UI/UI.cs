@@ -15,7 +15,6 @@ public class Objective : MonoBehaviour
     public TMP_Text objectiveDisplayText;
 
     public TMP_Text objectiveDescriptionText;
-    public TMP_Text progressText;
 
     [Header("Quest Hints")]
     public GameObject questHintsUI;
@@ -30,7 +29,7 @@ public class Objective : MonoBehaviour
     private void OnEnable()
     {
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
-        GameEventsManager.instance.questEvents.onQuestStepStateChange += QuestStepStateChange;
+       
         GameEventsManager.instance.questEvents.onStartQuest += StartQuest;
 
     
@@ -40,7 +39,7 @@ public class Objective : MonoBehaviour
     private void OnDisable()
     {
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
-        GameEventsManager.instance.questEvents.onQuestStepStateChange -= QuestStepStateChange;
+       
 
         GameEventsManager.instance.questEvents.onStartQuest -= StartQuest;
 
@@ -56,37 +55,20 @@ public class Objective : MonoBehaviour
                 objectiveDisplayText.SetText(quest.info.displayName);
                 objectiveDescriptionText.SetText(quest.info.description);
 
-                if (currentQuestState == QuestState.IN_PROGRESS) {
-                    // Quest just started
-                    progressText.SetText("Progress: 0");
-                }                
+                          
             }
             else
             {
                 objectiveDisplayText.SetText("No active quests");
                 objectiveDescriptionText.SetText("Information about this objective");
-                progressText.SetText("Progress: N/A");
+                
             }
         
 
 
     }
 
-    private void QuestStepStateChange(string questId, int stepIndex, QuestStepState questStepState)
-    {
-        
-            try
-            {
-                int numCollected = System.Int32.Parse(questStepState.state);
-                progressText.SetText("Progress: " + numCollected + " collected");
-            }
-            catch
-            {
-                Debug.Log("Error in converting questStepState to int"); // TODO: handle different types of quest step states
-            }
-        
-
-    }
+  
 
     private void StartQuest(string id) {
             Quest quest = QuestManager.instance.GetQuestById(id);
