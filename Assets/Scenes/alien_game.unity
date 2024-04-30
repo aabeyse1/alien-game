@@ -19658,7 +19658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlotPrefab: {fileID: 9108718673822282051, guid: be7b91c55f1fa4d80ad0452ce21f9f79, type: 3}
-  slotCount: 15
+  slotCount: 10
   slotsParent: {fileID: 1425290308}
   extendedInventorySlots: []
   craftingManager: {fileID: 399297265}
@@ -19742,8 +19742,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200.3288, y: -154.11}
-  m_SizeDelta: {x: 363.8176, y: 172.51999}
+  m_AnchoredPosition: {x: -167.2197, y: -143.53769}
+  m_SizeDelta: {x: 307.6339, y: 147.5494}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1427714337
 PrefabInstance:
