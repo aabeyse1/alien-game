@@ -74,6 +74,22 @@ public class CraftingPopupManager : MonoBehaviour
         GameEventsManager.instance.pickUpEvents.ItemCrafted(recipe.resultItem.itemName);
 
         ClearUsedItemsInCraftingSlots();
+
+        IEnumerable<GameObject> allSlots = backpackButton.gameObject.activeSelf ?
+        inventoryManager.inventorySlots.Concat(extendedInventoryManager.extendedInventorySlots) : inventoryManager.inventorySlots;
+
+        foreach (GameObject slot in allSlots)
+        {
+            InventorySlot inventorySlot = slot.GetComponent<InventorySlot>();
+            if (inventorySlot != null)
+            {
+                inventorySlot.SetEquipped(false);
+                inventorySlot.outline.enabled = false;
+            }
+        }
+
+    // Reset the current equipped slot to null
+        inventoryManager.characterEquipManager.currentEquippedSlot = null;
     }
 
     public void ShowCraftingPopup()
@@ -82,7 +98,10 @@ public class CraftingPopupManager : MonoBehaviour
         mainButton.gameObject.SetActive(false);
         hideButton.gameObject.SetActive(true);
         Time.timeScale = 0; // Freeze game, excluding inventory interactions
-        
+        if (EatingAnimation != null && Character != null) 
+        {
+            EatingAnimation.transform.position = Character.transform.position;
+        }
         if (!TutorialManager.instance.hasDraggedItemForCrafting) {
                 // if haven't poked yet, show the spacebar icon telling you how to use tools
                 draggingTutorialObject.SetActive(true);
@@ -256,9 +275,9 @@ public class CraftingPopupManager : MonoBehaviour
                 
                 // Activate the EatingAnimation GameObject and hide the character
                 // It's crucial to ensure these lines are executed before starting the coroutine
-                animationHandler.ResetCameraToCharacter();
-
                 EatingAnimation.transform.position = Character.transform.position;
+                animationHandler.ResetCameraToCharacter();
+                
                 Character.SetActive(false);
                 EatingAnimation.SetActive(true);
                 animationHandler.StartCraftingAnimation(recipe);
@@ -269,9 +288,6 @@ public class CraftingPopupManager : MonoBehaviour
         }
         Debug.LogWarning("No matching recipe found.");
     }
-
-
-
 
     private void ClearUsedItemsInCraftingSlots()
     {

@@ -133,7 +133,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             ItemRepresentation itemRep = GetComponent<ItemRepresentation>();
             if (itemRep != null)
             {
-                // inventoryManager.PlaceItemInWorld(itemRep.item.itemName, dropPosition);
                 ResetItemPosition();
             }
             else

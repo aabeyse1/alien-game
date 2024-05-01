@@ -44,7 +44,7 @@ public static AnimationHandler Instance { get; private set; }
     {
         currentRecipe = recipe;
         SetupAnimationSprites(recipe);
-        ResetCameraToCharacter();
+        // ResetCameraToCharacter();
         StartCoroutine(CraftingAnimationCoroutine());
         StartCoroutine(ZoomInOnCharacter());
     }
@@ -54,7 +54,7 @@ public static AnimationHandler Instance { get; private set; }
         if (mainCamera != null && character != null)
         {
             // Set camera directly above the character or at a specific offset
-            mainCamera.transform.position = character.transform.position + new Vector3(0, 0, -10);  // Adjust Z as necessary
+            mainCamera.transform.position = character.transform.position + new Vector3(0, 0, -10);
         }
     }
 
@@ -74,6 +74,7 @@ public static AnimationHandler Instance { get; private set; }
 
         if (mainCamera != null)
         {
+            mainCamera.transform.position = character.transform.position + new Vector3(0, 0, -10);
             Debug.Log("Starting camera zoom.");
             float duration = 1.0f;
             float elapsedTime = 0;
