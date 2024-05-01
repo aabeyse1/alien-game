@@ -19,7 +19,7 @@ public class TriggerNextScene : MonoBehaviour
         SceneManager.LoadScene(nextSceneName);
     }
 
-    private void TriggerScene() {
+    public void TriggerScene() {
          cameraFade.StartFadeOutAndIn(() => 
             {
                 LoadScene();

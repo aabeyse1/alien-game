@@ -44,7 +44,7 @@ private GameObject animationObject;
 
 
     private void SpacePressed() {
-        if (tutorialObject.activeInHierarchy) {
+        if (tutorialObject.GetComponent<SpriteRenderer>().enabled) {
             // Attack
             Animator queenBeeAnimator = queenBeeObject.GetComponent<Animator>();
             queenBeeAnimator.SetTrigger("Attack");
