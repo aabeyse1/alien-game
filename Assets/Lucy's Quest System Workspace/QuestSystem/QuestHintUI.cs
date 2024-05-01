@@ -12,13 +12,15 @@ public class QuestHintUI : MonoBehaviour
     [SerializeField] GameObject slot1;
     [SerializeField] GameObject slot2;
 
+    
+
     [SerializeField] GameObject panel;
 
-    [SerializeField] Transform afterAnimationPosition;
+   
 
     private string currentRecipeName = "";
 
-    private Animator animator;
+
 
 
     
@@ -32,26 +34,8 @@ public class QuestHintUI : MonoBehaviour
         GameEventsManager.instance.pickUpEvents.onItemCrafted -= ItemCrafted;
     }
 
-    private void Start() {
-        animator = GetComponent<Animator>();
-    }
     private void ShowQuestHint() {
-        StartCoroutine(AnimationCoroutine());
-        animator.enabled = true;
-    }
-
-    private IEnumerator AnimationCoroutine()
-    {   
-        // Wait for the animation to reach its end
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
-        
-        OnAnimationComplete();
-    }
-
-    private void OnAnimationComplete() {
-        animator.enabled = false;
-        
-        gameObject.transform.position = afterAnimationPosition.position;
+        panel.SetActive(true);
         
     }
 
@@ -78,6 +62,7 @@ public class QuestHintUI : MonoBehaviour
         if (item1 != null && item2 != null) {
             slot1.GetComponent<Image>().sprite = item1;
             slot2.GetComponent<Image>().sprite = item2;
+            
         } else {
             Debug.LogError("QuestHintUI: Item sprite image not found.");
         }

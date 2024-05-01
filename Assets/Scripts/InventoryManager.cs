@@ -190,6 +190,7 @@ public void PlaceItemInWorld(string itemName, Vector3 worldPosition)
                 return true;
             }
         }
+       
         return false; // Inventory is full
     }
 

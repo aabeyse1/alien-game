@@ -71,6 +71,7 @@ public class ItemPickup : MonoBehaviour
         }
         else
         {
+             DialogueManager.instance.RunDialogueNode("Inventory_Full");
             Debug.Log("Inventory is full.");
         }
     }
