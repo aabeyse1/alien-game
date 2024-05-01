@@ -3,9 +3,9 @@ tags:
 position: 22,-240
 ---
 Hermie: Hello. Who are you?
-Friendly Alien: No English yet, eh? Youse must be an F1. //#line:SB1s
-Friendly Alien: Well lucky for you stranger, I got a translator right here, courtesy of our lost human folk! //#line:SB1l
-Friendly Alien: Feel free to take it with ya! No one speaks Faction 1 anymore, ya know. //#line:SB2l
+Friendly Alien: Huh, I don't know that accent. Youse must be an F1. //#line:SB1s
+Friendly Alien: No one speaks Faction 1 anymore, ya know! It's all English, now! //#line:SB2l
+Hermie: ...
 Buck: Name's Buck, by the way. So anyway adventurer, what d’ya need? //#line:SB3l
     -> What’re you doing here?
         Buck: That’s my line, stranger. This here’s our territory, didn’t ya know?
@@ -13,7 +13,7 @@ Buck: Name's Buck, by the way. So anyway adventurer, what d’ya need? //#line:S
             -> Sorry, I've got nothing.
                 Buck: Well, ain’t that a problem?...
                 Buck: Tell ya what, I’ve been tryna renovate- Get my quarters in tip-top shape, ya hear?
-                Buck: If you could grab me 5 pieces of wood, I’ll give ya some honey. Seems like you could use it. Everyone does.
+                Buck: If you could grab me 5 logs, I’ll give ya some honey. Seems like you could use it. Everyone does.
                 Hermie: And where're those?
                 Buck: Well, that’s yer job, now ain’t it? C’mon, shouldn’t be too bad if you put yer min’ to it!
                 <<jump Interruption1>>
@@ -28,12 +28,12 @@ Buck: Name's Buck, by the way. So anyway adventurer, what d’ya need? //#line:S
 title: NeedRepair
 position: -138,8
 ---
-Buck: Sure I do.
+Buck: Sure! Not much, but I got some.
 Hermie: Well? I’m in a rush.
 Buck: Woah, hold yer ears, friend! I got some, but it ain’t gon’ be cheap.
 Hermie: What do you need?
 Buck: Something to rebuild this here place.
-Buck: Think you could grab 5 pieces of wood? Should be able to get some if ya put yer min’ to it!
+Buck: Think you could grab 5 logs? Should be able to get some if ya put yer min’ to it!
 <<jump Interruption1>>
 ===
 
@@ -43,8 +43,7 @@ position: 204,22
 Alien Officer: So what’d they say? Don’t got a translator on me.
 Hermie: They told me to go home and get some sleep.
 Alien Officer: Did they now? That's some good advice. Everyone back home ought to like it.
-Hermie: ...
-Hermie: ...They told me to get wood.
+Hermie: ...Fine. They told me to get logs.
 Alien Officer: Then you’ll need to find a way to carry it all! Take a look around.
 <<setDialogueNode DialogueManager SouthernGuyQuestPoint Southern_During>>
 <<setDialogueNode DialogueManager SleepyQuestPoint LazyDialogue>>
@@ -62,12 +61,12 @@ title: Southern_During
 ===
 title: Start_Repeat
 ---
-Buck: Think you could grab 5 pieces of wood? Should be able to get some if ya put yer min’ to it!
+Buck: Think you could grab 5 logs? Should be able to get some if ya put yer min’ to it!
 ===
 
 title: Start_Incorrect
 ---
-Buck: The hell is this, stranger? What, 5 pieces of wood too hard for ya? No wood, no honey, I’m afraid.
+Buck: The hell is this, stranger? What, 5 logs too hard for ya? No wood, no honey, I’m afraid.
 ===
 
 title: Start_Correct
@@ -78,11 +77,13 @@ title: Start_Correct
 <<removeFromInventory InventoryCanvas Log>>
 <<removeFromInventory InventoryCanvas Log>> 
 <<addToInventory InventoryCanvas Honey>>
-Buck: That’s my boy. I’m an alien of my word. Here y’go!
-Hermie: Thanks.
+Buck: That’s my boy. I’m an alien of my word, though I don't know how far this'll get ya.
+Hermie: ...Where can I get some more? I need enough to fix my ship.
+Buck: More, eh? You come across that well outside? Heard there's more down there... but I hear bad things about that place.
+Buck: The honey I gave ya has sort of a strange glow... maybe enough to brighten the place?
+Hermie: Thanks for the tip.
 Buck: Don’t bother. Just stay safe out there. Aliens of all kinds tryna start a ruckus causa that so-called “honey war”.
 Buck: They don’t take kindly to folks like yerself, regardless of any “truce” we may go pretendin’ we got.
 Buck: So, jus’, good luck out there, stranger, for whatever you’re up to.
-Buck: heard there's more honey down the well... Kinda dangerous though i hear. 
 <<StartQuest DialogueManager GetMoreHoneyQuest>>
 ===

@@ -20,10 +20,12 @@ title: Problem
 ---
 Lazy Alien: My problem? You outsiders have got some nerve, coming into our houses, telling me to give you stuff.
 Lazy Alien: This truce won’t last with little aliens like you pressing buttons- tryin’ to start somethin’.
-Hermie: *Dejected, yet imploring alien noises*
+Hermie: **Dejected, yet imploring alien noises**
 Lazy Alien: …Damn, alright, fine.
-Lazy Alien: If you bring me a nice sock - one for my horn here - I’ll give you what you damn near threatened me for.
-Lazy Alien: Anything to get rid of you.
+Lazy Alien: If you get the sock I dropped -the one for my horn here- I’ll give you what you damn near threatened me for.
+Hermie: A sock? Why are all of you wearing human clothing?
+Lazy Alien: 'Cause it's the future! What kinda space rock you been living under?
+Lazy Alien: Get it already. My horn's all cold.
 <<setDialogueNode DialogueManager SleepyQuestPoint Lazy_During>>
 ===
 
@@ -38,7 +40,7 @@ Hermie: What's your problem?
 
 title: Lazy_Repeat
 ---
-Lazy Alien: You deaf or something? I said get the sock!
+Lazy Alien: You deaf or something? I said get my sock!
 ===
 
 title: Lazy_During
@@ -52,8 +54,8 @@ title: Lazy_During
 
 title: Lazy_Incorrect
 ---
-Lazy Alien: I knew Faction 1’s were slow but damn.
-Lazy Alien: If you don’t get the sock right now you can kiss your precious belt behind.
+Lazy Alien: I knew Faction 1’s were slow but wow...
+Lazy Alien: If you don’t get my sock right now you can kiss your precious belt behind.
 ===
 
 title: Lazy_Correct
@@ -81,6 +83,12 @@ Lazy Alien: Leave me alone.
 
 title: Lazy_After
 ---
-Lazy Alien: Thanks for the sock. We need to write something else here. 
+Lazy Alien: Oh joy. Look who's back for more...
+    -> I'm looking for something to cut down a tree.
+    Lazy Alien: Something sharp, and something sturdy to hold that sharp something.
+    Lazy Alien: C'mon, ain't there a rod or something around here you could attach a blade to?
+    -> Nevermind.
+        <<stop>>
+
 
 ===

@@ -1,8 +1,20 @@
-﻿title: Start_Bee
+title: Start_Bee
 tags:
 ---
-Queen Bee: hi, you can't have my honey. 
-Queen Bee: I want a new scepter. 
+Queen Bee: Who dares disturb my supper?
+Queen Bee: Of course... another pain in the stinger. A blue one, this time.
+Queen Bee: You aren't from around here, are you?
+Hermie: And you are?
+Queen Bee: I CREATED this place. How dare you even speak to me.
+Hermie: Created it?
+Queen Bee: Nuh uh uh! No more questions, big ears!
+Hermie: I need some honey for my people, then I'll leave.
+Queen Bee: Oh yeah sure, go ahead, take it. You want my crown? No problem! Take my house too while you're at it!
+Hermie: ...Ok, I get it. What do you want in exchange?
+Queen Bee: I can tell you bully your way through most things in life, kid, but me and my honey won't be one of them.
+Queen Bee: If you wanna talk, let ME make the questions.
+Queen Bee: Otherwise, leave me bee. I've got a scepter to fix.
+Queen Bee: *sigh* If only I had a better one.
 <<SetSlotItems CraftingRecipeUI Axe RakeRake Scepter>>
 <<setDialogueNode DialogueManager QueenBeeQuestPoint Bee_Waiting_For_Scepter>>
 <<StartQuest DialogueManager GetMoreHoneyQuest>>
@@ -11,7 +23,7 @@ Queen Bee: I want a new scepter.
 title: Bee_Waiting_For_Scepter
 tags:
 ---
-Queen Bee: scepter pls. 
+Queen Bee: You really do wanna talk, don't you?
 <<if isItemInInventory("Scepter") == true>>
     <<jump Bee_Correct>>
 <<else>>
@@ -22,12 +34,98 @@ Queen Bee: scepter pls.
 title: Bee_Repeat
 tags:
 ---
-Queen Bee: grrr
+    -> You said you created this place? What do you mean?
+        Queen Bee: Um, are those ears just for show? I said make the questions.
+        Queen Bee: Why do you even care?
+        Hermie: Call it curiosity.
+        Queen Bee: After the humans disappeared and their world crumbled, we stepped in. These chunks of its surface are ours.
+        Queen Bee: ...Until you all showed up, that is. It's always one after another.
+        Hermie: Wasn't us. It was those Faction 2s.
+        Queen Bee: Same difference. Leave. I still need to rebuild my scepter.
+        <<jump Bee_Scepter>>
+    -> How did you get all this honey?
+        Queen Bee: Um, are those ears just for show? I said make the questions.
+        Queen Bee: What makes you think you need this honey more than I do? 
+        -> My faction is almost out of it.
+            Queen Bee: So I'm suppose to die here while you get everything instead?
+            Hermie: Well, yes, actually. You're just one bee. I'm one of many.
+            <<jump Bee_Banter>>
+        -> Well... you're just a bee.
+            <<jump Bee_Banter>>
+        -> Nevermind.
+            <<stop>>
+    -> Nevermind.
+        <<stop>>
+
 ===
 
 title: Bee_Correct
 tags:
 ---
-Queen Bee: ooooo this is so pretty 
+Queen Bee: Wait a second. What's that?
+Hermie: Something catch your eye?
+Queen Bee: This is...
+Queen Bee: BEAUTIFUL! 
+Queen Bee: But kid... did you really think I was gonna give my precious honey away?
+Queen Bee: haha...
+Queen Bee: HahahahaHAHAAHAHAHAHAMUAHAHAAHAHAHAAHAHAHAHAHAHAAHAHAHAAHAHAH
+Queen Bee: Finally... this power... with it I can control... everyone... as QUEEN.
+Queen Bee: With this weapon, I will RULE as the QUEEN of the NEW EARTH!
+Queen Bee: AND NOTHING CAN STO-
 <<ShowAttackOption GetMoreHoneyQuestStep(Clone)>>
+===
+
+title: Bee_Banter
+tags:
+---
+Queen Bee: JUST a bee?
+Queen Bee: Met a lot of talking bees in your travels, have you?
+Hermie: You know, the ability to speak doesn't make you more intimidating.
+Queen Bee: I got this honey BECAUSE I'm intimidating.
+    -> Wow, I'm so scared right now.
+        Queen Bee: You..! I'm just about done with you.
+        <<jump Bee_Serious>>
+    -> And you call me the bully...
+        Queen Bee: Yup. A bully who won't leave this well until I'm dead, apparently.
+        <<jump Bee_Serious>>
+===
+
+
+title: Bee_Scepter
+tags:
+---
+    -> How are you fixing it?
+        Queen Bee: With honey, obviously. That's all anything takes.
+        Hermie: Should've known.
+        <<jump Bee_Scepter>>
+    -> What did that scepter even do?
+        Queen Bee: Killed aliens.
+        Hermie: Oh yeah?
+        Queen Bee: Yup. Blew them up on impact. Pretty nifty, right?
+        Hermie: Sure is.
+        Queen Bee: Just wish I had a new one. A real long one, maybe... with a blade!
+        Hermie: If only.
+        Queen Bee: Good help is so hard to come by these days.
+        Hermie: Mmhm.
+        <<stop>>
+===
+
+title: Bee_Serious
+tags:
+---
+Hermie: The officer in my ear will not let me leave without that honey.
+Queen Bee: So that's how it is.
+Hermie: What?
+Queen Bee: Bee serious. You don't care about my honey. You just want to go home.
+Hermie: We're both doing this for ourselves.
+Queen Bee: The difference is that when I get something, it's because I deserve it!
+Queen Bee: After how those humans treated us, this honey is mine by right!
+Queen Bee: You're just here because you're forced to bee.
+Hermie: At least I'm not here pretending to be someone I'm not.
+Queen Bee: Here's a word of advise, then:
+Queen Bee: Leave that clan of yours. Life's better when those choices you make are actually your own.
+Hermie: ...How about I grab you a new scepter? A bladed one.
+Queen Bee: Why?
+Hermie: I like you. You've got good morals.
+Queen Bee: Hmph. You've got one chance to impress me, kid...
 ===

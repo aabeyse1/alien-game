@@ -1,7 +1,9 @@
 ﻿title: Crafted_Bag
 tags:
 ---
-Alien Officer: Good, you crafted a bag. Now go get the wood. Our intel tells us that there is a forest on the north end of this chunk. 
+Alien Officer: Good. Now go get the logs. Should be a forest around here.
+Hermie: Yes, that was the plan. Could you stop interrupting?
+Alien Officer: No.
 
 <<StartQuest DialogueManager CollectLogsAfterBagQuest>>
 <<SetSlotItems CraftingRecipeUI IceSkate Pipe Axe>>
@@ -11,7 +13,7 @@ Alien Officer: Good, you crafted a bag. Now go get the wood. Our intel tells us 
 title: Punch_Tree
 tags:
 ---
-Alien Officer: Trying to punch the tree now? You gotta cut it down. Obviously.
+Alien Officer: Trying to punch the tree now? You gotta cut it down.
 
 ===
 
@@ -28,9 +30,13 @@ Alien Officer: Yeah, I see it. You'll need something to knock it down, though.
 title: Too_Dark
 tags:
 ---
-Alien Officer: It's too dark down here.
+Alien Officer: Can't see anything. Can you?
+Hermie: Of course I can.
+Alien Officer: Seriously? Is my camera blocked?
+Hermie: No, I think you're going crazy.
+Alien Officer: ...You're so full of it.
 <<if GetCurrentQuestId() == "GetMoreHoneyQuest">>
-   Alien Officer: You will need to find something to light up the area.
+   Alien Officer: You'll need to light up the area.
    <<SetSlotItems CraftingRecipeUI Honey Log Torch>>
 <<endif>>
 <<ChangeArea WellExitEntrancePoint>>
@@ -41,5 +47,7 @@ Alien Officer: It's too dark down here.
 title: Inventory_Full
 tags:
 ---
-Alien Officer: You can't carry anything else! Press Q to drop equipped items. 
+Alien Officer: You can't carry anything else! Press Q to drop equipped items.
+Hermie: "Q"?
+Alien Officer: I wasn't talking to you!
 ===
