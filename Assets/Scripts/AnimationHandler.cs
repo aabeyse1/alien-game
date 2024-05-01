@@ -53,7 +53,8 @@ public static AnimationHandler Instance { get; private set; }
     {
         if (mainCamera != null && character != null)
         {
-            // Set camera directly above the character or at a specific offset
+            originalCameraPosition = mainCamera.transform.position;
+            mainCamera.transform.position = character.transform.position + new Vector3(0, 0, -10);
             mainCamera.transform.position = character.transform.position + new Vector3(0, 0, -10);
         }
     }
