@@ -35,7 +35,7 @@ title: Bee_Repeat
 tags:
 ---
     -> You said you created this place? What do you mean?
-        Queen Bee: Um, are those ears just for show? I said make the questions. #line:QBl2_2
+        Queen Bee: Um, are those ears just for show? I said I make the questions. #line:QBl2_2
         Queen Bee: Why do you even care? #line:QBs4_1
         Hermie: Call it curiosity. #line:Hs1_2
         Queen Bee: After the humans disappeared and their world crumbled, we stepped in. These chunks of its surface are ours. #line:QBvl1_1
@@ -44,7 +44,7 @@ tags:
         Queen Bee: Same difference. Leave. I still need to rebuild my scepter. #line:QBs1_1
         <<jump Bee_Scepter>>
     -> How did you get all this honey?
-        Queen Bee: Um, are those ears just for show? I said make the questions. #line:QBl2_3
+        Queen Bee: Um, are those ears just for show? I said I make the questions. #line:QBl2_3
         Queen Bee: What makes you think you need this honey more than I do? #line:QBs3_1
         -> My faction is almost out of it.
             Queen Bee: So I'm suppose to die here while you get everything instead? #line:QBs5_1
