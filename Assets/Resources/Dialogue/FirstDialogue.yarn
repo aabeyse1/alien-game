@@ -86,4 +86,10 @@ Buck: Don’t bother. Just stay safe out there. Aliens of all kinds tryna start 
 Buck: They don’t take kindly to folks like yerself, regardless of any “truce” we may go pretendin’ we got. #line:SBl3_5
 Buck: So, jus’, good luck out there, stranger, for whatever you’re up to. #line:SBl1_5
 <<StartQuest DialogueManager GetMoreHoneyQuest>>
+<<setDialogueNode DialogueManager SouthernGuyQuestPoint Southern_AfterHoney>>
+===
+
+title: Southern_AfterHoney
+---
+Buck: yo
 ===
