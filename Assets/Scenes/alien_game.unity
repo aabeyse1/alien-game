@@ -2165,6 +2165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torch
       objectReference: {fileID: 0}
+    - target: {fileID: 7056948275355669066, guid: 05f941f2c0e134f7bbfae85ea26df244, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25604,9 +25608,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-
-  m_Center: {x: -0.061800003, y: -0.109049976, z: 0}
-  m_Extent: {x: 1.4971, y: 1.03515, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -25616,11 +25619,7 @@ MonoBehaviour:
   m_ShapeLightParametricRadius: 1
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -1.0601101, y: -0.64361763, z: 0}
-  - {x: 0.935442, y: -0.62546635, z: 0}
-  - {x: 0.01170063, y: 0.42819118, z: 0}
-  - {x: -0.22712612, y: 0.39946747, z: 0}
+  m_ShapePath: []
 --- !u!1001 &1864010636
 PrefabInstance:
   m_ObjectHideFlags: 0
