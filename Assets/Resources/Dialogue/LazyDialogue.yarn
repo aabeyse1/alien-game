@@ -1,13 +1,13 @@
 ﻿title: LazyDialogue
 tags:
 ---
-Hermie: Hey, I need that belt on you.
-Lazy Alien: Ok?
-Hermie: Can you give it to me?
-Lazy Alien: And why would I do that?
+Hermie: Hey, I need that belt on you. #line:Hs4
+Lazy Alien: Ok? #line:LAs1grum
+Hermie: Can you give it to me? #line:Hs5q_2
+Lazy Alien: And why would I do that? #line:LAs2
     -> Because I asked you to.
-        Lazy Alien: Are you trying to intimidate me?
-        Lazy Alien: You Faction 1s have no right ordered us around. Scram.
+        Lazy Alien: Are you trying to intimidate me? #line:LAs3
+        Lazy Alien: You Faction 1s have no right ordered us around. Scram. #line:LAl1
             -> What's your problem?
             <<jump Problem>>
             -> Up for a trade?
@@ -18,29 +18,29 @@ Lazy Alien: And why would I do that?
 
 title: Problem
 ---
-Lazy Alien: My problem? You outsiders have got some nerve, coming into our houses, telling me to give you stuff.
-Lazy Alien: This truce won’t last with little aliens like you pressing buttons- tryin’ to start somethin’.
-Hermie: **Dejected, yet imploring alien noises**
-Lazy Alien: …Damn, alright, fine.
-Lazy Alien: If you get the sock I dropped -the one for my horn here- I’ll give you what you damn near threatened me for.
-Hermie: A sock? Why are all of you wearing human clothing?
-Lazy Alien: 'Cause it's the future! What kinda space rock you been living under?
-Lazy Alien: Get it already. My horn's all cold.
+Lazy Alien: My problem? You outsiders have got some nerve, coming into our houses, telling me to give you stuff. #line:LAl2
+Lazy Alien: This truce won’t last with little aliens like you pressing buttons- tryin’ to start somethin’. #line:LAl3
+Hermie: **Dejected, yet imploring alien noises** #line:Hcute1
+Lazy Alien: …Damn, alright, fine. #line:LAs2_1
+Lazy Alien: If you get the sock I dropped -the one for my horn here- I’ll give you what you damn near threatened me for. #line:LAl5
+Hermie: A sock? Why are all of you wearing human clothing? #line:Hl4q
+Lazy Alien: 'Cause it's the future! What kinda space rock you been living under? #line:LAl1_2
+Lazy Alien: Get it already. My horn's all cold. #line:LAl2_1
 <<setDialogueNode DialogueManager SleepyQuestPoint Lazy_During>>
 ===
 
 title: Trade
 ---
-Lazy Alien: How about 10 million dollars?
-Hermie: ...
-Lazy Alien: ...
-Hermie: What's your problem?
+Lazy Alien: How about 10 million dollars? #line:LAs3_1
+Hermie: ... #line:Hsigh1_2
+Lazy Alien: ... #line:LAs1grum_1
+Hermie: What's your problem? #line:Hs5q_3
 <<jump Problem>>
 ===
 
 title: Lazy_Repeat
 ---
-Lazy Alien: You deaf or something? I said get my sock!
+Lazy Alien: You deaf or something? I said get my sock! #line:LAl3_1
 ===
 
 title: Lazy_During
@@ -54,8 +54,8 @@ title: Lazy_During
 
 title: Lazy_Incorrect
 ---
-Lazy Alien: I knew Faction 1’s were slow but wow...
-Lazy Alien: If you don’t get my sock right now you can kiss your precious belt behind.
+Lazy Alien: I knew Faction 1’s were slow but wow... #line:LAl1_1
+Lazy Alien: If you don’t get my sock right now you can kiss your precious belt behind. #line:LAl4
 ===
 
 title: Lazy_Correct
@@ -66,27 +66,27 @@ title: Lazy_Correct
 <<addToInventory InventoryCanvas Belt>>
 
 
-Lazy Alien: Now take it and leave me alone. This chunk’s only big enough for one Faction, and it’s hard enough as it is.
-Hermie: Why's that?
-Lazy Alien: …Our chief is hellbent on finding that honey reservoir everyone’s after.
-Lazy Alien: He’s got me all caught up in the mess. So do yourself a favor and get as far away from this nonsense as possible, yeah? 
-Lazy Alien: That includes here.
+Lazy Alien: Now take it and leave me alone. This chunk’s only big enough for one Faction, and it’s hard enough as it is. #line:LAl5_1
+Hermie: Why's that? #line:Hs5q_4
+Lazy Alien: …Our chief is hellbent on finding that honey reservoir everyone’s after. #line:LAl4_1
+Lazy Alien: He’s got me all caught up in the mess. So do yourself a favor and get as far away from this nonsense as possible, yeah? #line:LAl3_2
+Lazy Alien: That includes here. #line:LAs3_2
 <<setDialogueNode DialogueManager SleepyQuestPoint Lazy_After>>
 ===
 
 title: Lazy_Before
 ---
 
-Lazy Alien: Leave me alone.
+Lazy Alien: Leave me alone. #line:LAs1grum_2
 
 ===
 
 title: Lazy_After
 ---
-Lazy Alien: Oh joy. Look who's back for more...
+Lazy Alien: Oh joy. Look who's back for more... #line:LAl2_2
     -> I'm looking for something to cut down a tree.
-    Lazy Alien: Something sharp, and something sturdy to hold that sharp something.
-    Lazy Alien: C'mon, ain't there a rod or something around here you could attach a blade to?
+    Lazy Alien: Something sharp, and something sturdy to hold that sharp something.#line:LA4_2
+    Lazy Alien: C'mon, ain't there a rod or something around here you could attach a blade to? #line:LA5_2
     -> Nevermind.
         <<stop>>
 

@@ -1,20 +1,19 @@
 ﻿title: InitialDialogue
 tags:
 ---
-Alien Officer: ...Hermie. You already crashed the ship. And now you broke the door... why?
-
-// Hermie: *Yawns in alien*
-// Alien Officer: You remember why we’re doing this at least?
-// Alien Officer: They told me that they’ve located the largest reservoir of honey that any alien faction has ever seen!
-// Alien Officer: This is our chance to finally get a leg up. If we don’t get to this one first, we could be wiped out for good!
-// Hermie: *Mumbles in alien*
-// Alien Officer: ...
-// Alien Officer: At least get a bit of honey so we can get out of here.
-// Hermie: We? Didn't realize you were here too.
-// Alien Officer: Hermie, please. If you fail, I'll hear it from Command.
-// Hermie: You'd better give some good instructions, then, huh?
-// Alien Officer: ...I knew I should've taken off today. 
-// Alien Officer: Just check out that house north of here.
+Alien Officer: ...Hermie. You already crashed the ship. And now you broke the door... why? #line:AOl4_2
+Hermie: *Yawns in alien* #line:Hy1
+Alien Officer: You remember why we’re doing this at least? #line:AOl1_1
+Alien Officer: They told me that they’ve located the largest reservoir of honey that any alien faction has ever seen! #line:AOl2
+Alien Officer: This is our chance to finally get a leg up. If we don’t get to this one first, we could be wiped out for good! #line:AOl5_1
+Hermie: *Mumbles in alien* #line:Hsigh1_3
+Alien Officer: ...
+Alien Officer: At least get a bit of honey so we can get out of here. #line:AOl3
+Hermie: We? Didn't realize you were here too. #line:Hl1
+Alien Officer: Hermie, please. If you fail, I'll hear it from Command. #line:AOl4
+Hermie: You'd better give some good instructions, then, huh? #line:Hl2
+Alien Officer: ...I knew I should've taken off today. #line:AOm1
+Alien Officer: Just check out that house north of here. #line:AOl2_1
 <<StartQuest DialogueManager CollectFuelQuest>>
 
 ===

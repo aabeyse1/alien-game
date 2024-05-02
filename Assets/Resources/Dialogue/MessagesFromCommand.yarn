@@ -1,9 +1,9 @@
 ﻿title: Crafted_Bag
 tags:
 ---
-Alien Officer: Good. Now go get the logs. Should be a forest around here.
-Hermie: Yes, that was the plan. Could you stop interrupting?
-Alien Officer: No.
+Alien Officer: Good. Now go get the logs. Should be a forest around here. #line:AOm1_1
+Hermie: Yes, that was the plan. Could you stop interrupting? #line:Hl4q_1
+Alien Officer: No. #line:AOs2
 
 <<StartQuest DialogueManager CollectLogsAfterBagQuest>>
 <<SetSlotItems CraftingRecipeUI IceSkate Pipe Axe>>
@@ -13,14 +13,14 @@ Alien Officer: No.
 title: Punch_Tree
 tags:
 ---
-Alien Officer: Trying to punch the tree now? You gotta cut it down.
+Alien Officer: Trying to punch the tree now? You gotta cut it down. #line:AOl3_1
 
 ===
 
 title: Punch_Pole
 tags:
 ---
-Alien Officer: Yeah, I see it. You'll need something to knock it down, though.
+Alien Officer: Yeah, I see it. You'll need something to knock it down, though. #line:AOl4_1
 <<if GetCurrentQuestId() == "CollectLogsAfterBagQuest">>
    <<SetSlotItems CraftingRecipeUI Rake Rake RakeRake>>
 <<endif>>
@@ -30,13 +30,13 @@ Alien Officer: Yeah, I see it. You'll need something to knock it down, though.
 title: Too_Dark
 tags:
 ---
-Alien Officer: Can't see anything. Can you?
-Hermie: Of course I can.
-Alien Officer: Seriously? Is my camera blocked?
-Hermie: No, I think you're going crazy.
-Alien Officer: ...You're so full of it.
+Alien Officer: Can't see anything. Can you? #line:AOm1_2
+Hermie: Of course I can. #line:Hs1_1
+Alien Officer: Seriously? Is my camera blocked? #line:AOl3_2
+Hermie: No, I think you're going crazy. #line:Hs2_1
+Alien Officer: ...You're so full of it. #line:AOs4
 <<if GetCurrentQuestId() == "GetMoreHoneyQuest">>
-   Alien Officer: You'll need to light up the area.
+   Alien Officer: You'll need to light up the area. #line:AOs3_1
    <<SetSlotItems CraftingRecipeUI Honey Log Torch>>
 <<endif>>
 <<ChangeArea WellExitEntrancePoint>>
@@ -47,7 +47,7 @@ Alien Officer: ...You're so full of it.
 title: Inventory_Full
 tags:
 ---
-Alien Officer: You can't carry anything else! Press Q to drop equipped items.
-Hermie: "Q"?
-Alien Officer: I wasn't talking to you!
+Alien Officer: You can't carry anything else! Press Q to drop equipped items. #line:AOl1_2
+Hermie: "Q"? #line:Hs3_1
+Alien Officer: I wasn't talking to you! #line:AOs4_1
 ===
