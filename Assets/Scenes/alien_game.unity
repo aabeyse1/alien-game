@@ -11272,7 +11272,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1276976123
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d4a41710ec6ab425aac181078f2bd888, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -25592,8 +25592,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.06159997, y: -0.108199984, z: 0}
-    m_Extent: {x: 1.4964, y: 1.0354, z: 0}
+    m_Center: {x: -0.061950028, y: -0.10865, z: 0}
+    m_Extent: {x: 1.4972501, y: 1.03565, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
