@@ -9366,6 +9366,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rake (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 875275513914938607, guid: 72acd28a73e3d4379809ebee213bf00f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5350467867655682666, guid: 72acd28a73e3d4379809ebee213bf00f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.07
@@ -10601,6 +10605,10 @@ PrefabInstance:
     - target: {fileID: 875275513914938607, guid: 72acd28a73e3d4379809ebee213bf00f, type: 3}
       propertyPath: m_Name
       value: Rake (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 875275513914938607, guid: 72acd28a73e3d4379809ebee213bf00f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4329216887003994414, guid: 72acd28a73e3d4379809ebee213bf00f, type: 3}
       propertyPath: enterTutorialObject
@@ -14463,7 +14471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534700439484737800, guid: 2c367f31f18ab4b6bafc272b6472a138, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6037974237094660919, guid: 2c367f31f18ab4b6bafc272b6472a138, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15137,7 +15145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 875275513914938607, guid: 2dbee1b99649541c1919b27710898b08, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5350467867655682666, guid: 2dbee1b99649541c1919b27710898b08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21435,6 +21443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scepter
       objectReference: {fileID: 0}
+    - target: {fileID: 7056948275355669066, guid: 934a7e29620e64a96aa625dba7c8d5f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22504,11 +22516,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000150196005935092, guid: b8a218085643145ed8314f365924c7e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.48
+      value: -7.05
       objectReference: {fileID: 0}
     - target: {fileID: 1000150196005935092, guid: b8a218085643145ed8314f365924c7e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: 0.762
       objectReference: {fileID: 0}
     - target: {fileID: 1000150196005935092, guid: b8a218085643145ed8314f365924c7e2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25592,8 +25604,9 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.061950028, y: -0.10865, z: 0}
-    m_Extent: {x: 1.4972501, y: 1.03565, z: 0}
+
+  m_Center: {x: -0.061800003, y: -0.109049976, z: 0}
+  m_Extent: {x: 1.4971, y: 1.03515, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
