@@ -378,7 +378,7 @@ public void PlaceItemInWorld(string itemName, Vector3 worldPosition)
         Item item = itemDatabase.GetItemByName(itemName);
         if (item != null)
         {
-            bool added = AddItem(item);
+            bool added = AddItem(item, null);
             if (!added)
             {
                 Debug.LogError("Failed to add item to inventory: " + itemName);
