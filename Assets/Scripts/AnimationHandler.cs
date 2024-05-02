@@ -11,6 +11,7 @@ public static AnimationHandler Instance { get; private set; }
     public SpriteRenderer leftItemRenderer, rightItemRenderer, resultItemRenderer;
 
     public Animator animator;
+    public GameObject ExtendedInventory;
 
     public CraftingPopupManager craftingManager;
     private CraftingRecipe currentRecipe;
@@ -42,6 +43,10 @@ public static AnimationHandler Instance { get; private set; }
 
     public void StartCraftingAnimation(CraftingRecipe recipe)
     {
+        if(ExtendedInventory != null)
+        {
+            ExtendedInventory.SetActive(false);
+        }
         currentRecipe = recipe;
         SetupAnimationSprites(recipe);
         // ResetCameraToCharacter();
